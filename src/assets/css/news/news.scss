@@ -1,0 +1,12 @@
+@import '../_var';
+
+section.content {
+    width: 100%;
+    box-sizing: content-box; 
+}
+
+@import "./_index";
+@import "./_list";
+@import "./_content";
+@import '../_table';
+@import '../_options';

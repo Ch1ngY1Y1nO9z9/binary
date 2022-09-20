@@ -1,0 +1,552 @@
+.order {
+    position: relative;
+
+    .predict {
+        padding-bottom: 50px;
+
+        .top {
+            padding: 30px 0;
+            color: $gray-5;
+            @include Serif(24px, 22px, .1em);
+        }
+
+        .card {
+            padding: 32px 30px 28px;
+            border-radius: 20px;
+            background: $white-1;
+
+            @include normal-shadow;
+
+            .data {
+                display: flex;
+                border-bottom: 3px solid $gray-2;
+                padding-bottom: 27px;
+
+                .left {
+                    width: 100%;
+                    max-width: 360px;
+                    background: $gray-4;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .right {
+                    flex: 1 1 0;
+                    padding: 21px 0 25px 20px;
+
+                    .serial-num {
+                        @include Sans(700, 14px, 14px, .05em);
+                        color: $orange-5;
+                        padding-bottom: 10px;
+                    }
+
+                    .title {
+                        @include Sans(700, 24px, 24px, .05em);
+                        color: $gray-5;
+                    }
+
+                    .viewer {
+                        @include Sans(400, 14px, 14px, 1);
+                        color: $gray-5;
+
+                        margin-top: 50px;
+                        margin-bottom: 30px;
+
+                        .number {
+                            display: inline-block;
+                            margin-left: 10px;
+                        }
+                    }
+
+                    .detail {
+                        display: flex;
+                        justify-content: space-between;
+
+                        .times {
+                            .time {
+                                @include Sans(400, 14px, 14px, .05em);
+                                color: $gray-4;
+                                margin-bottom: 10px;
+                            }
+
+                            .remain {
+                                @include Sans(700, 18px, 18px, .05em);
+                                color: $orange-5;
+
+                                span.date {
+                                    font-size: 14px;
+                                }
+                            }
+                        }
+
+                        .btns {
+                            display: flex;
+                            padding-top: 7px;
+
+                            .btn {
+                                @include Sans(700, 14px, 14px, .05em);
+                                color: $gray-4;
+                                background: $white-1;
+                                border: 1px solid $gray-4;
+
+                                padding: 12px 27px 14px;
+                                margin-left: 15px;
+
+                                &:hover {
+                                    color: $white-1;
+                                    background: $orange-5;
+                                    border: 1px solid $orange-5;
+                                }
+                            }
+                        }
+
+                    }
+                }
+            }
+
+            .poll {
+                padding-top: 30px;
+
+                .title {
+                    @include Sans(700, 18px, 18px, .05em);
+                    color: $gray-5;
+                    text-align: center;
+                }
+
+                .btns {
+                    display: flex;
+                    justify-content: center;
+                    margin: 30px 0;
+
+                    .btn {
+                        @include Sans(700, 14px, 14px, .1em);
+                        color: $gray-5;
+                        border: 1px solid $gray-5;
+                        padding: 12px 60px 14px;
+                        margin-right: 10px;
+
+                        &:hover,&.selected {
+                            color: $white-1;
+                            background: $green-1;
+                            border: 1px solid $green-1;
+                        }
+
+                        &:last-child {
+                            margin-right: 0;
+
+                            &:hover,&.selected {
+                                color: $white-1;
+                                background: $red-1;
+                                border: 1px solid $red-1;
+                            }
+                        }
+                    }
+                }
+
+                .result {
+                    display: flex;
+
+                    .bar {
+                        position: relative;
+                        @include Sans(700, 14px, 14px, .05em);
+                        color: $white-1;
+                        padding: 13px 0 13px 120px;
+
+                        .icon {
+                            display: flex;
+                            font-size: 40px;
+                            position: absolute;
+
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 50%;
+
+                            color: $white-1;
+                            border: 5px solid $white-1;
+
+                            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+
+                            svg {
+                                margin: auto;
+                            }
+                        }
+
+                        &.bar-g {
+                            border-radius: 50px 0 0 50px;
+                            background: $green-1;
+
+                            .icon {
+                                left: 10px;
+                                bottom: 10px;
+                                background: $green-1;
+                            }
+                        }
+
+                        &.bar-r {
+                            border-radius: 0 50px 50px 0;
+                            background: $red-1;
+
+                            .icon {
+                                right: 10px;
+                                bottom: 10px;
+                                background: $red-1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .stake {
+        padding-bottom: 100px;
+
+        .top {
+            padding-bottom: 30px;
+
+            .section-title {
+                padding-left: 5px;
+                color: $gray-5;
+                @include Serif(30px, 43px, .05em);
+
+                .icon {
+                    display: inline-block;
+                    font-size: 30px;
+
+                    margin-right: 15px;
+                }
+            }
+        }
+
+        .card {
+            padding: 30px;
+            border-radius: 20px;
+            background: $white-1;
+
+            @include normal-shadow;
+
+            .data {
+                .title {
+                    @include Sans(400, 18px, 18px, .05em);
+                    color: $gray-5;
+
+                    border-bottom: 2px solid $gray-2;
+                    padding-bottom: 18px;
+                }
+
+                .table {
+                    width: 100%;
+
+                    .row {
+                        display: flex;
+                        justify-content: space-between;
+                        align-items: center;
+                        padding: 26px 30px;
+
+                        border-bottom: 2px solid $gray-2;
+
+                        .left {
+                            @include Sans(700, 18px, 18px, .05em);
+                            color: $gray-5;
+
+                            .answer-g {
+                                display: inline-block;
+                                color: $green-1;
+                                margin-left: 29px;
+                            }
+                        }
+
+                        .right {
+                            margin-left: auto;
+                            display: flex;
+                            align-items: center;
+
+                            .text {
+                                @include Sans(700, 14px, 14px, .05em);
+                                color: $gray-5;
+                            }
+
+                            .number-input {
+                                width: 60px;
+                                height: 30px;
+                                margin-left: 15px;
+
+
+                                input[type=text] {
+                                    width: 100%;
+                                    height: 100%;
+                                    padding: 7px 10px 9px;
+                                    border: 1px solid $gray-4;
+                                    border-radius: 5px;
+                                    text-align: right;
+                                }
+
+                                ;
+                            }
+
+                            .icon {
+                                font-size: 20px;
+                                color: $gray-2;
+                                margin-left: 30px;
+                            }
+                        }
+                    }
+                }
+
+                .result {
+                    @include Sans(700, 18px, 18px, .05em);
+
+                    text-align: right;
+                    padding-right: 30px;
+
+                    .total {
+                        display: flex;
+                        justify-content: flex-end;
+                        margin-top: 30px;
+                        color: $orange-5;
+                    }
+
+                    .profit {
+                        display: flex;
+                        justify-content: flex-end;
+                        color: $gray-5;
+                        margin-top: 20px;
+                    }
+
+                    .text {
+                        font-size: 14px;
+                    }
+
+                    .number {
+                        width: 120px;
+                    }
+
+                    .btn {
+                        display: inline-block;
+                        padding: 12px 60px 14px;
+                        color: $white-1;
+                        background: $orange-5;
+                        margin-top: 30px;
+
+                        &:hover {
+                            background: $yellow-5;
+                        }
+                    }
+
+                }
+            }
+        }
+    }
+}
+
+.interests {
+    .custom-container {
+        padding-bottom: 0;
+
+        .section-title {
+            @include Serif(30px, 43px, .05em);
+            color: $gray-5;
+
+            padding-left: 113px;
+
+            .icon {
+                font-size: 30px;
+            }
+        }
+
+        .interestsSwiper {
+            padding: 30px 0;
+
+            .swiper-slide {
+                @include normal-shadow;
+
+                &:hover {
+                    .link {
+                        .description {
+                            .title {
+                                color: $orange-5;
+                            }
+                        }
+                    }
+                }
+
+                .link {
+                    width: 100%;
+                    height: 100%;
+
+                    &:hover {
+                        .description {
+                            .content {
+                                color: $orange-5;
+                            }
+                        }
+                    }
+
+                    .pic {
+                        width: 100%;
+                        height: 260px;
+                        background: $gray-4;
+                    }
+
+                    .description {
+                        padding: 20px;
+                        background: $white-1;
+
+                        .tags {
+                            display: flex;
+                            margin-bottom: 20px;
+
+                            .tag {
+                                @include Sans(700, 14px, 20px, .1em);
+                                background: $orange-5;
+                                color: $white-1;
+                                padding: 2px 10px 3px;
+                                margin-left: 10px;
+                            }
+
+                            .viewer {
+                                margin-left: auto;
+                                @include Sans(400, 14px, 14px, 1);
+
+                                .icon {
+                                    display: inline-block;
+                                    margin-right: 10px;
+                                }
+                            }
+                        }
+
+                        .subtitle {
+                            @include Sans (400, 14px, 14px, .05em);
+                            color: $gray-4;
+                            margin-bottom: 10px;
+                        }
+
+                        .title {
+                            @include Sans(700, 18px, 18px, .05em);
+                            color: $gray-5;
+                            margin-bottom: 20px;
+                        }
+
+                        .award {
+                            @include Sans(400, 18px, 18px, .05em);
+                            color: $gray-5;
+                            text-align: center;
+                            padding: 6px 0 34px;
+                            border-bottom: 2px solid $gray-2;
+
+                            span {
+                                font-weight: 700;
+                                font-size: 24px;
+                            }
+                        }
+
+                        .bars {
+                            display: flex;
+                            @include Sans(700, 14px, 16px, .05em);
+                            color: $white-1;
+                            padding-bottom: 30px;
+                            border-bottom: 2px solid $gray-2;
+
+                            .bar-left {
+                                background: $green-1;
+                                padding: 6px 10px 8px;
+                                border-radius: 50px 0 0 50px;
+                            }
+
+                            .bar-right {
+                                text-align: right;
+                                background: $red-1;
+                                padding: 6px 10px 8px;
+                                border-radius: 0 50px 50px 0;
+                            }
+                        }
+
+                        .remain {
+                            margin-top: 20px;
+                            @include Sans(700, 18px, 18px, .05em);
+                            color: $orange-5;
+                            text-align: center;
+                            
+                            span.date {
+                                font-size: 14px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: $orange-5;
+            font-size: 50px;
+
+            &::after {
+                content: initial;
+            }
+
+            &:hover {
+                color: $yellow-5;
+            }
+        }
+
+        .swiper-button-prev {
+            left: -63px;
+        }
+
+        .swiper-button-next {
+            right: -63px;
+        }
+    }
+}
+
+.related {
+    padding-top: 70px;
+    padding-bottom: 200px;
+
+    .custom-container {
+        padding-bottom: 0;
+
+        .section-title {
+            @include Serif(30px, 43px, .05em);
+            color: $gray-5;
+
+            padding-bottom: 30px;
+            border-bottom: 2px solid $gray-2;
+
+            .icon {
+                display: inline-block;
+                font-size: 26px;
+                margin-right: 15px;
+            }
+        }
+
+        .list {
+            @include Sans(400, 14px, 20px, .05em);
+            color: $gray-5;
+
+
+            .news-link {
+                display: block;
+                padding: 10px 0;
+                word-break: keep-all;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                border-bottom: 2px solid $gray-2;
+
+                &:hover {
+                    color: $orange-5;
+                }
+
+                .icon {
+                    display: inline-block;
+                    font-size: 12px;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

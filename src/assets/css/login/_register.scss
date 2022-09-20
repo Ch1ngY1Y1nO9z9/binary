@@ -1,0 +1,73 @@
+section.content {
+    .custom-container {
+        div.form-card.register {
+            .icon.success {
+                color: $green-1;
+                font-size: 50px;
+                text-align: center;
+            }
+            .icon.vertify {
+                color: $blue-5;
+                font-size: 50px;
+                text-align: center;
+            }
+
+            .confirm {
+                width: 100%;
+                max-width: 250px;
+                margin: auto;
+
+                @include Sans(400, 14px, 14px, .05em);
+                text-align: center;
+                color: $gray-5;
+            }
+            
+            .check { 
+                text-align: center;
+                margin-top: 50px;
+                margin-bottom: 20px;
+
+                .text {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $gray-5;
+
+                    span {
+                        font-size: 18px;
+                        font-weight: 700;
+                        color: $orange-5;
+                    }
+                }
+            }
+
+            .links {
+                .link {
+                    display: inline-block;
+                    border: 1px solid $orange-5;
+                    @include Sans(700, 14px, 14px, .1em);
+                    color: $orange-5;
+                    width: 150px;
+                    text-align:center;
+                    padding: 12px 0 14px;
+                    background: $white-1;
+                    text-decoration: none;
+
+                    &:hover {
+                        background: $orange-5;
+                        color: $white-1; 
+                    }
+
+                    &:nth-child(even) {
+                        background: $orange-5;
+                        color: $white-1;
+                        
+
+                        &:hover {
+                            background: $yellow-5;
+                            border: 1px solid $yellow-5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

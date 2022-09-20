@@ -1,0 +1,30 @@
+.tab {
+    margin-bottom: 50px;
+    
+    .tab-options {
+        display: flex;
+        justify-content: center;
+
+        .btn-options {
+            @include btn-options;
+            width: 120px;
+            text-align: center;
+            padding: 13px 0;
+            margin-left: 15px;
+
+            &:first-child{
+                margin-left: 0;
+            }
+
+            &:hover,&.active {
+                @include hover-orange;
+            }
+        }
+
+        &.sm {
+            .btn-options {
+                width: 90px;
+            }
+        }
+    }
+}

@@ -1,0 +1,195 @@
+@mixin Sans($weight, $size, $height, $spacing) {
+    font-family: 'Noto Sans TC', 'sans-serif';
+    font-weight: $weight;
+    font-size: $size;
+    line-height: $height;
+    letter-spacing: $spacing;
+}
+
+@mixin Trade($size, $height, $spacing) {
+    font-family: 'Trade Winds', 'serif';
+    font-weight: 400;
+    font-size: $size;
+    line-height: $height;
+    letter-spacing: $spacing;
+}
+
+@mixin Serif($size, $height, $spacing) {
+    font-family: 'Noto Serif TC', 'serif';
+    font-weight: 900;
+    font-size: $size;
+    line-height: $height;
+    letter-spacing: $spacing;
+}
+
+$blue-1: rgba(200, 229, 250, 1); //C8E5FA
+$blue-2: rgba(148, 199, 246, 1); //94C7F6
+$blue-3: rgba(92, 159, 230, 1); //5C9FE6
+$blue-4: rgba(51, 120, 206, 1); //3378CE
+$blue-5: rgba(0, 70, 174, 1); //0046AE
+
+$orange-1: rgba(255, 235, 210, 1); //FFEBD2
+$orange-2: rgba(255, 210, 165, 1); //FFD2A5
+$orange-3: rgba(255, 178, 120, 1); //FFB278
+$orange-4: rgba(255, 148, 87, 1); //FF9457
+$orange-5: rgba(255, 98, 31, 1); //FF621F
+
+$yellow-1: rgba(254, 247, 210, 1); //FEF7D2
+$yellow-2: rgba(254, 237, 165, 1); //FEEDA5
+$yellow-3: rgba(254, 223, 120, 1); //FEDF78
+$yellow-4: rgba(253, 210, 86, 1); //FDD256
+$yellow-5: rgba(252, 189, 31, 1); //FCBD1F
+
+$gray-1: rgba(245, 245, 245, 1); //F5F5F5
+$gray-2: rgba(235, 235, 235, 1); //FCBD1F
+$gray-3: rgba(195, 195, 195, 1); //C3C3C3
+$gray-4: rgba(136, 136, 136, 1); //888888
+$gray-5: rgba(57, 57, 57, 1); //393939
+
+$red-1: rgba(235, 54, 52, 1); //EB3634
+$green-1: rgba(44, 189, 3, 1); //2CBD03
+
+$tiger-blue: rgba(0, 78, 194, 1); //004EC2
+
+$white-1: rgba(255, 255, 255, 1); //FFFFFF
+
+$disable-gray: #A4A4A4;
+$icon-gray: #F0F0F0;
+$avatar-gray: #717171;
+$border-gray: #E9E9E9;
+$avatar-orange: #FFAA3B;
+$hr-gray: #EBEBEB;
+$logo-purple: #911F89;
+
+@mixin bg-gardient-blue {
+    background: linear-gradient($blue-5, #00CAE7);
+    color: $white-1;
+}
+
+@mixin bg-gardient-orange {
+    background: linear-gradient($orange-5, #FFD04A);
+    color: $white-1;
+}
+
+@mixin box-shadow {
+    box-shadow: 30px 30px 50px rgba(0, 0, 0, 0.25);
+}
+
+@mixin normal-shadow {
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+
+@mixin hard-shadow {
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+}
+
+@mixin hover-orange {
+    background: $orange-5;
+    color: $white-1;
+    border-color: $orange-5;
+}
+
+@mixin hover-blue {
+    background: $blue-5;
+    color: $white-1;
+    border-color: $blue-5;
+}
+
+@mixin hover-yellow {
+    background: $yellow-5;
+    color: $white-1;
+    border-color: $yellow-5;
+}
+
+@mixin btn-orange {
+    background: $orange-5;
+    color: $white-1;
+    border: 1px solid $orange-5;
+
+    &:hover {
+        @include hover-yellow
+    }
+}
+
+@mixin btn-gray {
+    background: $white-1;
+    color: $gray-4;
+    border: 1px solid $gray-4;
+
+    &:hover {
+        @include hover-orange;
+    }
+}
+
+@mixin btn-blue {
+    background: $blue-5;
+    color: $white-1;
+    border: 1px solid $blue-5;
+
+    &:hover {
+        @include hover-orange
+    }
+}
+
+@mixin btn-orange-outline {
+    background: $white-1;
+    color: $orange-5;
+    border: 1px solid $orange-5;
+
+    &:hover {
+        @include hover-orange;
+    }
+}
+
+@mixin btn-options {
+    @include Sans(400, 14px, 14px, .1em);
+    color: $gray-5;
+    background: $gray-2;
+    border-radius: 5px;
+
+    padding: 13px 30px;
+    margin-left: 15px;
+    margin-bottom: 15px;
+}
+
+@mixin pagination { 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 100px;
+    margin: 0 auto;
+
+    @include Sans(700, 18px, 26px, .05em);
+    color: $gray-5;
+
+    .prev-arrow,
+    .next-arrow {
+        font-size: 15px;
+    }
+
+    .pages {
+        display: flex;
+
+        a {
+            display: block;
+            padding: 10px 20px 14px;
+            border-radius: 5px;
+
+            &:hover,
+            &.active {
+                @include hover-orange;
+            }
+        }
+    }
+
+    .prev-arrow {
+        position: relative;
+        right: 21px;
+    }
+
+    .next-arrow {
+        position: relative;
+        left: 21px;
+    }
+
+}

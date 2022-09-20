@@ -1,0 +1,358 @@
+
+.modal {
+    position: fixed;
+    left: 0;
+    top: 0;
+
+    .mask {
+        width: 100vw;
+        height: 100vh;
+
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        background: rgba(0, 0, 0, .3);
+
+        .confirm-modal {
+            background: $white-1;
+            padding: 50px 0;
+            border-radius: 20px;
+
+            width: 100%;
+            max-width: 500px;
+
+            .header {
+                max-width: 250px;
+                @include Sans(400, 14px, 20px, .05em);
+                color: $gray-5;
+                text-align: center;
+
+                margin: 0 auto;
+                margin-bottom: 50px;
+            }
+
+            .footer {
+                .links {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .link {
+                        width: 150px;
+                        padding: 7px;
+                        text-align: center;
+                        @include btn-orange-outline;
+
+                        &:nth-child(even) {
+                            @include btn-orange;
+                            margin-left: 15px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .follow-modal {
+            background: $white-1;
+            padding: 50px 0;
+            border-radius: 20px;
+
+            width: 100%;
+            max-width: 500px;
+            position: relative;
+
+            .close-icon {
+                font-size: 25px;
+                color: $gray-5;
+                cursor: pointer;
+                position: absolute;
+                right: 20px;
+                top: 10px;
+            }
+
+            .footer {
+                .links {
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+
+                    .link {
+                        text-align: center;
+                        @include Sans(700, 24px, 30px, initial);
+                        @include btn-blue; 
+                        padding: 45px 27px;
+                        border-radius: 5px;
+
+                        &:nth-child(even) {
+                            margin-left: 15px;
+                        }
+                    }
+                }
+            }
+        }
+
+        .chat-modal {
+            background: $white-1;
+            padding: 20px;
+            border-radius: 20px;
+            @include normal-shadow;
+
+            width: 100%;
+            max-width: 624px;
+
+            .header {
+                display: flex;
+                justify-content: space-between;
+                align-items: flex-start;
+                padding-bottom: 15px;
+                border-bottom: 2px solid $gray-2;
+
+                .user {
+                    display: flex;
+
+                    .icon {
+                        width: 40px;
+                        height: 40px;
+                        border-radius: 50%;
+                        background: $blue-4;
+                        overflow: hidden;
+
+                        display: flex;
+
+                        img {
+                            margin: auto;
+                        }
+                    }
+
+                    .detail {
+                        margin-left: 15px;
+
+                        .title {
+                            @include Sans(400, 14px, 14px, .05em);
+                            color: $gray-4;
+                            margin-bottom: 5px;
+                        }
+
+                        .name {
+                            @include Sans(700, 18px, 18px, initial);
+                            color: $gray-5;
+                        }
+                    }
+                }
+
+                .close-icon {
+                    font-size: 25px;
+                    color: $gray-5;
+                    cursor: pointer;
+                }
+            }
+
+            .body {
+                padding-bottom: 20px;
+                border-bottom: 2px solid $gray-2;
+
+                .tips {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $gray-4;
+                    padding: 10px 0 30px;
+                    background-color: $white-1;
+                }
+
+                .chat {
+                    height: 500px;
+                    overflow-y: auto;
+
+                    .left {
+                        margin-bottom: 25px;
+                        justify-content: flex-start;
+
+                        .comment {
+                            display: flex;
+                            align-items: flex-end;
+
+                            .i {
+                                width: 40px;
+                                height: 40px;
+                                background: $blue-4;
+                                display: flex;
+                                border-radius: 50%;
+                                overflow: hidden;
+
+                                img {
+                                    margin: auto;
+                                }
+                            }
+
+                            .m {
+                                margin: 0 15px 0 10px;
+                                padding: 13px 15px;
+                                @include Sans(400, 14px, 20px, initial);
+                                color: $gray-5;
+                                background: $gray-2;
+                                border-radius: 10px 10px 10px 0;
+
+                                max-width: 240px;
+                            }
+
+                            .t {
+                                @include Sans(400, 14px, 14px, initial);
+                                color: $gray-3;
+                            }
+                        }
+
+                        &+.left {
+                            
+                            .comment {
+                                .i {
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    .right {
+                        margin-bottom: 25px;
+
+                        .comment {
+                            display: flex;
+                            align-items: flex-end;
+                            justify-content: flex-end;
+
+                            .i {
+                                width: 40px;
+                                height: 40px;
+                                background: $orange-2;
+                                display: flex;
+                                border-radius: 50%;
+                                overflow: hidden;
+
+                                img {
+                                    margin: auto;
+                                }
+                            }
+
+                            .m {
+                                margin: 0 10px 0 15px;
+                                padding: 13px 15px;
+                                @include Sans(400, 14px, 20px, initial);
+                                color: $white-1;
+                                background: $blue-5;
+                                border-radius: 10px 10px 0 10px;
+
+                                max-width: 240px;
+                            }
+
+                            .t {
+                                @include Sans(400, 14px, 14px, initial);
+                                color: $gray-3;
+                            }
+                        }
+
+                        &+.right {
+                            .comment {
+                                .i {
+                                    opacity: 0;
+                                }
+                            }
+                        }
+                    }
+
+                    .date {
+                        @include Sans(400, 14px, 14px, initial);
+                        color: $gray-3;
+                        text-align: center;
+                        padding: 40px 0 30px 0;
+
+                        span {
+                            display: inline-block;
+                            padding: 0 20px;
+                            position: relative;
+
+                            &::before {
+                                content: '';
+                                width: 100px;
+                                border-top: 1px solid $gray-3;
+                                position: absolute;
+                                left: -100%;
+                                top: 7px
+                            }
+
+                            &::after {
+                                content: '';
+                                width: 100px;
+                                border-top: 1px solid $gray-3;
+                                position: absolute;
+                                right: -100%;
+                                top: 7px
+                            }
+                        }
+                    }
+                }
+
+                .quick_command {
+                    padding-top: 20px;
+                    overflow-x: auto;
+                    background: $white-1;
+
+                    .options {
+                        width: max-content;
+                        display: flex;
+                        flex-wrap: nowrap;
+                    }
+
+                    .option {
+                        padding: 5px 15px;
+                        margin-right: 15px;
+                        border: 1px solid $orange-5;
+                        border-radius: 20px;
+                        @include Sans(700, 14px, 20px, .05em);
+                        color: $orange-5;
+
+                        cursor: pointer;
+                    }
+                }
+            }
+
+            .footer {
+                display: flex;
+                align-items: center;
+                padding-top: 20px;
+
+                .upload {
+                    font-size: 30px;
+                    color: $gray-5;
+                    cursor: pointer;
+                }
+
+                .input-col {
+                    flex: 1 1 0;
+                    margin: 0 21px;
+
+                    input.input-control {
+                        width: 100%;
+                        padding: 7px 11px;
+                        color: $gray-5;
+                        border: 1px solid $gray-4;
+                        border-radius: 5px;
+                    }
+                }
+
+                .submit {
+                    color: $blue-5;
+                    font-size: 30px;
+                }
+
+                .mic {
+                    margin-left: 21px;
+                    color: $gray-2;
+                    font-size: 30px;
+
+                    &.active {
+                        color: $blue-5;
+                    }
+                }
+            }
+        }
+    }
+}

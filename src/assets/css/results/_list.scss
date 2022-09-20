@@ -1,0 +1,12 @@
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+    width: 100%;
+    margin-top: 26px;
+
+    .result-card {
+        margin-top: 35px;
+    }
+}

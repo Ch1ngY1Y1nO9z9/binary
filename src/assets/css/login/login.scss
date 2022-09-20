@@ -1,0 +1,176 @@
+@import '../_var';
+@import '../_headerWhite';
+
+section.content {
+    width: 100%;
+    box-sizing: content-box;
+
+    position: relative;
+    z-index: 3;
+
+    .custom-container {
+        // max-width: 624px;
+
+        .form-card {
+            position: relative;
+            z-index: 2;
+            padding: 50px 112px;
+            background: $white-1;
+            border-radius: 20px;
+
+            @include normal-shadow;
+
+            .input-row {
+                color: $gray-5;
+                margin-bottom: 30px;
+
+                label.input-label {
+                    display: block;
+                    @include Sans(700, 14px, 14px, .05em);
+                    margin-bottom: 10px;
+
+                    &[for=vertify_code]+.input-col {
+                        display: flex;
+
+                        input#vertify_code.input-control {
+                            flex: 1 1 0;
+    
+                            &~button {
+                                display: inline-block;
+                                margin-left: 15px;
+                                @include Sans(700, 14px, 14px, .1em);
+                                color: $orange-5;
+                                padding: 12px 37px 14px;
+                                border: 1px solid $orange-5;
+                                background: $white-1;
+    
+                                &:hover {
+                                    background: $orange-5;
+                                    color: $white-1;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                .input-col {
+                    display: flex;
+                    align-items: center;
+
+                    label.terms-label {
+                        @include Sans(400, 14px, 14px, initial);
+                        display: flex;
+                        align-items: center;
+                        margin-bottom: 0;
+        
+                        .checkbox-mask {
+                            display: inline-block;
+                            width: 20px;
+                            height: 20px;
+                            border-radius: 5px;
+                            border: 1px solid $gray-4;
+                            margin-right: 10px;
+
+                            &.clicked {
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                color: $white-1;
+                                background: $blue-5;
+                            }
+                        }
+                    }
+
+                    input.input-control {
+                        width: 100%;
+                        border: 1px solid $gray-4;
+                        border-radius: 5px;
+                        background: $white-1;
+                        padding: 9px 10px;
+
+                        @include Sans(400, 14px, 14px, initial);
+                        color: $gray-5;
+
+                        &::placeholder {
+                            color: $gray-3;
+                        }
+                    }
+
+                    &+.msg {
+                        display: none;
+                        @include Sans(400, 14px, 14px, initial);
+        
+                        margin-top: 5px;
+                        color: $red-1;
+                    }
+
+                    &.error+.msg {
+                        display: block;
+                    }
+
+                    &.error {
+                        .checkbox-mask {
+                            border: 1px solid $red-1;
+                        }
+                    }
+                }
+            }
+
+            .submit {
+                display: flex;
+                justify-content: center;
+                padding: 30px 0;
+
+                button {
+                    @include Sans(700, 14px, 14px, .1em);
+                    color: $white-1;
+                    background: $orange-5;
+                    width: 150px;
+                    padding: 12px 0 14px;
+
+                    &:hover {
+                        background: $yellow-5;
+                    }
+                }
+
+                &.error {
+                    padding-bottom: 0;
+                }
+
+                &+.msg {
+                    display: none;
+                    @include Sans(400, 14px, 14px, initial);
+                    text-align: center;
+    
+                    margin-top: 5px;
+                    color: $red-1;
+                }
+
+                &.error+.msg {
+                    display: block;
+                    padding-bottom: 30px;
+                }
+            }
+
+            .links {
+                padding-top: 20px;
+                display: flex;
+                justify-content: center;
+
+                @include Sans(400, 14px, 14px, .05em);
+                color: $gray-4;
+
+                .link {
+                    &:nth-child(even) {
+                        margin-left: 15px;
+                    }
+                }
+            }
+        }
+    }
+}
+
+@import "./_login";
+@import "./_register";
+@import "./_forgot";
+@import "./_unvertify";

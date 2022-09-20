@@ -1,0 +1,59 @@
+section.content {
+    .purchase {
+        .custom-container {
+            .form-card {
+
+                .cal {
+                    display: flex;
+                    padding: 30px;
+                    border: 1px solid $gray-4;
+                    border-radius: 5px;
+
+                    .left {
+                        @include Sans(700, 18px, 22px, .05em);
+                        padding-right: 40px;
+
+                        .icon {
+                            color: $yellow-5;
+                            margin: 15px 0;
+                            text-align: center;
+                        }
+                    }
+
+                    .right {
+                        flex: 1 1 0;
+                        @include Sans(700, 18px, 18px, initial);
+                        padding-top: 8px;
+
+                        .spend,
+                        .buy {
+                            display: flex;
+                            line-height: 14px;
+
+                            .title {
+                                display: inline-block;
+                                margin-right: 15px;
+                                @include Sans(400, 14px, 14px, initial);
+                                color: $gray-4;
+                            }
+                        }
+
+                        .spend {
+                            padding-bottom: 25px;
+                        }
+
+                        hr {
+                            margin-bottom: 25px;
+                            border-color: $hr-gray;
+                        }
+                    }
+                }
+
+
+                .links {
+                    padding-top: 0;
+                }
+            }
+        }
+    }
+}

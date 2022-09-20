@@ -1,0 +1,93 @@
+.friends-cards {
+    display: flex;
+    flex-wrap: wrap;
+
+    .card {
+        display: flex;
+        padding: 20px;
+        border: 1px solid $gray-3;
+        border-radius: 10px;
+        width: calc(50% - 5px);
+        margin-bottom: 10px;
+
+        &:nth-child(odd) {
+            margin-right: 10px;
+        }
+
+        &:nth-child(3n+3) {
+            .account {
+                .account-pic {
+                    background: $blue-3;
+                }
+            }
+        }
+
+        &:nth-child(3n+2) {
+            .account {
+                .account-pic {
+                    background: $yellow-4;
+                }
+            }
+        }
+
+        .account {
+            display: flex;
+            flex: 1 1 0%;
+
+            .account-pic {
+                width: 80px;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                overflow: hidden;
+                border-radius: 50%;
+                background: $orange-4;
+
+                img {
+                    width: 100%;
+                }
+            }
+
+            .account-detail {
+                padding: 20px 0;
+                padding-left: 15px;
+                
+                @include Sans(400, 14px, 14px, initial);
+
+                .name {
+                    font-weight: 700;
+                    margin-bottom: 15px;
+
+                    span.status {
+                        margin-left: 10px;
+                        font-weight: 400;
+
+                        &.status-r {
+                            color: $red-1;
+                        }
+
+                        &.status-g {
+                            color: $green-1;
+                        }
+
+                        &.offline {
+                            color: $gray-4;
+                        }
+                    }
+                }
+            }
+        }
+
+        .msg-icon {
+            display: flex;
+            align-items: center;
+            font-size: 24px;
+            color: $blue-5;
+
+            svg {
+                cursor: pointer;
+            }
+        }
+    }
+}

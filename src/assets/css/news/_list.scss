@@ -1,0 +1,164 @@
+.topnews {
+    .custom-container {
+        padding-top: 50px;
+
+        .newsSwiper {
+
+            .swiper-slide {
+
+                .link {
+                    width: 100%;
+                    height: 100%;
+
+                    &:hover {
+                        .description {
+                            .content {
+                                color: $orange-5;
+                            }
+                        }
+                    }
+
+                    .pic {
+                        width: 100%;
+                        height: 260px;
+                        background: $gray-4;
+                    }
+
+                    .description {
+                        padding: 20px;
+                        background: $white-1;
+
+                        .tag {
+                            @include Sans(400, 14px, 14px, .05em);
+                            color: $orange-5;
+                            margin-bottom: 10px;
+                        }
+
+                        .content {
+                            @include Sans(700, 18px, 25px, .05em);
+                            color: $gray-5;
+                            text-align: justify;
+
+                            padding-bottom: 30px;
+                        }
+
+                        .time {
+                            @include Sans(400, 14px, 14px, .05em);
+                            color: $gray-4;
+                        }
+                    }
+                }
+            }
+        }
+
+        .swiper-button-prev,
+        .swiper-button-next {
+            color: $orange-5;
+            font-size: 50px;
+
+            &::after {
+                content: initial;
+            }
+
+            &:hover {
+                color: $yellow-5;
+            }
+        }
+
+        .swiper-button-prev {
+            left: -63px;
+        }
+
+        .swiper-button-next {
+            right: -63px;
+        }
+    }
+}
+
+.catalog-section {
+    .custom-container {
+        .news-list {
+            .cards {
+                display: flex;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                padding-top: 70px;
+                padding-bottom: 16px;
+
+                .card {
+                    display: flex;
+
+                    width: 50%;
+                    max-width: 624px;
+
+                    margin-bottom: 24px;
+                    padding: 20px;
+    
+                    box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    
+                    &:nth-child(even) {
+                        margin-right: 0;
+                    }
+    
+                    .left {
+                        width: 100%;
+                        max-width: 250px;
+                        background: $gray-4;
+                    }
+    
+                    .right {
+                        padding-left: 20px;
+                        
+                        .tags {
+                            display: flex;
+                            position: relative;
+    
+                            .tag {
+                                @include Sans(400, 14px, 20px, .1em);
+                                color: $white-1;
+                                margin-right: 10px;
+                                padding: 2px 25px 3px;
+        
+                                &.tag-o {
+                                    background: $orange-5;
+                                }
+        
+                                &.tag-g {
+                                    background: $green-1;
+                                }
+                            }
+    
+                            .icon {
+                                position: absolute;
+                                right: 20px;
+                                top: 0;
+                                display: flex;
+                                font-size: 25px;
+                                color: $orange-5;
+                            }
+                        }
+    
+                        .title {
+                            @include Sans(400, 14px, 14px, .05em);
+                            color: $orange-5;
+                            margin-top: 30px;
+                            margin-bottom: 10px;
+                        }
+    
+                        .scription {
+                            @include Sans(700, 18px, 25px, .05em);
+                            color: $gray-5;
+                            text-align: justify;
+                            padding-bottom: 30px;
+                        }
+    
+                        .time {
+                            @include Sans(400, 14px, 14px, .05em);
+                            color: $disable-gray;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

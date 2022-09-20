@@ -1,0 +1,12 @@
+@import '../_var';
+
+@import '../_board';
+@import '../_table';
+@import '../_options';
+@import '../_form';
+
+.promote-header {
+    padding-bottom: 25px;
+}
+
+@import './_notify_cards';

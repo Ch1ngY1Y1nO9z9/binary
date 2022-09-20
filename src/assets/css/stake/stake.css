@@ -1,0 +1,3061 @@
+h3.subtitle {
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.options {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+  flex-wrap: wrap;
+}
+.options .btn {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(57, 57, 57);
+  background: rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 13px 30px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+.options .btn:first-child {
+  margin-left: 0;
+}
+.options .btn.btn-o:hover, .options .btn.btn-o.active {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.options .btn.btn-y:hover, .options .btn.btn-y.active {
+  background: rgb(252, 189, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(252, 189, 31);
+  color: rgb(57, 57, 57);
+}
+.options .btn.btn-b:hover, .options .btn.btn-b.active {
+  background: rgb(0, 70, 174);
+  color: rgb(255, 255, 255);
+  border-color: rgb(0, 70, 174);
+}
+.options .sort {
+  width: 200px;
+  position: relative;
+  margin-left: 15px;
+}
+.options .sort select.input-control {
+  width: 100%;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  background: transparent;
+  padding: 12px 10px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  color: rgb(57, 57, 57);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.options .sort select.input-control + .arrow {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  z-index: -1;
+}
+.options .sort select.input-control::-moz-placeholder {
+  color: rgb(195, 195, 195);
+}
+.options .sort select.input-control:-ms-input-placeholder {
+  color: rgb(195, 195, 195);
+}
+.options .sort select.input-control::placeholder {
+  color: rgb(195, 195, 195);
+}
+.options .sort select.input-control:disabled {
+  background: rgb(235, 235, 235);
+  color: rgb(57, 57, 57);
+}
+.options .sort select.input-control option {
+  padding: 12px 10px;
+}
+
+.filter {
+  display: flex;
+  margin-bottom: 15px;
+}
+.filter .btn {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(57, 57, 57);
+  background: rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 13px 30px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  padding: 13px 0;
+  width: 74px;
+}
+.filter .btn:hover, .filter .btn.active {
+  background: rgb(252, 189, 31);
+  color: rgb(57, 57, 57);
+  font-weight: 700;
+}
+.filter .btn:first-child {
+  margin-left: 0;
+}
+.filter .datetimepicker {
+  display: flex;
+  color: rgb(57, 57, 57);
+  margin-left: 15px;
+  height: 40px;
+}
+.filter .datetimepicker .input-date {
+  width: 250px;
+  position: relative;
+}
+.filter .datetimepicker .input-date input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(195, 195, 195);
+  border-radius: 5px;
+  padding: 0 10px;
+  color: rgb(57, 57, 57);
+}
+.filter .datetimepicker .input-date .datepicker-toggle-button {
+  top: 12px;
+}
+.filter .datetimepicker .input-date svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.filter .datetimepicker span {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: initial;
+  display: inline-block;
+  margin: 0 10px;
+}
+.filter .datetimepicker .submit-btn {
+  background: rgb(255, 255, 255);
+  color: rgb(136, 136, 136);
+  border: 1px solid rgb(136, 136, 136);
+  width: 100px;
+  color: rgb(136, 136, 136);
+  margin-left: 15px;
+}
+.filter .datetimepicker .submit-btn:hover {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.filter .input-col {
+  width: 200px;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 15px;
+  margin-bottom: 15px;
+}
+.filter .input-col select.input-control {
+  width: 100%;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  background: transparent;
+  padding: 9px 10px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  color: rgb(57, 57, 57);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.filter .input-col select.input-control + .arrow {
+  position: absolute;
+  right: 10px;
+  z-index: -1;
+}
+.filter .input-col select.input-control::-moz-placeholder {
+  color: rgb(195, 195, 195);
+}
+.filter .input-col select.input-control:-ms-input-placeholder {
+  color: rgb(195, 195, 195);
+}
+.filter .input-col select.input-control::placeholder {
+  color: rgb(195, 195, 195);
+}
+.filter .input-col select.input-control:disabled {
+  background: rgb(235, 235, 235);
+  color: rgb(57, 57, 57);
+}
+.filter .input-col select.input-control {
+  padding: 12px 10px;
+}
+.filter .input-col select.input-control option {
+  padding: 12px 10px;
+}
+.filter .input-col .checkbox-mask {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border-radius: 5px;
+  border: 1px solid rgb(136, 136, 136);
+}
+.filter .input-col .checkbox-mask + label.input-label {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  display: inline-block;
+  margin-left: 10px;
+  margin-bottom: 0;
+}
+.filter .input-col .point_number {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: initial;
+  color: rgb(255, 98, 31);
+}
+.filter .input-col.error ~ .msg {
+  display: block;
+}
+.filter .input-col.error .checkbox-mask {
+  border: 1px solid rgb(235, 54, 52);
+}
+.filter .input-col span.icon {
+  position: absolute;
+  right: 10px;
+}
+
+.stake-catalog {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 50px;
+}
+.stake-catalog span.item {
+  width: 100px;
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: rgb(0, 70, 174);
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  margin-left: 20px;
+}
+.stake-catalog span.item:first-child {
+  margin-left: 0;
+}
+.stake-catalog span.item div {
+  max-width: 60px;
+}
+.stake-catalog span.item span.number {
+  display: inline-block;
+  font-size: 14px;
+  line-height: 14px;
+  background: rgb(255, 98, 31);
+  padding: 2px 8px 4px;
+  border-radius: 5px;
+  margin-top: 10px;
+}
+
+.board {
+  width: 100%;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  background: rgb(0, 70, 174);
+  border-radius: 10px;
+  color: rgb(255, 255, 255);
+}
+.board.wallets {
+  text-align: center;
+}
+.board.wallets .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  margin-bottom: 21px;
+}
+.board.wallets .title .icon {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  background: rgb(255, 255, 255);
+  margin-right: 10px;
+}
+.board.wallets.single {
+  max-width: 250px;
+  padding: 21px 0;
+}
+.board.wallets.single .point {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 22px;
+  letter-spacing: initial;
+}
+.board.wallets.all {
+  display: flex;
+  max-width: 500px;
+  padding: 10px 0;
+}
+.board.wallets.all .point {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 22px;
+  letter-spacing: initial;
+}
+.board.wallets.all .left {
+  flex: 1 1 0;
+  padding: 11px 0;
+  border-right: 1px solid rgb(51, 120, 206);
+}
+.board.wallets.all .right {
+  flex: 1 1 0;
+  padding: 11px 0;
+  border-left: 1px solid rgb(51, 120, 206);
+}
+.board.stake_detail {
+  display: flex;
+  max-width: 624px;
+  padding: 20px 30px;
+}
+.board.stake_detail .left {
+  width: 50%;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  padding: 10px 0;
+  border-right: 1px solid rgb(51, 120, 206);
+}
+.board.stake_detail .left .col {
+  display: flex;
+}
+.board.stake_detail .left .col .type div, .board.stake_detail .left .col .res div {
+  margin-bottom: 15px;
+}
+.board.stake_detail .left .col .type div:last-child, .board.stake_detail .left .col .res div:last-child {
+  margin: 0;
+}
+.board.stake_detail .left .col .res {
+  font-weight: 700;
+}
+.board.stake_detail .right {
+  width: 50%;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  padding: 10px 0 10px 30px;
+  border-left: 1px solid rgb(51, 120, 206);
+}
+.board.stake_detail .right .col {
+  display: flex;
+  align-items: flex-start;
+}
+.board.stake_detail .right .col .type div .per, .board.stake_detail .right .col .res div .per {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+}
+.board.stake_detail .right .col .type div:last-child, .board.stake_detail .right .col .res div:last-child {
+  margin: 0;
+}
+.board.stake_detail .right .col .type {
+  text-align: right;
+  margin-right: 10px;
+}
+.board.stake_detail .right .col .type div {
+  margin-bottom: 26px;
+}
+.board.stake_detail .right .col .res {
+  font-size: 24px;
+  line-height: 24px;
+  font-weight: 700;
+}
+.board.stake_detail .right .col .res div {
+  margin-bottom: 15px;
+}
+.board.commission_detail {
+  display: flex;
+  max-width: 750px;
+  padding: 10px 0;
+}
+.board.commission_detail .left, .board.commission_detail .mid, .board.commission_detail .right {
+  flex: 1 1 0%;
+  text-align: center;
+  padding: 12px 0;
+}
+.board.commission_detail .left .title, .board.commission_detail .mid .title, .board.commission_detail .right .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  margin-bottom: 20px;
+}
+.board.commission_detail .left .point, .board.commission_detail .mid .point, .board.commission_detail .right .point {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 22px;
+  letter-spacing: initial;
+  color: rgb(255, 255, 255);
+}
+.board.commission_detail .mid {
+  border-left: 2px solid rgb(51, 120, 206);
+  border-right: 2px solid rgb(51, 120, 206);
+}
+.board.contest-detail {
+  width: 100%;
+  max-width: 624px;
+  margin: auto;
+  margin-bottom: 50px;
+  padding: 20px;
+  border-radius: 20px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+}
+.board.contest-detail .title {
+  font-weight: 400;
+}
+.board.contest-detail .datetime {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  margin-top: 15px;
+  border-top: 2px solid rgb(51, 120, 206);
+  color: rgb(252, 189, 31);
+}
+.board.contest-detail .icons {
+  display: flex;
+}
+.board.contest-detail .icons .icon {
+  display: inline-block;
+  margin-left: 20px;
+}
+.board.contest-detail .icons .icon .color-card {
+  width: 10px;
+  height: 14px;
+}
+.board.contest-detail .icons .icon .color-card.yellow {
+  background: rgb(252, 189, 31);
+}
+.board.contest-detail .icons .icon .color-card.red {
+  background: rgb(235, 54, 52);
+}
+.board.contest-detail .teams {
+  border-top: 2px solid rgb(51, 120, 206);
+}
+.board.contest-detail .teams .team {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 15px;
+}
+
+.stake-list {
+  display: flex;
+}
+.stake-list .list {
+  flex: 1 1 0%;
+}
+.stake-list .list .tournament, .stake-list .list .geographical {
+  margin-top: 40px;
+}
+.stake-list .list .tournament:first-child, .stake-list .list .geographical:first-child {
+  margin-top: 0;
+}
+.stake-list .list .tournament .header, .stake-list .list .geographical .header {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  background: rgb(0, 70, 174);
+  padding: 10px 15px 12px;
+  border-radius: 5px;
+}
+.stake-list .list .tournament .catalog-btns, .stake-list .list .geographical .catalog-btns {
+  padding: 20px;
+  padding-bottom: 10px;
+}
+.stake-list .list .tournament .catalog-btns .btn, .stake-list .list .geographical .catalog-btns .btn {
+  display: inline-block;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(57, 57, 57);
+  background: rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 13px 30px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  margin-bottom: 0;
+}
+.stake-list .list .tournament .catalog-btns .btn:first-child, .stake-list .list .geographical .catalog-btns .btn:first-child {
+  margin-left: 0;
+}
+.stake-list .list .tournament .catalog-btns .btn:hover, .stake-list .list .tournament .catalog-btns .btn.active, .stake-list .list .geographical .catalog-btns .btn:hover, .stake-list .list .geographical .catalog-btns .btn.active {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.stake-list .list .tournament .catalog-btns .btn .icon, .stake-list .list .geographical .catalog-btns .btn .icon {
+  font-size: 14px;
+  display: inline-block;
+  margin-right: 5px;
+}
+.stake-list .list .tournament .detail .locations, .stake-list .list .geographical .detail .locations {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 9px 15px;
+  margin-top: 15px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.stake-list .list .tournament .detail .locations:first-child, .stake-list .list .geographical .detail .locations:first-child {
+  border-top: 2px solid rgb(235, 235, 235);
+}
+.stake-list .list .tournament .detail .locations:hover, .stake-list .list .geographical .detail .locations:hover {
+  background: rgb(245, 245, 245);
+}
+.stake-list .list .tournament .detail .locations:hover .name, .stake-list .list .geographical .detail .locations:hover .name {
+  color: rgb(255, 98, 31);
+}
+.stake-list .list .tournament .detail .locations .number, .stake-list .list .geographical .detail .locations .number {
+  display: inline-block;
+  padding: 8px 12px;
+  border-radius: 5px;
+  background: rgb(235, 235, 235);
+}
+.stake-list .list .tournament .detail table.trading-table, .stake-list .list .geographical .detail table.trading-table {
+  width: 100%;
+}
+.stake-list .list .tournament .detail table.trading-table:first-child, .stake-list .list .geographical .detail table.trading-table:first-child {
+  margin-top: 10px;
+}
+.stake-list .list .tournament .detail table.trading-table thead, .stake-list .list .geographical .detail table.trading-table thead {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.stake-list .list .tournament .detail table.trading-table thead tr th, .stake-list .list .geographical .detail table.trading-table thead tr th {
+  padding: 13px 13px 13px 15px;
+  background: rgb(252, 189, 31);
+}
+.stake-list .list .tournament .detail table.trading-table thead tr th:first-child, .stake-list .list .geographical .detail table.trading-table thead tr th:first-child {
+  text-align: left;
+  border-radius: 5px 0 0 5px;
+  width: 100%;
+}
+.stake-list .list .tournament .detail table.trading-table thead tr th:last-child, .stake-list .list .geographical .detail table.trading-table thead tr th:last-child {
+  border-radius: 0 5px 5px 0;
+}
+.stake-list .list .tournament .detail table.trading-table tbody, .stake-list .list .geographical .detail table.trading-table tbody {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .text-g, .stake-list .list .geographical .detail table.trading-table tbody .text-g {
+  color: rgb(44, 189, 3);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .text-b, .stake-list .list .geographical .detail table.trading-table tbody .text-b {
+  color: rgb(0, 70, 174);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .text-r, .stake-list .list .geographical .detail table.trading-table tbody .text-r {
+  color: rgb(235, 54, 52);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .text-time, .stake-list .list .geographical .detail table.trading-table tbody .text-time {
+  color: rgb(136, 136, 136);
+}
+.stake-list .list .tournament .detail table.trading-table tbody tr, .stake-list .list .geographical .detail table.trading-table tbody tr {
+  border-top: 2px solid rgb(235, 235, 235);
+}
+.stake-list .list .tournament .detail table.trading-table tbody tr:first-child, .stake-list .list .geographical .detail table.trading-table tbody tr:first-child {
+  border-top: 0;
+}
+.stake-list .list .tournament .detail table.trading-table tbody tr td, .stake-list .list .geographical .detail table.trading-table tbody tr td {
+  padding: 10px 2.5px;
+  position: relative;
+}
+.stake-list .list .tournament .detail table.trading-table tbody tr td:last-child, .stake-list .list .geographical .detail table.trading-table tbody tr td:last-child {
+  padding-right: 13px;
+}
+.stake-list .list .tournament .detail table.trading-table tbody tr td:first-child, .stake-list .list .geographical .detail table.trading-table tbody tr td:first-child {
+  padding-left: 15px;
+}
+.stake-list .list .tournament .detail table.trading-table tbody tr td .team, .stake-list .list .geographical .detail table.trading-table tbody tr td .team {
+  margin-top: 10px;
+  font-weight: 400;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data, .stake-list .list .geographical .detail table.trading-table tbody .data {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  border-radius: 5px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  color: rgb(57, 57, 57);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data.auto-width, .stake-list .list .geographical .detail table.trading-table tbody .data.auto-width {
+  width: 100%;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data.selected, .stake-list .list .geographical .detail table.trading-table tbody .data.selected {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data.disabled, .stake-list .list .geographical .detail table.trading-table tbody .data.disabled {
+  background: rgb(245, 245, 245);
+  color: rgb(195, 195, 195);
+  font-size: 30px;
+  cursor: not-allowed;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data.function-button, .stake-list .list .geographical .detail table.trading-table tbody .data.function-button {
+  background: rgb(245, 245, 245);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data.function-button:hover, .stake-list .list .geographical .detail table.trading-table tbody .data.function-button:hover {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data.function-button.active + .expandList, .stake-list .list .geographical .detail table.trading-table tbody .data.function-button.active + .expandList {
+  display: block;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .expandList, .stake-list .list .geographical .detail table.trading-table tbody .expandList {
+  display: none;
+  position: absolute;
+  right: calc(100% - 3px);
+  top: calc(-100% + 10px);
+  z-index: 3;
+  padding: 10px 5px;
+  border-radius: 5px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .expandList .options-btns, .stake-list .list .geographical .detail table.trading-table tbody .expandList .options-btns {
+  display: flex;
+  margin-top: 10px;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .expandList .options-btns:first-child, .stake-list .list .geographical .detail table.trading-table tbody .expandList .options-btns:first-child {
+  margin-top: 0;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .expandList .options-btns .data:first-child, .stake-list .list .geographical .detail table.trading-table tbody .expandList .options-btns .data:first-child {
+  margin-right: 5px;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data-outline, .stake-list .list .geographical .detail table.trading-table tbody .data-outline {
+  border: 1px solid rgb(136, 136, 136);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .data-outline:hover, .stake-list .list .geographical .detail table.trading-table tbody .data-outline:hover {
+  border-color: rgb(255, 98, 31);
+}
+.stake-list .list .tournament .detail table.trading-table tbody .point, .stake-list .list .geographical .detail table.trading-table tbody .point {
+  display: flex;
+}
+.stake-list .list .tournament .detail table.trading-table tbody .point div, .stake-list .list .geographical .detail table.trading-table tbody .point div {
+  padding: 0 7.5px;
+  margin-bottom: 10px;
+}
+.stake-list .list .contest-stake .detail-catalog .btn {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(57, 57, 57);
+  background: rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 13px 30px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  padding: 13px 30px;
+  margin-bottom: 0;
+  margin-left: 15px;
+}
+.stake-list .list .contest-stake .detail-catalog .btn:first-child {
+  margin-left: 0;
+}
+.stake-list .list .contest-stake .detail-catalog .btn:hover, .stake-list .list .contest-stake .detail-catalog .btn.active {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.stake-list .list .contest-stake .precaution {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(235, 54, 52);
+  padding-top: 15px;
+}
+.stake-list .list .contest-stake .detail {
+  padding-top: 15px;
+}
+.stake-list .list .contest-stake .detail .contest-type:nth-child(odd) .header {
+  background: rgb(252, 189, 31);
+}
+.stake-list .list .contest-stake .detail .contest-type:nth-child(even) .header {
+  background: rgb(254, 223, 120);
+}
+.stake-list .list .contest-stake .detail .contest-type .header {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding: 13px 15px;
+  border-radius: 5px;
+}
+.stake-list .list .contest-stake .detail .contest-type .header .name {
+  font-weight: 400;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail {
+  padding: 20px 15px 30px;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .title {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  color: rgb(57, 57, 57);
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .title .total {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .title .viewer {
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .title .viewer span.icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .teams-name {
+  display: flex;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .teams-name div {
+  flex: 1 1 0%;
+  padding: 13px 0;
+  text-align: center;
+  margin-left: 15px;
+  background: rgb(235, 235, 235);
+  border-radius: 5px;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .teams-name div:first-child {
+  margin-left: 0;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .row {
+  display: flex;
+  border-bottom: 2px solid rgb(235, 235, 235);
+  padding: 20px 0;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .row:last-child {
+  border-bottom: 0;
+  padding-bottom: 0;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .row .col {
+  flex: 1 1 0%;
+  padding-left: 15px;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .row .col:first-child {
+  padding-left: 0;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons {
+  display: flex;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn {
+  flex: 1 1 0%;
+  margin-left: 10px;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn:first-child {
+  margin-left: 0;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn button {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 18px;
+  margin-bottom: 5px;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn button .number {
+  color: rgb(255, 98, 31);
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn button.selected, .stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn button:hover {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn button.selected .number, .stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn button:hover .number {
+  color: rgb(255, 255, 255);
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn .m {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+}
+.stake-list .list .contest-stake .detail .contest-type .stake-detail .buttons .stake-btn .m span.icon {
+  display: inline-block;
+  margin-right: 10px;
+  font-size: 14px;
+  color: rgb(136, 136, 136);
+}
+.stake-list .sidebar {
+  width: 300px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  max-height: 900px;
+  margin-left: 10px;
+  background: rgb(0, 70, 174);
+  padding: 0 5px;
+  border-radius: 5px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5px;
+}
+.stake-list .sidebar .header {
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  padding: 11px 10px;
+}
+.stake-list .sidebar .header .name .number {
+  display: inline-block;
+  background: rgb(255, 98, 31);
+  padding: 2px 12px 4px;
+  margin-left: 10px;
+  border-radius: 5px;
+}
+.stake-list .sidebar .header .delete {
+  cursor: pointer;
+  margin-left: auto;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+}
+.stake-list .sidebar .header .delete:hover {
+  color: rgb(255, 98, 31);
+}
+.stake-list .sidebar .header .delete .icon {
+  display: inline-block;
+  margin-right: 5px;
+}
+.stake-list .sidebar .stake-cards {
+  overflow: auto;
+  max-height: 721px;
+}
+.stake-list .sidebar .stake-cards .stake-card {
+  margin-top: 5px;
+}
+.stake-list .sidebar .stake-cards .stake-card:first-child {
+  margin-top: 0;
+}
+.stake-list .sidebar .stake-cards .stake-card .error-msg {
+  display: none;
+  color: rgb(255, 255, 255);
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  padding: 7px 10px 9px;
+}
+.stake-list .sidebar .stake-cards .stake-card.error {
+  background: rgb(235, 54, 52);
+  border-radius: 5px;
+}
+.stake-list .sidebar .stake-cards .stake-card.error .error-msg {
+  display: block;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body {
+  background: rgb(255, 255, 255);
+  padding: 15px 0;
+  position: relative;
+  border-radius: 5px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .delete {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 18px;
+  color: rgb(136, 136, 136);
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .top {
+  padding: 0 10px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .top .contest {
+  margin-top: 10px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .mid {
+  background: rgb(252, 189, 31);
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-top: 15px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .bottom {
+  margin-top: 10px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .bottom .stake-status {
+  padding: 0 10px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .bottom .stake-status .name {
+  font-weight: 700;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .bottom .stake-status .points {
+  margin-top: 10px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .bottom .predict {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  margin-top: 15px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .bottom .predict input.input-control, .stake-list .sidebar .stake-cards .stake-card .card-body .bottom .predict .point {
+  width: calc(50% - 5px);
+  padding: 9px 10px;
+  color: rgb(136, 136, 136);
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+}
+.stake-list .sidebar .stake-cards .stake-card .card-body .bottom .predict .point {
+  background: rgb(235, 235, 235);
+  display: flex;
+  align-items: center;
+}
+.stake-list .sidebar .total {
+  padding: 20px 15px;
+}
+.stake-list .sidebar .total .total-point {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.stake-list .sidebar .total .total-point:first-child {
+  margin-top: 0;
+}
+.stake-list .sidebar .gotostake {
+  display: block;
+  color: rgb(255, 255, 255);
+  background: rgb(255, 98, 31);
+  border-radius: 5px;
+  text-align: center;
+  padding: 13px 0;
+  margin: 0 -5px;
+}
+
+.warning-board {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 0 33px;
+  margin: auto;
+  margin-top: 70px;
+  background: rgb(245, 245, 245);
+  text-align: center;
+  border-radius: 20px;
+}
+.warning-board .icon {
+  font-size: 30px;
+  color: rgb(235, 54, 52);
+  margin-bottom: 21px;
+}
+.warning-board p {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  margin: 0 auto;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding-top: 100px;
+}
+.pagination .prev-arrow,
+.pagination .next-arrow {
+  font-size: 15px;
+}
+.pagination .pages {
+  display: flex;
+}
+.pagination .pages a {
+  display: block;
+  padding: 10px 20px 14px;
+  border-radius: 5px;
+}
+.pagination .pages a:hover, .pagination .pages a.active {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.pagination .prev-arrow {
+  position: relative;
+  right: 21px;
+}
+.pagination .next-arrow {
+  position: relative;
+  left: 21px;
+}
+
+.result-msg {
+  display: flex;
+  justify-content: center;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+  margin-bottom: 50px;
+}
+.result-msg .icon {
+  font-size: 50px;
+  margin-right: 20px;
+}
+.result-msg .msg-detail .title {
+  font-weight: 700;
+  color: rgb(57, 57, 57);
+  margin-bottom: 10px;
+}
+.result-msg.succes .icon {
+  color: rgb(44, 189, 3);
+}
+.result-msg.failed .icon {
+  color: rgb(235, 54, 52);
+}
+
+.form-card {
+  width: 100%;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 20px;
+  padding: 50px 112px;
+}
+.form-card .input-row {
+  color: rgb(57, 57, 57);
+  margin-top: 30px;
+}
+.form-card .input-row label.input-label {
+  display: block;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  margin-bottom: 10px;
+}
+.form-card .input-row label.input-label .link {
+  display: inline-block;
+  color: rgb(136, 136, 136);
+  font-weight: 400;
+  letter-spacing: initial;
+  text-decoration: underline;
+}
+.form-card .input-row label.input-label[for=vertify_code] + .input-col {
+  display: flex;
+}
+.form-card .input-row label.input-label[for=vertify_code] + .input-col input#vertify_code.input-control {
+  flex: 1 1 0;
+}
+.form-card .input-row label.input-label[for=vertify_code] + .input-col input#vertify_code.input-control ~ span {
+  display: inline-block;
+  margin-left: 15px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 98, 31);
+  padding: 12px 37px 14px;
+  border: 1px solid rgb(255, 98, 31);
+  background: rgb(255, 255, 255);
+}
+.form-card .input-row label.input-label[for=vertify_code] + .input-col input#vertify_code.input-control ~ span:hover {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+}
+.form-card .input-row .input-col {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+.form-card .input-row .input-col.show-point {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 20px;
+  letter-spacing: initial;
+  color: rgb(255, 98, 31);
+}
+.form-card .input-row .input-col input.input-control,
+.form-card .input-row .input-col select.input-control {
+  width: 100%;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  background: transparent;
+  padding: 9px 10px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  color: rgb(57, 57, 57);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.form-card .input-row .input-col input.input-control + .arrow,
+.form-card .input-row .input-col select.input-control + .arrow {
+  position: absolute;
+  right: 10px;
+  z-index: -1;
+}
+.form-card .input-row .input-col input.input-control::-moz-placeholder, .form-card .input-row .input-col select.input-control::-moz-placeholder {
+  color: rgb(195, 195, 195);
+}
+.form-card .input-row .input-col input.input-control:-ms-input-placeholder, .form-card .input-row .input-col select.input-control:-ms-input-placeholder {
+  color: rgb(195, 195, 195);
+}
+.form-card .input-row .input-col input.input-control::placeholder,
+.form-card .input-row .input-col select.input-control::placeholder {
+  color: rgb(195, 195, 195);
+}
+.form-card .input-row .input-col input.input-control:disabled,
+.form-card .input-row .input-col select.input-control:disabled {
+  background: rgb(235, 235, 235);
+  color: rgb(57, 57, 57);
+}
+.form-card .input-row .input-col select.input-control {
+  padding: 12px 10px;
+}
+.form-card .input-row .input-col select.input-control option {
+  padding: 12px 10px;
+}
+.form-card .input-row .input-col .point_number {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: initial;
+  color: rgb(255, 98, 31);
+}
+.form-card .input-row .input-col.error ~ .msg, .form-card .input-row .input-col.error + .msg {
+  display: block;
+}
+.form-card .input-row .input-col.error .checkbox-mask {
+  border: 1px solid rgb(235, 54, 52);
+}
+.form-card .input-row .input-col span.icon {
+  position: absolute;
+  right: 10px;
+}
+.form-card .input-row .input-col .input-date {
+  flex: 1 1 0;
+  position: relative;
+}
+.form-card .input-row .input-col .input-date input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid rgb(195, 195, 195);
+  border-radius: 5px;
+  padding: 9px 10px;
+  color: rgb(57, 57, 57);
+}
+.form-card .input-row .input-col .input-date .datepicker-toggle-button {
+  top: 12px;
+}
+.form-card .input-row .input-col .input-date svg {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+.form-card .input-row .input-col .to {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 40px;
+  letter-spacing: initial;
+  margin: 0 11px;
+}
+.form-card .input-row .msg {
+  display: none;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  margin-top: 5px;
+  color: rgb(235, 54, 52);
+}
+.form-card .input-row .notice {
+  margin-top: 5px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+}
+.form-card .input-row label[for=files].input-label .upload-img {
+  width: 160px;
+  height: 90px;
+  margin-top: 10px;
+  background: #EBEBEB;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: rgb(136, 136, 136);
+  font-size: 50px;
+}
+.form-card .submit {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+}
+.form-card .submit button,
+.form-card .submit a {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  width: 150px;
+  text-align: center;
+  padding: 12px 0 14px;
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 98, 31);
+}
+.form-card .submit button:hover,
+.form-card .submit a:hover {
+  background: rgb(252, 189, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(252, 189, 31);
+}
+.form-card .submit.error {
+  padding-bottom: 0;
+}
+.form-card .submit + .msg {
+  display: none;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  text-align: center;
+  margin-top: 5px;
+  color: rgb(235, 54, 52);
+}
+.form-card .submit.error + .msg {
+  display: block;
+  padding-bottom: 30px;
+}
+.form-card .return-link {
+  text-align: center;
+  padding-top: 50px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+}
+.form-card .return-link .link {
+  display: inline-block;
+  color: rgb(255, 98, 31);
+  text-decoration: underline;
+}
+.form-card .return-link .link.btn {
+  text-decoration: none;
+  width: 150px;
+  text-align: center;
+  padding: 12px 0 14px;
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 98, 31);
+}
+.form-card .return-link .link.btn:hover {
+  background: rgb(252, 189, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(252, 189, 31);
+}
+.form-card .links {
+  display: flex;
+  justify-content: center;
+  padding-top: 50px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+}
+.form-card .links .link {
+  width: 150px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 12px 0;
+  background: rgb(255, 255, 255);
+  color: rgb(255, 98, 31);
+  border: 1px solid rgb(255, 98, 31);
+}
+.form-card .links .link:hover {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.form-card .links .link:nth-child(even) {
+  margin-left: 15px;
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 98, 31);
+}
+.form-card .links .link:nth-child(even):hover {
+  background: rgb(252, 189, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(252, 189, 31);
+}
+.form-card .links .return {
+  color: rgb(136, 136, 136);
+}
+.form-card .submit-notice {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  text-align: center;
+  margin-top: 20px;
+}
+.form-card .submit-notice.warning {
+  color: rgb(235, 54, 52);
+}
+.form-card h2.title {
+  color: rgb(0, 70, 174);
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  margin-bottom: 30px;
+  text-align: center;
+}
+.form-card p.text {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  margin-bottom: 50px;
+  text-align: center;
+}
+.form-card .account_pic {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: auto;
+  margin-bottom: 35px;
+  background: rgb(255, 148, 87);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.form-card .account_pic img {
+  width: 100%;
+}
+.form-card .account_pic .upload-icon {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  font-size: 12px;
+  color: rgb(255, 255, 255);
+  background: rgb(0, 70, 174);
+  display: flex;
+  cursor: pointer;
+}
+.form-card .account_pic .upload-icon svg {
+  margin: auto;
+}
+.form-card .account_pic input {
+  display: none;
+}
+.form-card .account_pic.edit {
+  margin-bottom: 10px;
+}
+.form-card .account_pic.error + .pic_notify {
+  display: block;
+}
+.form-card .pic_notify {
+  display: none;
+  text-align: center;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(235, 54, 52);
+  margin-bottom: 25px;
+}
+.form-card .list {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto;
+}
+.form-card .list .row {
+  display: flex;
+  border-bottom: 2px solid rgb(235, 235, 235);
+  padding-top: 15px;
+  justify-content: space-between;
+}
+.form-card .list .row .col {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  margin-bottom: 15px;
+}
+.form-card .list .row .col:nth-child(even) {
+  font-weight: 700;
+}
+.form-card .list .row .col.text-o {
+  color: rgb(255, 98, 31);
+}
+.form-card .list .row .col .icon {
+  display: inline-block;
+  color: rgb(252, 189, 31);
+  font-size: 14px;
+  margin-right: 10px;
+}
+.form-card .list .row .col.multi-col {
+  line-height: 20px;
+}
+.form-card .list .row .left {
+  text-align: left;
+}
+.form-card .list .row .left .col {
+  font-weight: 400;
+}
+.form-card .list .row .right {
+  text-align: end;
+}
+.form-card .list .row .right .col {
+  font-weight: 700;
+}
+.form-card .list .row.pic {
+  display: block;
+  margin-bottom: 30px;
+}
+.form-card .list .row.pic .col {
+  font-weight: 700;
+}
+.form-card .list .row.pic .picture {
+  width: 100%;
+  height: 166px;
+  background: rgb(195, 195, 195);
+  border-radius: 5px;
+}
+.form-card .list .row + .submit {
+  padding-top: 50px;
+}
+.form-card .list .row.account_cards {
+  display: block;
+  border-bottom: 0;
+}
+.form-card .list .row.account_cards .card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border: 1px solid rgb(195, 195, 195);
+  border-radius: 10px;
+  padding: 10px;
+  margin-bottom: 5px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16.45px;
+  letter-spacing: initial;
+}
+.form-card .list .row.account_cards .card .pic {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  background: rgb(255, 148, 87);
+}
+.form-card .list .row.account_cards .card .pic img {
+  width: 100%;
+}
+.form-card .list .row.account_cards .card .name {
+  margin-left: 10px;
+}
+.form-card .list .row.account_cards .card .point {
+  display: inline-block;
+  margin-left: auto;
+}
+.form-card .list .order-card {
+  padding-top: 30px;
+}
+.form-card .account-setting.list {
+  max-width: initial;
+}
+.form-card .account-setting.list .row {
+  justify-content: flex-start;
+}
+.form-card .account-setting.list .row .col:first-child {
+  width: 80px;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+}
+.form-card .account-setting.list .row a {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  display: inline-block;
+  margin-left: auto;
+  color: rgb(0, 70, 174);
+  text-decoration: underline;
+}
+.form-card .account-setting.list.edit .row {
+  flex-wrap: wrap;
+  padding: 20px 0;
+}
+.form-card .account-setting.list.edit .row:first-child {
+  padding-top: 0;
+}
+.form-card .account-setting.list.edit .row.input-control {
+  padding: 7px 0;
+}
+.form-card .account-setting.list.edit .row.password-confirm {
+  padding-top: 50px;
+  padding-bottom: 0;
+  border-bottom: 0;
+}
+.form-card .account-setting.list.edit .row.password-confirm .input-col input::-moz-placeholder {
+  font-weight: 400;
+}
+.form-card .account-setting.list.edit .row.password-confirm .input-col input:-ms-input-placeholder {
+  font-weight: 400;
+}
+.form-card .account-setting.list.edit .row.password-confirm .input-col input::placeholder {
+  font-weight: 400;
+}
+.form-card .account-setting.list.edit .row .col {
+  margin-bottom: 0;
+  display: flex;
+  align-items: center;
+}
+.form-card .account-setting.list.edit .row .input-col {
+  flex: 1 1 0%;
+  display: flex;
+  align-items: center;
+  position: relative;
+  margin-left: 5px;
+}
+.form-card .account-setting.list.edit .row .input-col:first-child {
+  margin-left: 0;
+}
+.form-card .account-setting.list.edit .row .input-col input,
+.form-card .account-setting.list.edit .row .input-col select {
+  flex: 1 1 0;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  background: transparent;
+  padding: 9px 10px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  color: rgb(57, 57, 57);
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+}
+.form-card .account-setting.list.edit .row .input-col input + .arrow,
+.form-card .account-setting.list.edit .row .input-col select + .arrow {
+  position: absolute;
+  right: 10px;
+  z-index: -1;
+}
+.form-card .account-setting.list.edit .row .input-col input::-moz-placeholder, .form-card .account-setting.list.edit .row .input-col select::-moz-placeholder {
+  color: rgb(195, 195, 195);
+}
+.form-card .account-setting.list.edit .row .input-col input:-ms-input-placeholder, .form-card .account-setting.list.edit .row .input-col select:-ms-input-placeholder {
+  color: rgb(195, 195, 195);
+}
+.form-card .account-setting.list.edit .row .input-col input::placeholder,
+.form-card .account-setting.list.edit .row .input-col select::placeholder {
+  color: rgb(195, 195, 195);
+}
+.form-card .account-setting.list.edit .row .input-col input:disabled,
+.form-card .account-setting.list.edit .row .input-col select:disabled {
+  background: rgb(235, 235, 235);
+  color: rgb(57, 57, 57);
+}
+.form-card .account-setting.list.edit .row .input-col input[type=radio],
+.form-card .account-setting.list.edit .row .input-col select[type=radio] {
+  display: none;
+}
+.form-card .account-setting.list.edit .row .input-col select {
+  padding: 12px 10px;
+  font-weight: 400;
+}
+.form-card .account-setting.list.edit .row .input-col label {
+  display: flex;
+  align-items: center;
+  margin-right: 30px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.form-card .account-setting.list.edit .row .input-col label .checkbox {
+  width: 20px;
+  height: 20px;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  margin-right: 10px;
+}
+.form-card .account-setting.list.edit .row .input-col label .checkbox svg {
+  color: rgb(255, 98, 31);
+  font-size: 20px;
+  display: none;
+}
+.form-card .account-setting.list.edit .row .input-col label .checkbox.selected {
+  border: 0;
+}
+.form-card .account-setting.list.edit .row .input-col label .checkbox.selected svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+.form-card .account-setting.list.edit .row span.msg {
+  width: 100%;
+}
+.form-card .account-setting.list.edit .row .notice {
+  margin-left: auto;
+}
+.form-card .account-setting.list.edit .row .notice a {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+}
+.form-card .order-cards.list .row {
+  border-bottom: 0;
+}
+.form-card .order-cards.list .input-row {
+  margin-top: 0;
+  padding: 15px 0;
+  border-bottom: 1px solid rgb(235, 235, 235);
+}
+.form-card .order-cards.list .order-card {
+  padding-top: 30px;
+  border-top: 2px solid rgb(136, 136, 136);
+}
+.form-card .order-cards.list .order-card .row {
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.form-card .order-cards.list .order-card .row.header {
+  border-bottom: 0;
+}
+.form-card .order-cards.list .order-card .row.header + .row {
+  padding-top: 0;
+}
+.form-card .order-cards.list .order-card .row.header .col {
+  margin-bottom: 10px;
+}
+.form-card .order-cards.list .order-card .row.header .col .icon {
+  color: rgb(57, 57, 57);
+}
+.form-card .order-cards.list .order-card .row.header .col .delete-btn {
+  font-size: 18px;
+  color: rgb(136, 136, 136);
+}
+.form-card .order-cards.list .order-card .row:last-child {
+  border-bottom: 0;
+}
+.form-card .order-cards.list .order-card .row .col .copy-icon {
+  color: rgb(57, 57, 57);
+}
+.form-card .reservation-btns {
+  display: flex;
+  justify-content: center;
+  margin-top: 35px;
+}
+.form-card .reservation-btns .btn {
+  width: 150px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  padding: 12px;
+  color: rgb(255, 255, 255);
+  margin-left: 15px;
+}
+.form-card .reservation-btns .btn.contact {
+  background: rgb(0, 70, 174);
+}
+.form-card .reservation-btns .btn.confirm {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 98, 31);
+}
+.form-card .reservation-btns .btn.confirm:hover {
+  background: rgb(252, 189, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(252, 189, 31);
+}
+.form-card .reservation-btns .btn:first-child {
+  margin-left: 0;
+}
+
+.news-list .cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  padding-top: 20px;
+}
+.news-list .cards .card {
+  display: flex;
+  width: 50%;
+  max-width: 624px;
+  margin-bottom: 24px;
+  padding: 20px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+}
+.news-list .cards .card:nth-child(even) {
+  margin-right: 0;
+}
+.news-list .cards .card .left {
+  width: 100%;
+  max-width: 250px;
+  background: rgb(136, 136, 136);
+}
+.news-list .cards .card .right {
+  padding-left: 20px;
+}
+.news-list .cards .card .right .tags {
+  display: flex;
+  position: relative;
+}
+.news-list .cards .card .right .tags .tag {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+  margin-right: 10px;
+  margin-bottom: 15px;
+  padding: 3px 10px;
+}
+.news-list .cards .card .right .tags .tag.tag-o {
+  background: rgb(255, 98, 31);
+}
+.news-list .cards .card .right .tags .tag.tag-g {
+  background: rgb(44, 189, 3);
+}
+.news-list .cards .card .right .tags .icon {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  display: flex;
+  font-size: 25px;
+  color: rgb(255, 98, 31);
+}
+.news-list .cards .card .right .serial-num {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+  padding-bottom: 10px;
+}
+.news-list .cards .card .right .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.news-list .cards .card .right .card-subtitle {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+  margin-bottom: 10px;
+}
+.news-list .cards .card .right .scription {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  text-align: justify;
+  padding-bottom: 25px;
+}
+.news-list .cards .card .right .time {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: #A4A4A4;
+}
+.news-list .cards .card .right .participate {
+  color: rgb(57, 57, 57);
+  margin-bottom: 10px;
+}
+.news-list .cards .card .right .participate i {
+  font-size: 14px;
+}
+.news-list .cards .card .right .participate .number {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+}
+.news-list .cards .card .right .bars {
+  width: 100%;
+  display: flex;
+}
+.news-list .cards .card .right .bars .bar {
+  position: relative;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  padding: 6px 10px 8px;
+}
+.news-list .cards .card .right .bars .bar .icon {
+  display: flex;
+  font-size: 40px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  border: 5px solid rgb(255, 255, 255);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.news-list .cards .card .right .bars .bar .icon svg {
+  margin: auto;
+}
+.news-list .cards .card .right .bars .bar.bar-g {
+  border-radius: 50px 0 0 50px;
+  background: rgb(44, 189, 3);
+}
+.news-list .cards .card .right .bars .bar.bar-g .icon {
+  left: 10px;
+  bottom: 10px;
+  background: rgb(44, 189, 3);
+}
+.news-list .cards .card .right .bars .bar.bar-r {
+  text-align: right;
+  border-radius: 0 50px 50px 0;
+  background: rgb(235, 54, 52);
+}
+.news-list .cards .card .right .bars .bar.bar-r .icon {
+  right: 10px;
+  bottom: 10px;
+  background: rgb(235, 54, 52);
+}
+
+.recommend .custom-container .recommendSwiper {
+  width: 100%;
+  height: 600px;
+  padding: 30px 0;
+  box-sizing: content-box;
+  margin-bottom: 70px;
+}
+@media (max-width: 785px) {
+  .recommend .custom-container .recommendSwiper {
+    height: 467px;
+  }
+}
+@media (max-width: 593px) {
+  .recommend .custom-container .recommendSwiper {
+    height: auto;
+    display: none;
+  }
+}
+.recommend .custom-container .recommendSwiper .recommend-swiper-button-prev {
+  left: 15%;
+}
+@media (max-width: 1297px) {
+  .recommend .custom-container .recommendSwiper .recommend-swiper-button-prev {
+    left: 10%;
+  }
+}
+@media (max-width: 785px) {
+  .recommend .custom-container .recommendSwiper .recommend-swiper-button-prev {
+    left: 5%;
+  }
+}
+.recommend .custom-container .recommendSwiper .recommend-swiper-button-next {
+  right: 15%;
+}
+@media (max-width: 1297px) {
+  .recommend .custom-container .recommendSwiper .recommend-swiper-button-next {
+    right: 10%;
+  }
+}
+@media (max-width: 785px) {
+  .recommend .custom-container .recommendSwiper .recommend-swiper-button-next {
+    right: 5%;
+  }
+}
+.recommend .custom-container .recommendSwiper .swiper-button-prev,
+.recommend .custom-container .recommendSwiper .swiper-button-next {
+  color: rgb(255, 98, 31);
+  font-size: 50px;
+}
+.recommend .custom-container .recommendSwiper .swiper-button-prev:hover,
+.recommend .custom-container .recommendSwiper .swiper-button-next:hover {
+  color: rgb(252, 189, 31);
+}
+.recommend .custom-container .recommendSwiper .swiper-button-prev::after,
+.recommend .custom-container .recommendSwiper .swiper-button-next::after {
+  content: "";
+}
+@media (max-width: 785px) {
+  .recommend .custom-container .recommendSwiper .swiper-button-prev,
+.recommend .custom-container .recommendSwiper .swiper-button-next {
+    background: rgb(255, 255, 255);
+  }
+}
+.recommend .custom-container .recommendSwiper .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide.swiper-slide-active .news-picture .mask {
+  opacity: 1;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide {
+  width: 100%;
+  max-width: 900px;
+  opacity: 0.8;
+}
+@media (max-width: 785px) {
+  .recommend .custom-container .recommendSwiper .swiper-slide {
+    max-width: 700px;
+  }
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  padding: 0 57px 40px 43px;
+  -webkit-mask: url("../../images/swiper_outline-1.svg") no-repeat center/contain;
+          mask: url("../../images/swiper_outline-1.svg") no-repeat center/contain;
+  background: rgb(252, 189, 31);
+}
+@media (max-width: 785px) {
+  .recommend .custom-container .recommendSwiper .swiper-slide .news-picture {
+    padding: 75px 50px;
+  }
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture:hover {
+  transform: scale(1.1);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-duration: 0.5s;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture:hover .description {
+  color: rgb(255, 98, 31);
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask {
+  opacity: 0;
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: 20px;
+  padding: 20px 30px;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 30px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data {
+  display: flex;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .left {
+  flex: 1 1 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .left .participate {
+  color: rgb(255, 255, 255);
+  margin-bottom: 10px;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .left .participate i {
+  font-size: 14px;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .left .participate .number {
+  display: inline-block;
+  margin-left: 10px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .left .bar {
+  width: 100%;
+  max-width: 560px;
+  display: flex;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  position: relative;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .left .bar .green-bar {
+  position: absolute;
+  left: 0;
+  background: rgb(44, 189, 3);
+  border-radius: 20px 0 0 20px;
+  padding: 6px 10px 8px;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .left .bar .red-bar {
+  width: 100%;
+  background: rgb(235, 54, 52);
+  border-radius: 20px;
+  text-align: right;
+  padding: 6px 10px 8px;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .right .remain {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: rgb(252, 189, 31);
+  margin-bottom: 10px;
+  padding: 0 13px;
+}
+.recommend .custom-container .recommendSwiper .swiper-slide .news-picture .mask .data .right .btn {
+  display: block;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+  background: rgb(255, 98, 31);
+  padding: 12px 40px 14px;
+}
+.recommend .custom-container .moblieRecommendSwiper {
+  display: none;
+  width: 100%;
+  height: 100%;
+  margin-bottom: 35px;
+}
+@media (max-width: 593px) {
+  .recommend .custom-container .moblieRecommendSwiper {
+    display: flex;
+  }
+}
+.recommend .custom-container .moblieRecommendSwiper .recommend-swiper-button-prev {
+  left: 5%;
+}
+.recommend .custom-container .moblieRecommendSwiper .recommend-swiper-button-next {
+  right: 5%;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-button-prev,
+.recommend .custom-container .moblieRecommendSwiper .swiper-button-next {
+  color: rgb(255, 98, 31);
+  font-size: 50px;
+  background: rgb(255, 255, 255);
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-button-prev::after,
+.recommend .custom-container .moblieRecommendSwiper .swiper-button-next::after {
+  content: "";
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide.swiper-slide-active .link .tag {
+  opacity: 1;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide.swiper-slide-active .link .description {
+  opacity: 1;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide {
+  width: 100%;
+  height: 100%;
+  opacity: 0.4;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide .link {
+  width: 100%;
+  height: 100%;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide .link .pic {
+  width: 100%;
+  height: 247px;
+  -webkit-mask: url("../../images/swiper_outline-1.svg") no-repeat center/contain;
+          mask: url("../../images/swiper_outline-1.svg") no-repeat center/contain;
+  background: rgb(252, 189, 31);
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide .link .tag {
+  display: inline-block;
+  margin-top: 16px;
+  margin-left: 15px;
+  padding: 4px 25px 8px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+  background: rgb(255, 98, 31);
+  text-align: center;
+  opacity: 0;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide .link .description {
+  width: 100%;
+  margin-top: 10px;
+  padding: 0 15px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.1em;
+  color: rgb(57, 57, 57);
+  text-align: justify;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0;
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide:hover .link .tag {
+  background: rgb(252, 189, 31);
+}
+.recommend .custom-container .moblieRecommendSwiper .swiper-slide:hover .description {
+  color: rgb(255, 98, 31);
+}
+
+.swiper-section {
+  padding-right: 78px;
+  padding-bottom: 100px;
+}
+.swiper-section:nth-child(even) .section-title:before {
+  left: 0;
+}
+.swiper-section:nth-child(even) .news-swiper .swiper-button-prev {
+  left: 62px;
+}
+.swiper-section:nth-child(even) .news-swiper .swiper-button-next {
+  right: 62px;
+}
+.swiper-section:nth-child(odd) .section-title {
+  flex-direction: row-reverse;
+}
+.swiper-section:nth-child(odd) .section-title:before {
+  right: 0;
+}
+.swiper-section:nth-child(odd) .news-swiper .swiper-button-prev {
+  left: 62px;
+}
+.swiper-section:nth-child(odd) .news-swiper .swiper-button-next {
+  right: 62px;
+}
+.swiper-section:nth-child(3n+2) .section-title::before {
+  background-color: rgb(252, 189, 31);
+}
+.swiper-section:nth-child(3n+1) .section-title::before {
+  background-color: rgb(255, 98, 31);
+}
+.swiper-section:nth-child(3n) .section-title::before {
+  background-color: rgb(0, 70, 174);
+}
+.swiper-section .custom-container .section-title {
+  display: flex;
+  justify-content: space-between;
+  position: relative;
+  padding: 60px 126px 0;
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 48px;
+  line-height: 48px;
+  letter-spacing: 0.2;
+  color: rgb(255, 255, 255);
+}
+.swiper-section .custom-container .section-title::before {
+  content: "";
+  width: 750px;
+  height: 300px;
+  position: absolute;
+  top: 0;
+}
+.swiper-section .custom-container .section-title span {
+  position: relative;
+  z-index: 2;
+}
+.swiper-section .custom-container .section-title .more {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 98, 31);
+  border: 1px solid rgb(255, 98, 31);
+  background: rgb(255, 255, 255);
+  width: 150px;
+  height: 40px;
+  text-align: center;
+  padding: 12px 0;
+}
+.swiper-section .custom-container .section-title .more:hover {
+  color: rgb(255, 255, 255);
+  background: rgb(255, 98, 31);
+}
+.swiper-section .custom-container .news-swiper {
+  position: relative;
+  padding: 0 126px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper {
+  padding: 60px 0;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide:hover .link .description .section-title {
+  color: rgb(255, 98, 31);
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link {
+  width: 100%;
+  height: 100%;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link:hover .description .content {
+  color: rgb(255, 98, 31);
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .pic {
+  width: 100%;
+  height: 260px;
+  background: rgb(136, 136, 136);
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description {
+  padding: 20px;
+  background: rgb(255, 255, 255);
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .tags {
+  display: flex;
+  margin-bottom: 20px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .tags .tag {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  padding: 2px 10px 3px;
+  margin-left: 10px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .tags .viewer {
+  margin-left: auto;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 1;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .tags .viewer .icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .subtitle {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+  margin-bottom: 10px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  margin-bottom: 20px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .award {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  text-align: center;
+  padding: 6px 0 34px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .award span {
+  font-weight: 700;
+  font-size: 24px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .bars {
+  display: flex;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+  position: relative;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .bars .bar-left {
+  position: absolute;
+  left: 0;
+  background: rgb(44, 189, 3);
+  padding: 6px 10px 8px;
+  border-radius: 50px 0 0 50px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .bars .bar-right {
+  width: 100%;
+  text-align: right;
+  background: rgb(235, 54, 52);
+  padding: 6px 10px 8px;
+  border-radius: 50px;
+}
+.swiper-section .custom-container .news-swiper .newsSwiper .swiper-slide .link .description .remain {
+  margin-top: 20px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+  text-align: center;
+}
+.swiper-section .custom-container .news-swiper .swiper-button-prev,
+.swiper-section .custom-container .news-swiper .swiper-button-next {
+  color: rgb(255, 98, 31);
+  font-size: 50px;
+}
+.swiper-section .custom-container .news-swiper .swiper-button-prev::after,
+.swiper-section .custom-container .news-swiper .swiper-button-next::after {
+  content: initial;
+}
+.swiper-section .custom-container .news-swiper .swiper-button-prev:hover,
+.swiper-section .custom-container .news-swiper .swiper-button-next:hover {
+  color: rgb(252, 189, 31);
+}
+
+.order {
+  position: relative;
+}
+.order .predict {
+  padding-bottom: 50px;
+}
+.order .predict .top {
+  padding: 30px 0;
+  color: rgb(57, 57, 57);
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 22px;
+  letter-spacing: 0.1em;
+}
+.order .predict .card {
+  padding: 32px 30px 28px;
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.order .predict .card .data {
+  display: flex;
+  border-bottom: 3px solid rgb(235, 235, 235);
+  padding-bottom: 27px;
+}
+.order .predict .card .data .left {
+  width: 100%;
+  max-width: 360px;
+  background: rgb(136, 136, 136);
+}
+.order .predict .card .data .left img {
+  width: 100%;
+}
+.order .predict .card .data .right {
+  flex: 1 1 0;
+  padding: 21px 0 25px 20px;
+}
+.order .predict .card .data .right .serial-num {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+  padding-bottom: 10px;
+}
+.order .predict .card .data .right .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.order .predict .card .data .right .viewer {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 1;
+  color: rgb(57, 57, 57);
+  margin-top: 50px;
+  margin-bottom: 30px;
+}
+.order .predict .card .data .right .viewer .number {
+  display: inline-block;
+  margin-left: 10px;
+}
+.order .predict .card .data .right .detail {
+  display: flex;
+  justify-content: space-between;
+}
+.order .predict .card .data .right .detail .times .time {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+  margin-bottom: 10px;
+}
+.order .predict .card .data .right .detail .times .remain {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+}
+.order .predict .card .data .right .detail .times .remain span.date {
+  font-size: 14px;
+}
+.order .predict .card .data .right .detail .btns {
+  display: flex;
+  padding-top: 7px;
+}
+.order .predict .card .data .right .detail .btns .btn {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+  background: rgb(255, 255, 255);
+  border: 1px solid rgb(136, 136, 136);
+  padding: 12px 27px 14px;
+  margin-left: 15px;
+}
+.order .predict .card .data .right .detail .btns .btn:hover {
+  color: rgb(255, 255, 255);
+  background: rgb(255, 98, 31);
+  border: 1px solid rgb(255, 98, 31);
+}
+.order .predict .card .poll {
+  padding-top: 30px;
+}
+.order .predict .card .poll .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  text-align: center;
+}
+.order .predict .card .poll .btns {
+  display: flex;
+  justify-content: center;
+  margin: 30px 0;
+}
+.order .predict .card .poll .btns .btn {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(57, 57, 57);
+  border: 1px solid rgb(57, 57, 57);
+  padding: 12px 60px 14px;
+  margin-right: 10px;
+}
+.order .predict .card .poll .btns .btn:hover, .order .predict .card .poll .btns .btn.selected {
+  color: rgb(255, 255, 255);
+  background: rgb(44, 189, 3);
+  border: 1px solid rgb(44, 189, 3);
+}
+.order .predict .card .poll .btns .btn:last-child {
+  margin-right: 0;
+}
+.order .predict .card .poll .btns .btn:last-child:hover, .order .predict .card .poll .btns .btn:last-child.selected {
+  color: rgb(255, 255, 255);
+  background: rgb(235, 54, 52);
+  border: 1px solid rgb(235, 54, 52);
+}
+.order .predict .card .poll .result {
+  display: flex;
+}
+.order .predict .card .poll .result .bar {
+  position: relative;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  padding: 13px 0 13px 120px;
+}
+.order .predict .card .poll .result .bar .icon {
+  display: flex;
+  font-size: 40px;
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  border: 5px solid rgb(255, 255, 255);
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+}
+.order .predict .card .poll .result .bar .icon svg {
+  margin: auto;
+}
+.order .predict .card .poll .result .bar.bar-g {
+  border-radius: 50px 0 0 50px;
+  background: rgb(44, 189, 3);
+}
+.order .predict .card .poll .result .bar.bar-g .icon {
+  left: 10px;
+  bottom: 10px;
+  background: rgb(44, 189, 3);
+}
+.order .predict .card .poll .result .bar.bar-r {
+  border-radius: 0 50px 50px 0;
+  background: rgb(235, 54, 52);
+}
+.order .predict .card .poll .result .bar.bar-r .icon {
+  right: 10px;
+  bottom: 10px;
+  background: rgb(235, 54, 52);
+}
+.order .stake {
+  padding-bottom: 100px;
+}
+.order .stake .top {
+  padding-bottom: 30px;
+}
+.order .stake .top .section-title {
+  padding-left: 5px;
+  color: rgb(57, 57, 57);
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 43px;
+  letter-spacing: 0.05em;
+}
+.order .stake .top .section-title .icon {
+  display: inline-block;
+  font-size: 30px;
+  margin-right: 15px;
+}
+.order .stake .card {
+  padding: 30px;
+  border-radius: 20px;
+  background: rgb(255, 255, 255);
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.order .stake .card .data .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  border-bottom: 2px solid rgb(235, 235, 235);
+  padding-bottom: 18px;
+}
+.order .stake .card .data .table {
+  width: 100%;
+}
+.order .stake .card .data .table .row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 26px 30px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.order .stake .card .data .table .row .left {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.order .stake .card .data .table .row .left .answer-g {
+  display: inline-block;
+  color: rgb(44, 189, 3);
+  margin-left: 29px;
+}
+.order .stake .card .data .table .row .right {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+}
+.order .stake .card .data .table .row .right .text {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.order .stake .card .data .table .row .right .number-input {
+  width: 60px;
+  height: 30px;
+  margin-left: 15px;
+}
+.order .stake .card .data .table .row .right .number-input input[type=text] {
+  width: 100%;
+  height: 100%;
+  padding: 7px 10px 9px;
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+  text-align: right;
+}
+.order .stake .card .data .table .row .right .icon {
+  font-size: 20px;
+  color: rgb(235, 235, 235);
+  margin-left: 30px;
+}
+.order .stake .card .data .result {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  text-align: right;
+  padding-right: 30px;
+}
+.order .stake .card .data .result .total {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 30px;
+  color: rgb(255, 98, 31);
+}
+.order .stake .card .data .result .profit {
+  display: flex;
+  justify-content: flex-end;
+  color: rgb(57, 57, 57);
+  margin-top: 20px;
+}
+.order .stake .card .data .result .text {
+  font-size: 14px;
+}
+.order .stake .card .data .result .number {
+  width: 120px;
+}
+.order .stake .card .data .result .btn {
+  display: inline-block;
+  padding: 12px 60px 14px;
+  color: rgb(255, 255, 255);
+  background: rgb(255, 98, 31);
+  margin-top: 30px;
+}
+.order .stake .card .data .result .btn:hover {
+  background: rgb(252, 189, 31);
+}
+
+.interests .custom-container {
+  padding-bottom: 0;
+}
+.interests .custom-container .section-title {
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 43px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding-left: 113px;
+}
+.interests .custom-container .section-title .icon {
+  font-size: 30px;
+}
+.interests .custom-container .interestsSwiper {
+  padding: 30px 0;
+}
+.interests .custom-container .interestsSwiper .swiper-slide {
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.interests .custom-container .interestsSwiper .swiper-slide:hover .link .description .title {
+  color: rgb(255, 98, 31);
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link {
+  width: 100%;
+  height: 100%;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link:hover .description .content {
+  color: rgb(255, 98, 31);
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .pic {
+  width: 100%;
+  height: 260px;
+  background: rgb(136, 136, 136);
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description {
+  padding: 20px;
+  background: rgb(255, 255, 255);
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .tags {
+  display: flex;
+  margin-bottom: 20px;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .tags .tag {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  padding: 2px 10px 3px;
+  margin-left: 10px;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .tags .viewer {
+  margin-left: auto;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 1;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .tags .viewer .icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .subtitle {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(136, 136, 136);
+  margin-bottom: 10px;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  margin-bottom: 20px;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .award {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  text-align: center;
+  padding: 6px 0 34px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .award span {
+  font-weight: 700;
+  font-size: 24px;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .bars {
+  display: flex;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 16px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .bars .bar-left {
+  background: rgb(44, 189, 3);
+  padding: 6px 10px 8px;
+  border-radius: 50px 0 0 50px;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .bars .bar-right {
+  text-align: right;
+  background: rgb(235, 54, 52);
+  padding: 6px 10px 8px;
+  border-radius: 0 50px 50px 0;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .remain {
+  margin-top: 20px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+  text-align: center;
+}
+.interests .custom-container .interestsSwiper .swiper-slide .link .description .remain span.date {
+  font-size: 14px;
+}
+.interests .custom-container .swiper-button-prev,
+.interests .custom-container .swiper-button-next {
+  color: rgb(255, 98, 31);
+  font-size: 50px;
+}
+.interests .custom-container .swiper-button-prev::after,
+.interests .custom-container .swiper-button-next::after {
+  content: initial;
+}
+.interests .custom-container .swiper-button-prev:hover,
+.interests .custom-container .swiper-button-next:hover {
+  color: rgb(252, 189, 31);
+}
+.interests .custom-container .swiper-button-prev {
+  left: -63px;
+}
+.interests .custom-container .swiper-button-next {
+  right: -63px;
+}
+
+.related {
+  padding-top: 70px;
+  padding-bottom: 200px;
+}
+.related .custom-container {
+  padding-bottom: 0;
+}
+.related .custom-container .section-title {
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 30px;
+  line-height: 43px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding-bottom: 30px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.related .custom-container .section-title .icon {
+  display: inline-block;
+  font-size: 26px;
+  margin-right: 15px;
+}
+.related .custom-container .list {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.related .custom-container .list .news-link {
+  display: block;
+  padding: 10px 0;
+  word-break: keep-all;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.related .custom-container .list .news-link:hover {
+  color: rgb(255, 98, 31);
+}
+.related .custom-container .list .news-link .icon {
+  display: inline-block;
+  font-size: 12px;
+  margin-right: 8px;
+}
+
+.back-to-stakepage {
+  display: block;
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border: 1px solid rgb(255, 98, 31);
+  width: 150px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  text-align: center;
+  color: rgb(255, 255, 255);
+  padding: 12px 0;
+  margin: auto;
+  margin-top: 50px;
+}
+.back-to-stakepage:hover {
+  background: rgb(252, 189, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(252, 189, 31);
+}/*# sourceMappingURL=stake.css.map */

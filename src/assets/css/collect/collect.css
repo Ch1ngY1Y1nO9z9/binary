@@ -1,0 +1,150 @@
+.list-cards .cards {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.list-cards .cards .card {
+  display: flex;
+  width: 50%;
+  max-width: 624px;
+  margin-top: 24px;
+  padding: 20px;
+  box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+}
+.list-cards .cards .card:first-child, .list-cards .cards .card:nth-child(2) {
+  margin-top: 0;
+}
+.list-cards .cards .card:nth-child(even) {
+  margin-right: 0;
+}
+.list-cards .cards .card .left {
+  width: 100%;
+  max-width: 250px;
+  background: rgb(136, 136, 136);
+}
+.list-cards .cards .card .right {
+  padding-left: 20px;
+  padding-bottom: 30px;
+}
+.list-cards .cards .card .right .tags {
+  display: flex;
+  position: relative;
+}
+.list-cards .cards .card .right .tags .icon {
+  position: absolute;
+  right: 20px;
+  top: 0;
+  display: flex;
+  font-size: 25px;
+  color: rgb(255, 98, 31);
+}
+.list-cards .cards .card .right .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+.list-cards .cards .card .right .scription {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  text-align: justify;
+  padding-bottom: 30px;
+}
+.list-cards .cards .card .right .time {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: #A4A4A4;
+}
+.list-cards .cards.game .right {
+  padding-bottom: 0;
+}
+.list-cards .cards.game .right .title {
+  color: rgb(136, 136, 136);
+}
+.list-cards .cards.game .right .tags .tag {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 20px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+  margin-right: 10px;
+  padding: 2px 25px 3px;
+}
+.list-cards .cards.game .right .tags .tag.tag-o {
+  background: rgb(255, 98, 31);
+}
+.list-cards .cards.game .right .tags .tag.tag-g {
+  background: rgb(44, 189, 3);
+}
+.list-cards .cards.game .right .tags .tag.tag-r {
+  background: rgb(235, 54, 52);
+}
+.list-cards .cards.game .right .detail {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.list-cards .cards.game .right .detail .viewer {
+  display: inline-block;
+  margin-right: 30px;
+}
+.list-cards .cards.game .right .detail .icon {
+  font-size: 12px;
+  display: inline-block;
+  padding-right: 10px;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  margin: 0 auto;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding-top: 100px;
+}
+.pagination .prev-arrow,
+.pagination .next-arrow {
+  font-size: 15px;
+}
+.pagination .pages {
+  display: flex;
+}
+.pagination .pages a {
+  display: block;
+  padding: 10px 20px 14px;
+  border-radius: 5px;
+}
+.pagination .pages a:hover, .pagination .pages a.active {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.pagination .prev-arrow {
+  position: relative;
+  right: 21px;
+}
+.pagination .next-arrow {
+  position: relative;
+  left: 21px;
+}/*# sourceMappingURL=collect.css.map */

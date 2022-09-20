@@ -1,0 +1,23 @@
+@import '../_var';
+
+@import '../_options';
+@import '../_board';
+@import '../_stakeLayout';
+@import '../_form';
+@import './_list';
+@import './_hot';
+@import '../_sectionsLayout';
+@import './_order';
+
+.back-to-stakepage {
+    display: block;
+    @include btn-orange;
+
+    width: 150px;
+    @include Sans(700, 14px, 14px, .1em);
+    text-align: center;
+    color: $white-1;
+    padding: 12px 0;
+    margin: auto;
+    margin-top: 50px;
+}

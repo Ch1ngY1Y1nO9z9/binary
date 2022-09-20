@@ -1,0 +1,351 @@
+.lottery .topNewsSwiper {
+    width: 100%;
+    height: 100%;
+    padding-bottom: 50px;
+    box-sizing: content-box;
+
+    .topnews-swiper-button-prev {
+        left: 15%;
+
+        @media(max-width: 1297px) {
+            left: 10%;
+        }
+
+        @media(max-width: 785px) {
+            left: 5%;
+        }
+
+    }
+
+    .topnews-swiper-button-next {
+        right: 15%;
+
+        @media(max-width: 1297px) {
+            right: 10%;
+        }
+
+        @media(max-width: 785px) {
+            right: 5%;
+        }
+
+    }
+
+    .swiper-button-prev,
+    .swiper-button-next {
+        color: $orange-5;
+        font-size: 50px;
+
+        &:hover {
+            color: $yellow-5;
+        }
+
+        &::after {
+            content: ''
+        }
+
+        @media(max-width: 785px) {
+            background: $white-1;
+        }
+    }
+
+    .swiper-slide.swiper-slide-active {
+        opacity: 1;
+    }
+
+    .swiper-slide {
+        width: 100%;
+        max-width: 677px;
+        height: 450px;
+        opacity: .8;
+
+        .news-picture {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            width: 100%;
+            height: 100%;
+
+            mask: url('../../images/swiper_outline-1.svg') no-repeat center / contain;
+            background: $blue-5;
+
+
+            &:hover {
+                transform: scale(1.1);
+                transition-timing-function: cubic-bezier(0.47, 2.02, .31, -.36);
+                transition-duration: 0.5s;
+
+                .description {
+                    color: $orange-5;
+                }
+            }
+
+            .title {
+
+                span {
+                    display: inline-block;
+                    background: $orange-5;
+                    padding: 5px 29px;
+                    padding-bottom: 9px;
+
+                    @include Sans(500, 18px, 26px, .1em);
+                    color: $white-1;
+                }
+            }
+
+            .description {
+                width: 100%;
+                max-width: 616px;
+                padding-top: 16px;
+                @include Sans(700, 18px, 25px, .1em);
+                color: $white-1;
+
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+            }
+        }
+    }
+}
+
+.lottery .lottery-list {
+    display: flex;
+
+    .list {
+        width: 100%;
+
+        .tab {
+            margin-bottom: 15px;
+        }
+
+        .lottery-catalog {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+
+            max-width: 710px;
+            margin: auto;
+            margin-bottom: 35px;
+
+            .lottery-logo {
+                display: flex;
+                flex-direction: column;
+                justify-content: flex-end;
+
+                width: 130px;
+                height: 130px;
+                padding: 25px 17px;
+                margin-bottom: 15px;
+
+                @include hard-shadow;
+                border-radius: 5px;
+
+                .logo {
+                    flex: 1 1 0%;
+                    margin-bottom: 5px;
+
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    overflow: hidden;
+
+                    img {
+                        width: 100%;
+                    }
+                }
+
+                .remain {
+                    @include Sans(400, 14px, 14px, initial);
+                    color: $gray-4;
+                    text-align: center;
+                }
+            }
+        }
+
+        .results {
+            .title {
+                @include Serif(24px, 24px, .05em);
+                color: $gray-5;
+                margin-bottom: 30px;
+
+                span.icon {
+                    display: inline-block;
+                    margin-right: 10px;
+                }
+            }
+
+            .result-list {
+                display: flex;
+                justify-content: space-between;
+
+                .result {
+                    width: 516px;
+                    height: min-content;
+                    margin-bottom: 24px;
+                    padding: 0 20px 20px;
+                    @include normal-shadow;
+
+                    .bar {
+                        height: 10px;
+                        border-radius: 5px 5px 0 0;
+                        margin: 0 -20px;
+                        margin-bottom: 10px;
+
+                        &.red {
+                            background: $red-1;
+                        }
+
+                        &.orange {
+                            background: $orange-5;
+                        }
+
+                        &.blue {
+                            background: $blue-5;
+                        }
+
+                        &.purple {
+                            background: $logo-purple;
+                        }
+
+                        &.yellow {
+                            background: $yellow-5;
+                        }
+                    }
+
+                    .card-header {
+                        display: flex;
+                        align-items: center;
+                        @include Sans(400, 14px, 14px, .05em);
+                        color: $gray-5;
+                        padding-bottom: 10px;
+                        border-bottom: 2px solid $gray-2;
+
+                        .logo {
+                            height: 36px;
+
+                            img {
+                                width: auto;
+                                height: 100%;
+                            }
+                        }
+
+                        .date {
+                            margin-left: auto;
+                        }
+
+                        .period {
+                            margin-left: 17px;
+                        }
+                    }
+
+                    .card-body {
+                        padding: 10px 0 20px;
+                        border-bottom: 2px solid $gray-2;
+
+                        .balls,
+                        .special {
+                            display: flex;
+                            flex-wrap: wrap;
+
+                            .ball {
+                                width: 60px;
+                                height: 60px;
+
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+
+                                @include Sans(700, 24px, 24px, .05em);
+                                background: $blue-5;
+                                border-radius: 50%;
+                                color: $white-1;
+
+                                margin-top:10px;
+                                margin-right: 10px;
+
+                                &:last-child {
+                                    margin-right: 0;
+                                }
+                            }
+                        }
+
+                        .special {
+                            .ball {
+                                background: $orange-5;
+                            }
+                        }
+                    }
+
+                    .card-footer {
+                        padding-top: 20px;
+
+                        .row {
+                            display: flex;
+                            margin-bottom: 10px;
+
+                            @include Sans(400, 14px, 14px, initial);
+                            color: $gray-5;
+
+                            .capsule {
+                                border-radius: 20px;
+                                text-align: center;
+                            }
+
+                            .capsule-title {
+                                @include Sans(700, 18px, 18px, .05em);
+                                color: $white-1;
+
+                                width: 140px;
+                                padding: 10px 0 12px;
+                            }
+
+                            .capsule-subtitle {
+                                display: inline-block;
+                                @include Sans(700, 14px, 14px, .05em);
+                                color: $white-1;
+
+                                width: 70px;
+                                padding: 12px 0 14px;
+                            }
+
+                            .capsule-text {
+                                display: flex;
+                                align-items: center;
+
+                                width: 200px;
+                                background: $gray-1;
+                                margin-left: 10px;
+
+                                span.number {
+                                    flex: 1 1 0%;
+                                }
+                            }
+
+                            .capsule-blue {
+                                background: $blue-4;
+                            }
+
+                            .capsule-red {
+                                background: $red-1;
+                            }
+
+                            .capsule-green {
+                                background: $green-1;
+                            }
+
+                            .viewer {
+                                display: flex;
+                                align-items: center;
+                                margin-left: 10px;
+
+                                span.icon {
+                                    display: inline-block;
+                                    margin-right: 10px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

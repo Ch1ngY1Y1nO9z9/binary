@@ -1,0 +1,660 @@
+.tab {
+  margin-bottom: 50px;
+}
+.tab .tab-options {
+  display: flex;
+  justify-content: center;
+}
+.tab .tab-options .btn-options {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(57, 57, 57);
+  background: rgb(235, 235, 235);
+  border-radius: 5px;
+  padding: 13px 30px;
+  margin-left: 15px;
+  margin-bottom: 15px;
+  width: 120px;
+  text-align: center;
+  padding: 13px 0;
+  margin-left: 15px;
+}
+.tab .tab-options .btn-options:first-child {
+  margin-left: 0;
+}
+.tab .tab-options .btn-options:hover, .tab .tab-options .btn-options.active {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.tab .tab-options.sm .btn-options {
+  width: 90px;
+}
+
+.stake-list {
+  display: flex;
+}
+.stake-list .list {
+  flex: 1 1 0%;
+}
+
+.sidebar-section {
+  position: absolute;
+  left: calc(100% + 24px);
+  width: 300px;
+  height: 100%;
+  padding-bottom: 150px;
+}
+
+.sidebar {
+  width: 100%;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  max-height: 900px;
+  background: rgb(0, 70, 174);
+  padding: 0 5px;
+  border-radius: 5px;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 5px;
+}
+.sidebar .header {
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  padding: 11px 10px;
+}
+.sidebar .header .delete {
+  cursor: pointer;
+  margin-left: auto;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+}
+.sidebar .header .delete:hover {
+  color: rgb(255, 98, 31);
+}
+.sidebar .header .delete .icon {
+  display: inline-block;
+  margin-right: 5px;
+}
+.sidebar .stake-catalog {
+  margin-bottom: 10px;
+}
+.sidebar .stake-catalog button {
+  width: 68.75px;
+  height: 30px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  background: rgb(255, 255, 255);
+  color: rgb(255, 98, 31);
+  border-radius: 5px;
+}
+.sidebar .stake-catalog button span.icon {
+  display: inline-block;
+  margin-right: 10px;
+  color: rgb(57, 57, 57);
+}
+.sidebar .stake-catalog button.active, .sidebar .stake-catalog button:hover {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+}
+.sidebar .stake-catalog button.active span.icon, .sidebar .stake-catalog button:hover span.icon {
+  color: rgb(255, 255, 255);
+}
+.sidebar .stake-cards {
+  overflow: auto;
+  height: 721px;
+}
+.sidebar .stake-cards .stake-card {
+  margin-top: 5px;
+}
+.sidebar .stake-cards .stake-card:first-child {
+  margin-top: 0;
+}
+.sidebar .stake-cards .stake-card .error-msg {
+  display: none;
+  color: rgb(255, 255, 255);
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  padding: 7px 10px 9px;
+}
+.sidebar .stake-cards .stake-card.error {
+  background: rgb(235, 54, 52);
+  border-radius: 5px;
+}
+.sidebar .stake-cards .stake-card.error .error-msg {
+  display: block;
+}
+.sidebar .stake-cards .stake-card .card-body {
+  background: rgb(255, 255, 255);
+  padding: 15px 0;
+  position: relative;
+  border-radius: 5px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.sidebar .stake-cards .stake-card .card-body .delete {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 18px;
+  color: rgb(136, 136, 136);
+}
+.sidebar .stake-cards .stake-card .card-body .top {
+  padding: 0 10px;
+}
+.sidebar .stake-cards .stake-card .card-body .top .contest {
+  margin-top: 10px;
+}
+.sidebar .stake-cards .stake-card .card-body .mid {
+  background: rgb(252, 189, 31);
+  padding: 8px 10px;
+  display: flex;
+  justify-content: space-between;
+  font-weight: 700;
+  margin-top: 15px;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom {
+  margin-top: 10px;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .stake-status {
+  padding: 0 10px;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .stake-status .name {
+  font-weight: 700;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .stake-status .points {
+  margin-top: 10px;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .predict {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 5px;
+  margin-top: 15px;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .predict input.input-control, .sidebar .stake-cards .stake-card .card-body .bottom .predict .point {
+  width: calc(50% - 5px);
+  padding: 9px 10px;
+  color: rgb(136, 136, 136);
+  border: 1px solid rgb(136, 136, 136);
+  border-radius: 5px;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .predict .point {
+  background: rgb(235, 235, 235);
+  display: flex;
+  align-items: center;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .lottery-order {
+  padding: 0 10px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .lottery-order .type {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 98, 31);
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .lottery-order .detail {
+  margin-top: 10px;
+  margin-bottom: 15px;
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .lottery-order .require-point {
+  display: flex;
+  justify-content: space-between;
+  padding-top: 10px;
+  border-top: 2px solid rgb(235, 235, 235);
+}
+.sidebar .stake-cards .stake-card .card-body .bottom .lottery-order .require-point a {
+  color: rgb(0, 70, 174);
+  text-decoration: underline;
+}
+.sidebar .total {
+  padding: 20px 15px;
+}
+.sidebar .total .total-point {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  margin-top: 15px;
+  display: flex;
+  justify-content: space-between;
+}
+.sidebar .total .total-point:first-child {
+  margin-top: 0;
+}
+.sidebar .gotostake {
+  display: block;
+  padding: 13px 0;
+  margin: 0 -5px;
+  background: rgb(255, 98, 31);
+  border-radius: 5px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+  text-align: center;
+}
+
+.warning-board {
+  width: 100%;
+  max-width: 400px;
+  padding: 35px 0 33px;
+  margin: auto;
+  margin-top: 70px;
+  background: rgb(245, 245, 245);
+  text-align: center;
+  border-radius: 20px;
+}
+.warning-board .icon {
+  font-size: 30px;
+  color: rgb(235, 54, 52);
+  margin-bottom: 21px;
+}
+.warning-board p {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-top: 100px;
+  margin: 0 auto;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding-top: 100px;
+}
+.pagination .prev-arrow,
+.pagination .next-arrow {
+  font-size: 15px;
+}
+.pagination .pages {
+  display: flex;
+}
+.pagination .pages a {
+  display: block;
+  padding: 10px 20px 14px;
+  border-radius: 5px;
+}
+.pagination .pages a:hover, .pagination .pages a.active {
+  background: rgb(255, 98, 31);
+  color: rgb(255, 255, 255);
+  border-color: rgb(255, 98, 31);
+}
+.pagination .prev-arrow {
+  position: relative;
+  right: 21px;
+}
+.pagination .next-arrow {
+  position: relative;
+  left: 21px;
+}
+
+.lottery .topNewsSwiper {
+  width: 100%;
+  height: 100%;
+  padding-bottom: 50px;
+  box-sizing: content-box;
+}
+.lottery .topNewsSwiper .topnews-swiper-button-prev {
+  left: 15%;
+}
+@media (max-width: 1297px) {
+  .lottery .topNewsSwiper .topnews-swiper-button-prev {
+    left: 10%;
+  }
+}
+@media (max-width: 785px) {
+  .lottery .topNewsSwiper .topnews-swiper-button-prev {
+    left: 5%;
+  }
+}
+.lottery .topNewsSwiper .topnews-swiper-button-next {
+  right: 15%;
+}
+@media (max-width: 1297px) {
+  .lottery .topNewsSwiper .topnews-swiper-button-next {
+    right: 10%;
+  }
+}
+@media (max-width: 785px) {
+  .lottery .topNewsSwiper .topnews-swiper-button-next {
+    right: 5%;
+  }
+}
+.lottery .topNewsSwiper .swiper-button-prev,
+.lottery .topNewsSwiper .swiper-button-next {
+  color: rgb(255, 98, 31);
+  font-size: 50px;
+}
+.lottery .topNewsSwiper .swiper-button-prev:hover,
+.lottery .topNewsSwiper .swiper-button-next:hover {
+  color: rgb(252, 189, 31);
+}
+.lottery .topNewsSwiper .swiper-button-prev::after,
+.lottery .topNewsSwiper .swiper-button-next::after {
+  content: "";
+}
+@media (max-width: 785px) {
+  .lottery .topNewsSwiper .swiper-button-prev,
+.lottery .topNewsSwiper .swiper-button-next {
+    background: rgb(255, 255, 255);
+  }
+}
+.lottery .topNewsSwiper .swiper-slide.swiper-slide-active {
+  opacity: 1;
+}
+.lottery .topNewsSwiper .swiper-slide {
+  width: 100%;
+  max-width: 677px;
+  height: 450px;
+  opacity: 0.8;
+}
+.lottery .topNewsSwiper .swiper-slide .news-picture {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 100%;
+  height: 100%;
+  -webkit-mask: url("../../images/swiper_outline-1.svg") no-repeat center/contain;
+          mask: url("../../images/swiper_outline-1.svg") no-repeat center/contain;
+  background: rgb(0, 70, 174);
+}
+.lottery .topNewsSwiper .swiper-slide .news-picture:hover {
+  transform: scale(1.1);
+  transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36);
+  transition-duration: 0.5s;
+}
+.lottery .topNewsSwiper .swiper-slide .news-picture:hover .description {
+  color: rgb(255, 98, 31);
+}
+.lottery .topNewsSwiper .swiper-slide .news-picture .title span {
+  display: inline-block;
+  background: rgb(255, 98, 31);
+  padding: 5px 29px;
+  padding-bottom: 9px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 26px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+}
+.lottery .topNewsSwiper .swiper-slide .news-picture .description {
+  width: 100%;
+  max-width: 616px;
+  padding-top: 16px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 25px;
+  letter-spacing: 0.1em;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.lottery .lottery-list {
+  display: flex;
+}
+.lottery .lottery-list .list {
+  width: 100%;
+}
+.lottery .lottery-list .list .tab {
+  margin-bottom: 15px;
+}
+.lottery .lottery-list .list .lottery-catalog {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  max-width: 710px;
+  margin: auto;
+  margin-bottom: 35px;
+}
+.lottery .lottery-list .list .lottery-catalog .lottery-logo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  width: 130px;
+  height: 130px;
+  padding: 25px 17px;
+  margin-bottom: 15px;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+.lottery .lottery-list .list .lottery-catalog .lottery-logo .logo {
+  flex: 1 1 0%;
+  margin-bottom: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+.lottery .lottery-list .list .lottery-catalog .lottery-logo .logo img {
+  width: 100%;
+}
+.lottery .lottery-list .list .lottery-catalog .lottery-logo .remain {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  color: rgb(136, 136, 136);
+  text-align: center;
+}
+.lottery .lottery-list .list .results .title {
+  font-family: "Noto Serif TC", "serif";
+  font-weight: 900;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  margin-bottom: 30px;
+}
+.lottery .lottery-list .list .results .title span.icon {
+  display: inline-block;
+  margin-right: 10px;
+}
+.lottery .lottery-list .list .results .result-list {
+  display: flex;
+  justify-content: space-between;
+}
+.lottery .lottery-list .list .results .result-list .result {
+  width: 516px;
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  margin-bottom: 24px;
+  padding: 0 20px 20px;
+  box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
+}
+.lottery .lottery-list .list .results .result-list .result .bar {
+  height: 10px;
+  border-radius: 5px 5px 0 0;
+  margin: 0 -20px;
+  margin-bottom: 10px;
+}
+.lottery .lottery-list .list .results .result-list .result .bar.red {
+  background: rgb(235, 54, 52);
+}
+.lottery .lottery-list .list .results .result-list .result .bar.orange {
+  background: rgb(255, 98, 31);
+}
+.lottery .lottery-list .list .results .result-list .result .bar.blue {
+  background: rgb(0, 70, 174);
+}
+.lottery .lottery-list .list .results .result-list .result .bar.purple {
+  background: #911F89;
+}
+.lottery .lottery-list .list .results .result-list .result .bar.yellow {
+  background: rgb(252, 189, 31);
+}
+.lottery .lottery-list .list .results .result-list .result .card-header {
+  display: flex;
+  align-items: center;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding-bottom: 10px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.lottery .lottery-list .list .results .result-list .result .card-header .logo {
+  height: 36px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-header .logo img {
+  width: auto;
+  height: 100%;
+}
+.lottery .lottery-list .list .results .result-list .result .card-header .date {
+  margin-left: auto;
+}
+.lottery .lottery-list .list .results .result-list .result .card-header .period {
+  margin-left: 17px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-body {
+  padding: 10px 0 20px;
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+.lottery .lottery-list .list .results .result-list .result .card-body .balls,
+.lottery .lottery-list .list .results .result-list .result .card-body .special {
+  display: flex;
+  flex-wrap: wrap;
+}
+.lottery .lottery-list .list .results .result-list .result .card-body .balls .ball,
+.lottery .lottery-list .list .results .result-list .result .card-body .special .ball {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 24px;
+  letter-spacing: 0.05em;
+  background: rgb(0, 70, 174);
+  border-radius: 50%;
+  color: rgb(255, 255, 255);
+  margin-top: 10px;
+  margin-right: 10px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-body .balls .ball:last-child,
+.lottery .lottery-list .list .results .result-list .result .card-body .special .ball:last-child {
+  margin-right: 0;
+}
+.lottery .lottery-list .list .results .result-list .result .card-body .special .ball {
+  background: rgb(255, 98, 31);
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer {
+  padding-top: 20px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row {
+  display: flex;
+  margin-bottom: 10px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: initial;
+  color: rgb(57, 57, 57);
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule {
+  border-radius: 20px;
+  text-align: center;
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule-title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  width: 140px;
+  padding: 10px 0 12px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule-subtitle {
+  display: inline-block;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  width: 70px;
+  padding: 12px 0 14px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule-text {
+  display: flex;
+  align-items: center;
+  width: 200px;
+  background: rgb(245, 245, 245);
+  margin-left: 10px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule-text span.number {
+  flex: 1 1 0%;
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule-blue {
+  background: rgb(51, 120, 206);
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule-red {
+  background: rgb(235, 54, 52);
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .capsule-green {
+  background: rgb(44, 189, 3);
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .viewer {
+  display: flex;
+  align-items: center;
+  margin-left: 10px;
+}
+.lottery .lottery-list .list .results .result-list .result .card-footer .row .viewer span.icon {
+  display: inline-block;
+  margin-right: 10px;
+}/*# sourceMappingURL=lottery.css.map */

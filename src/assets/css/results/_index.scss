@@ -1,0 +1,117 @@
+.section-list {
+    padding-right: 78px;
+    padding-bottom: 100px;
+
+    &:nth-child(odd) {
+        .section-title {
+            &:before {
+                left: 0;
+            }
+        }
+
+        .news-list {
+            .swiper-button-prev {
+                left: 62px;
+            }
+
+            .swiper-button-next {
+                right: 62px;
+            }
+        }
+    }
+
+    &:nth-child(even) {
+        .section-title {
+            flex-direction: row-reverse;
+
+            &:before {
+                right: 0;
+            }
+        }
+
+        .news-list {
+
+            .swiper-button-prev {
+                left: 62px;
+            }
+
+            .swiper-button-next {
+                right: 62px;
+            }
+        }
+    }
+
+    &:nth-child(3n+2) {
+        .section-title::before {
+            background-color: $blue-5;
+        }
+    }
+
+    &:nth-child(3n+1) {
+        .section-title::before {
+            background-color: $yellow-5;
+        }
+    }
+
+    &:nth-child(3n) {
+        .section-title::before {
+            background-color: $orange-5;
+        }
+    }
+
+    .custom-container {
+        // max-width: 1575px;
+
+        .section-title {
+            display: flex;
+            justify-content: space-between;
+            position: relative;
+            padding: 60px 126px 0;
+
+            @include Serif(48px, 48px, .2);
+            color: $white-1;
+
+            &::before {
+                content: '';
+                width: 750px;
+                height: 300px;
+
+                position: absolute;
+                top: 0;
+            }
+
+            span {
+                position: relative;
+                z-index: 2;
+            }
+        }
+
+
+        .news-list {
+            position: relative;
+            padding: 0 126px;
+
+            .newsSwiper {
+                padding: 60px 0;
+
+                .swiper-slide {
+                    padding-top: 24px;
+                }
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                color: $orange-5;
+                font-size: 50px;
+
+                &::after {
+                    content: initial;
+                }
+
+                &:hover {
+                    color: $yellow-5;
+                }
+            }
+        }
+    }
+}

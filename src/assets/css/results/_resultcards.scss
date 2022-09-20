@@ -1,0 +1,118 @@
+.result-card {
+    width: 100%;
+    max-width: 300px;
+    height: 100%;
+    padding: 47px;
+    background: $white-1;
+    box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+
+    .account {
+        display: flex;
+        align-items: flex-end;
+        position: relative;
+        // 保留15的間距
+        margin-bottom: -30px;
+        bottom: 55px;
+
+        .pic {
+            width: 90px;
+            height: 90px;
+            background: $orange-3;
+            border-radius: 50%;
+        }
+
+        .name {
+            flex: 1 1 0%;
+            @include Sans(700, 18px, 18px, initial);
+            color: $gray-5;
+            margin-left: 15px;
+
+            span.class {
+                margin-left: 0;
+            }
+        }
+    }
+
+    .rate {
+        display: flex;
+        margin-bottom: 25px;
+
+        .total-rate {
+            flex: 1 1 0%;
+            color: $gray-5;
+            text-align: center;
+            position: relative;
+
+            &:first-child::after {
+                content: '';
+                position: absolute;
+                height: 100%;
+                border-right: 1px solid $border-gray;
+                right: 0;
+                top: 0;
+            }
+
+            .wins {
+                @include Sans(900, 48px, 117.52%, 1);
+            }
+
+            .per {
+                @include Sans(900, 18px, 21.15px, 1);
+            }
+
+            .total {
+                width: 100%;
+                @include Sans(400, 14px, 117.52%, 1);
+                color: $disable-gray;
+            }
+
+            .title {
+                width: 100%;
+                padding-top: 16px;
+                @include Sans(700, 14px, 117.52%, 0.1em);
+                color: $gray-5;
+            }
+        }
+
+        .border {
+            height: 100%;
+            border-left: 1px solid $border-gray;
+            padding: 0 30px;
+        }
+    }
+
+    .follow-links {
+        display: flex;
+        justify-content: center;
+
+        .btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100px;
+            height: 40px;
+            @include Sans(700, 14px, 12px, .05em);
+            text-align: center;
+
+            &:nth-child(even) {
+                margin-left: 10px;
+            }
+        }
+
+        .out-line {
+            @include btn-orange-outline;
+        }
+
+        .follow-btn {
+            border: 1px solid $blue-5;
+            background: $blue-5;
+            color: $white-1;
+
+            &.followed {
+                border-color: $red-1;
+                color: $red-1;
+                background: $white-1;
+            }
+        }
+    }
+}

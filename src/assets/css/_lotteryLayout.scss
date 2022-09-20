@@ -1,0 +1,272 @@
+.stake-list {
+    display: flex;
+
+    .list {
+        flex: 1 1 0%;
+
+    }
+}
+
+
+.sidebar-section {
+    position: absolute;
+    left: calc(100% + 24px);
+    width: 300px;
+    height: 100%;
+    
+    padding-bottom: 150px;
+}
+
+.sidebar {
+    width: 100%;
+    height: min-content;
+    max-height: 900px;
+    background: $blue-5;
+    padding: 0 5px;
+    border-radius: 5px;
+    position: sticky;
+    top: 5px;
+
+    .header {
+        display: flex;
+        align-items: center;
+        @include Sans(700, 18px, 18px, .05em);
+        color: $white-1;
+        padding: 11px 10px;
+
+
+        .delete {
+            cursor: pointer;
+            margin-left: auto;
+            @include Sans(400, 14px, 14px, .1em);
+
+            &:hover {
+                color: $orange-5;
+            }
+
+            .icon {
+                display: inline-block;
+                margin-right: 5px;
+            }
+        }
+    }
+
+    .stake-catalog {
+        margin-bottom: 10px;
+
+        button {
+            width: 68.75px;
+            height: 30px;
+            @include Sans(700, 14px, 14px, initial);
+            background: $white-1;
+            color: $orange-5;
+            border-radius: 5px;
+
+            span.icon {
+                display: inline-block;
+                margin-right: 10px;
+                color: $gray-5;
+            }
+
+            &.active,&:hover {
+                background: $orange-5;
+                color: $white-1;
+
+                span.icon {
+                    color: $white-1;
+                }
+            }
+        }
+    }
+
+    .stake-cards {
+        overflow: auto;
+        height: 721px;
+
+        .stake-card {
+            margin-top: 5px;
+
+            &:first-child {
+                margin-top: 0;
+            }
+
+            .error-msg {
+                display: none;
+                color: $white-1;
+                @include Sans(700, 14px, 14px, .05em);
+                padding: 7px 10px 9px;
+            }
+
+            &.error {
+                background: $red-1;
+                border-radius: 5px;
+
+                .error-msg {
+                    display: block;
+                }
+            }
+
+            .card-body {
+                background: $white-1;
+                padding: 15px 0;
+                position: relative;
+                border-radius: 5px;
+
+                @include Sans(400, 14px, 14px, .05em);
+                color: $gray-5;
+
+                .delete {
+                    position: absolute;
+                    right: 10px;
+                    top: 10px;
+                    font-size: 18px;
+                    color: $gray-4;
+                }
+
+                .top {
+                    padding: 0 10px;
+
+                    .contest {
+                        margin-top: 10px;
+                    }
+                }
+
+                .mid {
+                    background: $yellow-5;
+                    padding: 8px 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    font-weight: 700;
+                    margin-top: 15px;
+                }
+
+                .bottom {
+                    margin-top: 10px;
+
+                    .stake-status {
+                        padding: 0 10px;
+
+                        .name {
+                            font-weight: 700;
+                        }
+
+                        .points {
+                            margin-top: 10px;
+                        }
+                    }
+
+                    .predict {
+                        display: flex;
+                        justify-content: space-between;
+                        padding: 0 5px;
+                        margin-top: 15px;
+                        
+                        input.input-control,.point {
+                            width: calc(50% - 5px);
+                            padding: 9px 10px;
+                            color: $gray-4;
+                            border: 1px solid $gray-4;
+                            border-radius: 5px;
+                        }
+
+                        .point {
+                            background: $gray-2;
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+
+                    .lottery-order {
+                        padding: 0 10px;
+                        @include Sans(400, 14px, 14px, .05em);
+                        color: $gray-5;
+
+                        .type {
+                            @include Sans(700, 14px, 14px, .05em);
+                            color: $orange-5;
+                        }
+
+                        .detail {
+                            margin-top: 10px;
+                            margin-bottom: 15px;
+                        }
+
+                        .require-point {
+                            display: flex;
+                            justify-content: space-between;
+
+                            padding-top: 10px;
+                            border-top: 2px solid $gray-2;
+                            
+                            a {
+                                color: $blue-5;
+                                text-decoration: underline;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .total {
+        padding: 20px 15px;
+
+        .total-point {
+            @include Sans(700, 14px, 14px, .05em);
+            color: $white-1;
+            margin-top: 15px;
+
+            display: flex;
+            justify-content: space-between;
+
+            &:first-child {
+                margin-top: 0;
+            }
+        }
+    }
+
+
+    .gotostake {
+        display: block;
+        padding: 13px 0;
+        margin: 0 -5px;
+
+        background: $orange-5;
+        border-radius: 5px;
+
+        @include Sans(700, 14px, 14px, .1em);
+        color: $white-1;
+        text-align: center;
+    }
+}
+
+.warning-board {
+    width: 100%;
+    max-width: 400px;
+    padding: 35px 0 33px;
+
+    margin: auto;
+    margin-top: 70px;
+
+    background: $gray-1;
+    text-align: center;
+    border-radius: 20px;
+
+    .icon {
+        font-size: 30px;
+        color: $red-1;
+
+        margin-bottom: 21px;
+    }
+
+    p {
+        @include Sans(400, 14px, 14px, .05em);
+        color: $gray-5;
+    }
+}
+
+.pagination {
+    @include pagination;
+    padding-top: 100px;
+}

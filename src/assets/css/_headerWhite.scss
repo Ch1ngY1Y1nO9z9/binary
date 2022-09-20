@@ -1,0 +1,37 @@
+header {
+    background: $white-1;
+
+    .custom-container {
+        .header-l {
+            .logo {
+                .site-name {
+                    color: $gray-5;
+                }
+            }
+        }
+
+        .header-r {
+            .account {
+                color: $blue-5;
+            }
+
+            .burger-menu {
+                button.burger.burger-style {
+                    &::before {
+                        background: $blue-5;
+                    }
+
+                    &::after {
+                        background: $blue-5;
+                    }
+
+                    span {
+                        &::before {
+                            background: $blue-5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

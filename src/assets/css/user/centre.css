@@ -1,0 +1,89 @@
+section.content .centre .custom-container .activity {
+  display: flex;
+  margin-bottom: 50px;
+}
+section.content .centre .custom-container .activity .block {
+  width: 100%;
+}
+section.content .centre .custom-container .activity .block:nth-child(odd) {
+  margin-right: 12px;
+}
+section.content .centre .custom-container .activity .block:nth-child(even) {
+  margin-left: 12px;
+}
+section.content .centre .custom-container .activity .block .title {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding-bottom: 10px;
+  margin-bottom: 10px;
+  border-bottom: 2px solid rgb(136, 136, 136);
+}
+section.content .centre .custom-container .activity .block .pic {
+  width: 100%;
+  height: 220px;
+  background: rgb(136, 136, 136);
+  overflow: hidden;
+}
+section.content .centre .custom-container .activity .block .pic img {
+  width: 100%;
+}
+section.content .centre .custom-container .menu-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+section.content .centre .custom-container .menu-list .menu {
+  width: 100%;
+  max-width: 336px;
+  margin-bottom: 20px;
+}
+section.content .centre .custom-container .menu-list .menu:nth-child(3n+2) {
+  margin-left: 24px;
+  margin-right: 24px;
+}
+section.content .centre .custom-container .menu-list .menu .title {
+  padding: 25px;
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.05em;
+  color: rgb(255, 255, 255);
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+section.content .centre .custom-container .menu-list .menu .title .icon {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  color: rgb(255, 255, 255);
+  margin-right: 15px;
+}
+section.content .centre .custom-container .menu-list .menu .link {
+  font-family: "Noto Sans TC", "sans-serif";
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 18px;
+  letter-spacing: 0.05em;
+  color: rgb(57, 57, 57);
+  padding: 15px 30px;
+  border-top: 2px solid rgb(235, 235, 235);
+}
+section.content .centre .custom-container .menu-list .menu .link:last-child {
+  border-bottom: 2px solid rgb(235, 235, 235);
+}
+section.content .centre .custom-container .menu-list .menu .link a:hover {
+  color: rgb(255, 98, 31);
+}
+section.content .centre .custom-container .menu-list .menu:nth-child(odd) .title {
+  background: rgb(0, 70, 174);
+}
+section.content .centre .custom-container .menu-list .menu:nth-child(even) .title {
+  background: rgb(252, 189, 31);
+}
+section.content .centre .custom-container .menu-list .menu:first-child .title, section.content .centre .custom-container .menu-list .menu:last-child .title {
+  background: rgb(255, 98, 31);
+}/*# sourceMappingURL=centre.css.map */

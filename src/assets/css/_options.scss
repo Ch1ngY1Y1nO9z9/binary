@@ -1,0 +1,278 @@
+h3.subtitle {
+    @include Serif(18px, 18px, .05em);
+    color: $gray-5;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+
+    .btn {
+        @include btn-options;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        &.btn-o {
+
+            &:hover,
+            &.active {
+                @include hover-orange;
+            }
+        }
+
+        &.btn-y {
+
+            &:hover,
+            &.active {
+                @include hover-yellow;
+                color: $gray-5;
+            }
+        }
+
+        &.btn-b {
+
+            &:hover,
+            &.active {
+                @include hover-blue;
+            }
+        }
+    }
+
+    .sort {
+        width: 200px;
+        position: relative;
+        margin-left: 15px;
+
+        select.input-control {
+            width: 100%;
+            border: 1px solid $gray-4;
+            border-radius: 5px;
+            background: transparent;
+            padding: 12px 10px;
+
+            @include Sans(400, 14px, 14px, initial);
+            color: $gray-5;
+
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+
+            &+.arrow {
+                position: absolute;
+                top: 10px;
+                right: 10px;
+                z-index: -1;
+            }
+
+            &::placeholder {
+                color: $gray-3;
+            }
+
+            &:disabled {
+                background: $gray-2;
+                color: $gray-5;
+            }
+
+            option {
+                padding: 12px 10px;
+            }
+        }
+    }
+
+}
+
+.filter {
+    display: flex;
+    margin-bottom: 15px;
+
+    .btn {
+        @include btn-options;
+        padding: 13px 0;
+        width: 74px;
+
+        &:hover,
+        &.active {
+            background: $yellow-5;
+            color: $gray-5;
+            font-weight: 700;
+        }
+
+        &:first-child {
+            margin-left: 0;
+        }
+    }
+
+    .datetimepicker {
+        display: flex;
+        color: $gray-5;
+        margin-left: 15px;
+
+        height: 40px;
+
+        .input-date {
+            width: 250px;
+            position: relative;
+
+            input {
+                width: 100%;
+                height: 100%;
+                border: 1px solid $gray-3;
+                border-radius: 5px;
+                padding: 0 10px;
+                color: $gray-5;
+            }
+
+            .datepicker-toggle-button {
+                top: 12px;
+            }
+
+            svg {
+                position: absolute;
+                right: 0;
+                top: 0;
+            }
+        }
+
+        span {
+            @include Sans(400, 18px, 40px, initial);
+            display: inline-block;
+            margin: 0 10px;
+        }
+
+
+        .submit-btn {
+            @include btn-gray;
+            width: 100px;
+            color: $gray-4;
+            margin-left: 15px;
+        }
+    }
+
+    .input-col {
+        width: 200px;
+        display: flex;
+        align-items: center;
+        position: relative;
+        margin-left: 15px;
+        margin-bottom: 15px;
+
+        select.input-control {
+            width: 100%;
+            border: 1px solid $gray-4;
+            border-radius: 5px;
+            background: transparent;
+            padding: 9px 10px;
+
+            @include Sans(400, 14px, 14px, initial);
+            color: $gray-5;
+
+            appearance: none;
+            -moz-appearance: none;
+            -webkit-appearance: none;
+
+            &+.arrow {
+                position: absolute;
+                right: 10px;
+                z-index: -1;
+            }
+
+            &::placeholder {
+                color: $gray-3;
+            }
+
+            &:disabled {
+                background: $gray-2;
+                color: $gray-5;
+            }
+        }
+
+        select.input-control {
+            padding: 12px 10px;
+
+            option {
+                padding: 12px 10px;
+            }
+        }
+
+        .checkbox-mask {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            border: 1px solid $gray-4;
+
+            &+label.input-label {
+                @include Sans(400, 14px, 14px, initial);
+                display: inline-block;
+                margin-left: 10px;
+                margin-bottom: 0;
+            }
+        }
+
+        .point_number {
+            @include Sans(700, 24px, 24px, initial);
+            color: $orange-5;
+        }
+
+        &.error~.msg {
+            display: block;
+        }
+
+        &.error {
+            .checkbox-mask {
+                border: 1px solid $red-1;
+            }
+        }
+
+        span.icon {
+            position: absolute;
+            right: 10px;
+        }
+    }
+
+}
+
+.stake-catalog {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+
+    span.item {
+        width: 100px;
+        height: 100px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background: $blue-5;
+        border-radius: 5px;
+        color: $white-1;
+        @include Sans(700, 18px, 20px, .1em);
+        text-align: center;
+        margin-left: 20px;
+
+        &:first-child {
+            margin-left: 0;
+        }
+
+        div {
+            max-width: 60px;
+        }
+
+        span.number {
+            display: inline-block;
+            font-size: 14px;
+            line-height: 14px;
+            background: $orange-5;
+            padding: 2px 8px 4px;
+            border-radius: 5px;
+            margin-top: 10px;
+        }
+    }
+}

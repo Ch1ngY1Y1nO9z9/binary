@@ -1,0 +1,218 @@
+.board {
+    width: 100%;
+    margin: 0 auto; 
+    margin-bottom: 50px;
+    background: $blue-5;
+    border-radius: 10px;
+    color: $white-1;
+
+    &.wallets {
+        text-align: center;
+    
+        .title {
+            @include Sans(400, 14px, 14px, .05em);
+            margin-bottom: 21px;
+    
+            .icon {
+                display: inline-block;
+                width: 14px;
+                height: 14px;
+                background: $white-1;
+                margin-right: 10px;
+            }
+        }
+    
+        &.single {
+            max-width: 250px;
+            padding: 21px 0;
+        
+            .point {
+                @include Sans(700, 24px, 22px, initial);
+            }
+        }
+    
+        &.all {
+            display: flex;
+            max-width: 500px;
+            padding: 10px 0;
+        
+            .point {
+                @include Sans(700, 24px, 22px, initial);
+            }
+        
+            .left {
+                flex: 1 1 0;
+                padding: 11px 0;
+                border-right: 1px solid $blue-4;
+            }
+        
+            .right {
+                flex: 1 1 0;
+                padding: 11px 0;
+                border-left: 1px solid $blue-4;
+            }
+        }
+    }
+
+    &.stake_detail {
+        display: flex;
+        max-width: 624px;
+        padding: 20px 30px;
+    
+        .left {
+            width: 50%;
+            @include Sans(400, 14px, 14px, .05em);
+            padding: 10px 0;
+            border-right: 1px solid $blue-4;
+
+            .col {
+                display: flex;
+                .type,.res {
+                    div {
+                        margin-bottom: 15px;
+    
+                        &:last-child {
+                            margin: 0;
+                        }
+                    }
+                }
+
+                .res {
+                    font-weight: 700;
+                }
+            }
+        }
+    
+        .right {
+            width: 50%;
+            @include Sans(400, 14px, 14px, .1em);
+            padding: 10px 0 10px 30px;
+            border-left: 1px solid $blue-4;
+
+            .col {
+                display: flex;
+                align-items: flex-start;
+
+
+                .type,.res {
+                    div {
+                        .per {
+                            @include Sans(400, 14px, 14px, .1em);
+                        }
+    
+                        &:last-child {
+                            margin: 0;
+                        }
+                    }
+                }
+
+                .type {
+                    text-align: right;
+                    margin-right: 10px;
+
+                    div {
+                        margin-bottom: 26px;
+                    }
+                }
+
+                .res {
+                    font-size: 24px;
+                    line-height: 24px;
+                    font-weight: 700;
+
+                    div {
+                        margin-bottom: 15px;
+                    }
+                }
+            }
+        }
+    }
+
+    &.commission_detail {
+        display: flex;
+        max-width: 750px;
+        padding: 10px 0; 
+
+        .left,.mid,.right {
+            flex: 1 1 0%;
+            text-align: center;
+            padding: 12px 0;
+
+            .title {
+                @include Sans(700, 14px, 14px, .05em);
+                color: $white-1;
+                margin-bottom: 20px;
+            }
+
+            .point {
+                @include Sans(700, 24px, 22px, initial);
+                color: $white-1;
+            }
+        }
+
+        .mid {
+            border-left: 2px solid $blue-4;
+            border-right: 2px solid $blue-4;
+        }
+    }
+
+    &.contest-detail {
+        width: 100%;
+        max-width: 624px;
+        margin: auto;
+        margin-bottom: 50px;
+
+        padding: 20px;
+        border-radius: 20px;
+
+        @include Sans(700, 14px, 14px, .05em);
+        color: $white-1;
+
+        .title {
+            font-weight: 400;
+        }
+
+        .datetime {
+            display: flex;
+            justify-content: space-between;
+
+            padding: 15px 0;
+            margin-top: 15px;
+            border-top: 2px solid $blue-4;
+            color: $yellow-5;
+        }
+
+        .icons {
+            display: flex;
+
+            .icon {
+                display: inline-block;
+                margin-left: 20px;
+
+                .color-card {
+                    width: 10px;
+                    height: 14px;
+                
+                    &.yellow {
+                        background: $yellow-5;
+                    }
+                    
+                    &.red {
+                        background: $red-1;
+                    }
+                }
+
+            }
+        }
+
+        .teams {
+            border-top: 2px solid $blue-4;
+            
+            .team {
+                display: flex;
+                justify-content: space-between;
+                padding-top: 15px;
+            }
+        }
+    }
+}

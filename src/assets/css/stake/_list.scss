@@ -1,0 +1,165 @@
+.news-list {
+
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        padding-top: 20px;
+
+        .card {
+            display: flex;
+
+            width: 50%;
+            max-width: 624px;
+
+            margin-bottom: 24px;
+            padding: 20px;
+
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+
+            &:nth-child(even) {
+                margin-right: 0;
+            }
+
+            .left {
+                width: 100%;
+                max-width: 250px;
+                background: $gray-4;
+            }
+
+            .right {
+                padding-left: 20px;
+
+                .tags {
+                    display: flex;
+                    position: relative;
+
+                    .tag {
+                        @include Sans(400, 14px, 20px, .1em);
+                        color: $white-1;
+                        margin-right: 10px;
+                        margin-bottom: 15px;
+                        padding: 3px 10px;
+
+                        &.tag-o {
+                            background: $orange-5;
+                        }
+
+                        &.tag-g {
+                            background: $green-1;
+                        }
+                    }
+
+                    .icon {
+                        position: absolute;
+                        right: 20px;
+                        top: 0;
+                        display: flex;
+                        font-size: 25px;
+                        color: $orange-5;
+                    }
+                }
+
+                .serial-num {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $orange-5;
+                    padding-bottom: 10px;
+                }
+
+                .title {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $orange-5;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                }
+
+                .card-subtitle {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $gray-4;
+                    margin-bottom: 10px;
+                }
+
+                .scription {
+                    @include Sans(700, 18px, 25px, .05em);
+                    color: $gray-5;
+                    text-align: justify;
+                    padding-bottom: 25px;
+                }
+
+                .time {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $disable-gray;
+                }
+
+                .participate {
+                    color: $gray-5;
+                    margin-bottom: 10px;
+
+                    i {
+                        font-size: 14px;
+                    }
+
+                    .number {
+                        @include Sans(400, 14px, 14px, .05em);
+                    }
+                }
+
+                .bars {
+                    width: 100%;
+                    display: flex;
+
+                    .bar {
+                        position: relative;
+                        @include Sans(700, 14px, 14px, .05em);
+                        color: $white-1;
+                        padding: 6px 10px 8px;
+    
+                        .icon {
+                            display: flex;
+                            font-size: 40px;
+                            position: absolute;
+    
+                            width: 100px;
+                            height: 100px;
+                            border-radius: 50%;
+    
+                            color: $white-1;
+                            border: 5px solid $white-1;
+    
+                            box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    
+                            svg {
+                                margin: auto;
+                            }
+                        }
+    
+                        &.bar-g {
+                            border-radius: 50px 0 0 50px;
+                            background: $green-1;
+    
+                            .icon {
+                                left: 10px;
+                                bottom: 10px;
+                                background: $green-1;
+                            }
+                        }
+    
+                        &.bar-r {
+                            text-align: right;
+                            border-radius: 0 50px 50px 0;
+                            background: $red-1;
+    
+                            .icon {
+                                right: 10px;
+                                bottom: 10px;
+                                background: $red-1;
+                            }
+                        }
+                    }
+                }
+
+            }
+        }
+    }
+
+}

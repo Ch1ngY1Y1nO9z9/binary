@@ -1,0 +1,126 @@
+.list-cards {
+    .cards {
+        display: flex;
+        justify-content: space-between;
+        flex-wrap: wrap;
+
+        .card {
+            display: flex;
+    
+            width: 50%;
+            max-width: 624px;
+    
+            margin-top: 24px;
+            padding: 20px;
+    
+            box-shadow: 0px 0px 30px rgba(0, 0, 0, 0.1);
+    
+            &:first-child,&:nth-child(2) {
+                margin-top: 0;
+            }
+
+            &:nth-child(even) {
+                margin-right: 0;
+            }
+    
+            .left {
+                width: 100%;
+                max-width: 250px;
+                background: $gray-4;
+            }
+    
+            .right {
+                padding-left: 20px;
+                padding-bottom: 30px;
+
+                .tags {
+                    display: flex;
+                    position: relative;
+
+                    .icon {
+                        position: absolute;
+                        right: 20px;
+                        top: 0;
+                        display: flex;
+                        font-size: 25px;
+                        color: $orange-5;
+                    }
+                }
+    
+                .title {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $orange-5;
+                    margin-top: 30px;
+                    margin-bottom: 10px;
+                }
+    
+                .scription {
+                    @include Sans(700, 18px, 25px, .05em);
+                    color: $gray-5;
+                    text-align: justify;
+                    padding-bottom: 30px;
+                }
+    
+                .time {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $disable-gray;
+                }
+            }
+        }
+
+        &.game {
+            .right {
+                padding-bottom: 0;
+
+                .title {
+                    color: $gray-4;
+                }
+                
+                .tags {
+                    .tag {
+                        @include Sans(400, 14px, 20px, .1em);
+                        color: $white-1;
+                        margin-right: 10px;
+                        padding: 2px 25px 3px;
+    
+                        &.tag-o {
+                            background: $orange-5;
+                        }
+    
+                        &.tag-g {
+                            background: $green-1;
+                        }
+
+                        &.tag-r {
+                            background: $red-1;
+                        }
+                    }
+                }
+
+                .detail {
+                    @include Sans(400, 14px, 14px, .05em);
+                    color: $gray-5;
+
+                    .viewer {
+                        display: inline-block;
+                        margin-right: 30px;
+                    }
+
+                    .icon {
+                        font-size: 12px;
+                        display: inline-block;
+                        padding-right: 10px;
+                    }
+                }
+            }
+        }
+    
+
+    }
+}
+
+
+.pagination {
+    @include pagination;
+    padding-top: 100px;
+}

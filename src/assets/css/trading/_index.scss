@@ -1,0 +1,38 @@
+section.content {
+    .trading {
+        .custom-container {
+
+            .trading-header {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 50px;
+
+                .title {
+                    @include Serif(30px, 30px, .05em);
+                    color: $gray-5;
+                }
+
+                .buttons {
+                    display: flex;
+                    color: $white-1;
+                    @include Sans(700, 14px, 14px, .1em);
+
+                    .btn {
+                        @include btn-orange;
+                        padding: 12px 45px 14px;
+                        margin-left: 15px;
+                        
+                        &:first-child {
+                            margin-left: 0;
+                        }
+                    }
+                }
+            }
+
+            .pagination {
+                @include pagination;
+                padding-top: 60px;
+            }
+        }
+    }
+}

@@ -1,0 +1,16 @@
+.result {
+    .card-left-layout {
+        .account-card {
+            margin-right: 22px;
+            height: min-content;
+        }
+
+        .trading-table {
+            margin-top: 0;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+    }
+}

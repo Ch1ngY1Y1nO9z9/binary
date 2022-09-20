@@ -1,0 +1,438 @@
+section.follow {
+    position: relative;
+    z-index: 2;
+
+    .section-title {
+        position: relative;
+        z-index: 1;
+        margin-bottom: 120px;
+
+        @include Serif(48px, 69px, .05em);
+        color: $white-1;
+        text-align: center;
+
+        &::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: calc(50% - 68px);
+            width: 136px;
+            height: 8px;
+            background: $yellow-5;
+
+            @media (max-width: 593px) {
+                width: 100px;  
+                left: calc(50% - 50px);
+            }
+        }
+
+        @media(max-width: 593px) {
+            @include Serif(30px, 43px, .05em);
+            margin-bottom: 63px;
+        }
+    }
+
+    .custom-container {
+        display: flex;
+        flex-direction: row-reverse;
+        z-index: 1;
+
+        @media(max-width: 1180px) {
+            flex-direction: column;
+        }
+
+        .swiper-wrapper {
+            height: auto;
+        }
+
+        .intro {
+            width: 45%;
+            max-width: 663px;
+            position: relative;
+            padding-left: 60px;
+            margin-bottom: 200px;
+
+            
+            @media(max-width: 1297px) {
+                padding-left: 30px;
+            }
+
+            @media(max-width: 1180px) {
+                width: 100%;
+                max-width: 645px;
+
+                padding-left: 80px;
+                margin-bottom: 80px;
+            }
+
+            @media(max-width: 593px) {
+                padding: 0 15px;
+                margin-bottom: 20px;
+            }
+
+
+            .introSwiper {
+                width: 100%;
+                margin: initial;
+                padding-top: 35px;
+
+                @media(max-width: 593px) {
+                    padding-top: 0;
+                }
+
+                .swiper-slide {
+                    overflow: hidden;
+
+                    .icon {
+                        font-size: 230px;
+                        position: absolute;
+                        left: 335px;
+                        bottom: 95px;
+                        z-index: 1;
+                        color: $icon-gray;
+
+                        @media(max-width: 1297px) {
+                            left: 335px;
+                        }
+
+                        @media(max-width: 1180px) {
+                            right: 0;
+                        }
+
+                        @media(max-width: 593px) {
+                            bottom: auto;
+                            top: 0;
+                            left: 175px;
+                        }
+                    }
+
+                    .title {
+                        @include Serif(48px, 69px, .05em);
+                        color: $blue-5;
+                        padding-bottom: 60px;
+
+                        position: relative;
+                        z-index: 2;
+
+                        @media(max-width: 1297px) {
+                            line-height: 65px;
+                            padding-bottom: 43px; 
+                        }
+
+                        @media(max-width: 1180px) {
+                            width: 100%;
+                            max-width: 457px;
+                        }
+
+                        @media(max-width: 593px) {
+                            @include Serif(30px, 43px, .05em);
+                            text-align: justify;
+                        }            
+                    }
+
+                    .context {
+                        @include Sans(400, 24px, 35px, .05em);
+                        color: $gray-5;
+                        margin-bottom: -35px;
+                        position: relative;
+                        z-index: 2;
+
+                        @media(max-width: 593px) {
+                            @include Sans(400, 18px, 25px, .05em);
+                            margin-bottom: 0;
+                        }          
+                    }
+
+                    .number {
+                        @include Sans(900, 150px, 217px, 1);
+                        color: $orange-5;
+                        position: relative;
+                        z-index: 2;
+
+                        @media(max-width: 593px) {
+                            @include Sans(900, 72px, 104px, 1);
+                        }  
+
+                        span {
+                            font-size: 30px;
+                        }
+                    }
+
+                    .notice {
+                        width: 400px;
+                        height: 80px;
+                        @include Sans(400, 14px, 24px, .1em);
+                        text-align: center;
+                        border: 1px solid $disable-gray;
+                        color: $disable-gray;
+                        padding: 16px 25px;
+
+                        @media(max-width: 593px) {
+                            width: 100%;
+                            padding: 17px 20px 10px;
+                            height: auto;
+                        }  
+                    }
+                }
+
+                .buttons {
+                    display: flex;
+                    align-items: center;
+
+                    @media(max-width: 1180px) {
+                        padding-top: 92px;
+                    }
+
+                    @media(max-width: 593px) {
+                        padding: 0 3px;
+                    }  
+
+                    .intro-swiper-pagination {
+                        @include Sans(700, 18px, 19px, .1em);
+                        color: $disable-gray;
+                        margin: 0 16px;
+                        width: auto;
+                    }
+
+                    .intro-swiper-button-next,
+                    .intro-swiper-button-prev {
+                        color: $disable-gray;
+                        font-size: 30px;
+
+                        &:hover {
+                            color: $yellow-5;
+                        }
+
+                        &::after {
+                            content: initial;
+                        }
+                    }
+                }
+            }
+        }
+
+        .feature {
+            width: 55%;
+            position: relative;
+
+            @media(max-width: 1180px) {
+                width: 100%;
+            }
+
+            .featureSwiper {
+                height: 100%;
+                padding-bottom: 200px;
+
+                @media(max-width: 1180px) {
+                    padding-bottom: 150px;
+                }
+
+                @media(max-width: 593px) {
+                    padding-bottom: 100px;
+                }
+
+                .swiper-slide {
+                    display: flex;
+                    flex-wrap: wrap;
+                    justify-content: center;
+
+                    padding: 0 45px;
+
+                    @media(max-width: 1297px) {
+                        padding: 0 20px;
+                    }
+
+                    .card {
+                        width: 100%;
+                        max-width: 280px;
+                        height: 315px;
+                        padding: 20px 30px;
+
+                        box-shadow: 15px 15px 50px rgba(0, 0, 0, 0.25);
+                        border-radius: 5px;
+                        background: $white-1;
+
+                        &:first-child {
+                            margin-top: 0;
+                        }
+
+                        &:nth-child(odd) {
+                            margin-right: 60px;
+
+                            @media(max-width: 1297px) {
+                                margin-right: 40px;
+                            }
+
+                            @media(max-width: 1180px) {
+                                margin-right: 100px;
+                            }
+
+                            @media(max-width: 976px) {
+                                margin-right: 40px;
+                            }
+
+                            @media(max-width: 656px) {
+                                margin-top: 30px;
+                            }  
+                            
+                            @media(max-width: 593px) {
+                                margin-right: 0;
+                            }  
+        
+                        }
+
+                        &:nth-child(even) {
+                            margin-top: 50px;
+
+                            @media(max-width: 1297px) {
+                                margin-top: 30px;
+                            }
+
+                            @media(max-width: 1180px) {
+                                margin-right: 100px;
+                            }
+
+                            @media(max-width: 976px) {
+                                margin-right: 0;
+                            }
+                        }
+
+                        .head {
+                            padding-bottom: 8px;
+                            @include Sans(700, 18px, 112.7%, .05em);
+                            color: $blue-5;
+                        }
+
+                        hr {
+                            border-top: 1px solid $blue-5;
+                        }
+
+                        .card-body {
+
+                            .account {
+                                display: flex;
+                                padding: 25px 0;
+
+                                .avatar {
+                                    width: 90px;
+                                    height: 90px;
+                                    border-radius: 50%;
+
+                                    background: $avatar-gray;
+
+                                    img {
+                                        width: 100%;
+                                        height: 100%;
+                                    }
+                                }
+
+                                .account-detail {
+                                    padding-left: 16px;
+                                    flex: 1 1 0%;
+
+                                    .name {
+                                        @include Sans(700, 18px, 21.15px, 1);
+                                        color: $gray-5;
+                                    }
+
+                                    .skill {
+                                        @include Sans(400, 14px, 125%, .1em);
+                                        color: $gray-4;
+                                        padding-top: 10px;
+                                        padding-bottom: 13px;
+                                    }
+
+                                    .follow-btn {
+                                        display: inline-block;
+                                        width: 100%;
+                                        border: 1px solid $blue-5;
+                                        border-radius: 5px;
+                                        padding: 8px 0;
+
+                                        @include Sans(400, 14px, 12px, .05em);
+                                        text-align: center;
+                                        color: $blue-5;
+
+                                        &:hover {
+                                            border-color: $yellow-5;
+                                            color: $white-1;
+                                            background: $yellow-5;
+                                        }
+                                    }
+                                }
+                            }
+
+                            .rate {
+                                display: flex;
+
+                                .total-rate {
+                                    flex: 1 1 0%;
+                                    color: $orange-5;
+                                    text-align: center;
+                                    position: relative;
+
+                                    &:first-child::after {
+                                        content: '';
+                                        position: absolute;
+                                        height: 100%;
+                                        border-right: 1px solid $border-gray;
+                                        right: 0;
+                                        top: 0;
+                                    }
+
+                                    .wins {
+                                        @include Sans(900, 48px, 117.52%, 1);
+                                    }
+
+                                    .per {
+                                        @include Sans(900, 18px, 21.15px, 1);
+                                    }
+
+                                    .total {
+                                        width: 100%;
+                                        @include Sans(400, 14px, 117.52%, 1);
+                                        color: $disable-gray;
+                                    }
+
+                                    .title {
+                                        width: 100%;
+                                        padding-top: 16px;
+                                        @include Sans(700, 14px, 117.52%, 0.1em);
+                                        color: $gray-5;
+                                    }
+                                }
+
+                                .border {
+                                    height: 100%;
+                                    border-left: 1px solid $border-gray;
+                                    padding: 0 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+
+            .swiper-button-prev,
+            .swiper-button-next {
+                width: initial;
+                height: initial;
+                color: $orange-5;
+                font-size: 40px;
+                top: 37%;
+
+                @media(max-width: 593px) {
+                    font-size: 30px;
+                }
+
+                &::after {
+                    content: initial;
+                }
+
+                &:hover {
+                    color: $yellow-5;
+                }
+            }
+        }
+    }
+}

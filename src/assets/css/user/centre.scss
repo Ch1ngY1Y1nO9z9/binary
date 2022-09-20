@@ -1,0 +1,115 @@
+@import '../_var';
+
+// h1.pagetitle {
+//     @include Serif(48px, 69px, .05em);
+//     color: $gray-5;
+//     text-align: center;
+//     margin-bottom: 70px;
+// }
+
+section.content {
+    .centre {
+        .custom-container {
+
+            .activity {
+                display: flex;
+                margin-bottom: 50px;
+
+                .block {
+                    width: 100%;
+
+                    &:nth-child(odd) {
+                        margin-right: 12px;
+                    }
+                    &:nth-child(even) {
+                        margin-left: 12px;
+                    }
+
+                    .title {
+                        @include Sans(700, 18px, 18px, .05em);
+                        color: $gray-5;
+                        padding-bottom: 10px;
+                        margin-bottom: 10px;
+                        border-bottom: 2px solid $gray-4;
+                    }
+
+                    .pic {
+                        width: 100%;
+                        height: 220px;
+                        background: $gray-4;
+                        overflow: hidden;
+
+                        img {
+                            width: 100%;
+                        }
+                    }
+                }
+            }
+
+            .menu-list {
+                display: flex;
+                flex-wrap: wrap;
+
+                .menu {
+                    width: 100%;
+                    max-width: 336px;
+                    margin-bottom: 20px;
+
+                    &:nth-child(3n+2) {
+                        margin-left: 24px;
+                        margin-right: 24px;
+                    }
+
+                    .title {
+                        padding: 25px;
+                        @include Sans(700, 18px, 22px, .05em);
+                        color: $white-1;
+                        border-radius: 10px;
+                        margin-bottom: 20px;
+
+                        .icon {
+                            display: inline-block;
+                            width: 18px;
+                            height: 18px;
+                            color: $white-1;
+                            margin-right: 15px;
+                        }
+                    }
+
+                    .link {
+                        @include Sans(400, 18px, 18px, .05em);
+                        color: $gray-5;
+                        padding: 15px 30px;
+                        border-top: 2px solid $gray-2;
+
+                        &:last-child {
+                            border-bottom: 2px solid $gray-2;
+                        }
+
+                        a:hover {
+                            color: $orange-5;
+                        }
+                    }
+
+                    &:nth-child(odd) {
+                        .title{
+                            background: $blue-5;
+                        }
+                    }
+
+                    &:nth-child(even) {
+                        .title{
+                            background: $yellow-5;
+                        }
+                    }
+
+                    &:first-child,&:last-child {
+                        .title{
+                            background: $orange-5;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
