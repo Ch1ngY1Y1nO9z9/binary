@@ -14,9 +14,11 @@ interface IfetchResult {
 interface Iresult {
   data?: object;
   code?: number;
-  message?: {
-    email: [];
-  }|'';
+  message?:
+    | {
+        email: [];
+      }
+    | "";
 }
 
 const response = reactive({
@@ -136,17 +138,32 @@ const formSubmit = async () => {
 
   if (!loading && result.code === 201) {
     // alert(result.message.email[0]);
-    if (result.message.email) {
-      setErrorMessage(result.message.email[0], "email");
-    } else if (result.message.verificationCode) {
-      setErrorMessage(result.message.verificationCode[0], "verificationCode");
-    } else if (result.message.verificationCode) {
-      setErrorMessage(result.message.password[0], "password");
-    }
-  } else if (
-    !loading &&
-    !result.code
-  ) {
+
+    Object.keys(result.message).forEach((col: string) => {
+      let total_msg: string = "";
+
+      result.message[col].forEach((msg: string, index: number) => {
+        if (
+          result.message[col].length === 1 ||
+          index + 1 == result.message[col].length
+        ) {
+          total_msg += msg;
+        } else {
+          total_msg += msg + ", ";
+        }
+      });
+
+      setErrorMessage(total_msg, col);
+    });
+
+    // if (result.message.email) {
+    //   setErrorMessage(result.message.email[0], "email");
+    // } else if (result.message.verificationCode) {
+    //   setErrorMessage(result.message.verificationCode[0], "verificationCode");
+    // } else if (result.message.verificationCode) {
+    //   setErrorMessage(result.message.password[0], "password");
+    // }
+  } else if (!loading && !result.code) {
     steps.value++;
 
     time.value = 4;
