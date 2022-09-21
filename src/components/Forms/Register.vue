@@ -1,18 +1,33 @@
 <script lang="ts" setup>
 import { reactive, ref, toRefs, watch } from "vue";
 import { useRouter } from "vue-router";
-import Input from "../../utilities/input/Input.vue";
-import ValidateInput from "../../utilities/input/ValidateInput.vue";
+import Input from "/src/utilities/input/Input.vue";
+import ValidateInput from "/src/utilities/input/ValidateInput.vue";
 // axios
-import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
-const [res, axiosFetch] = useAxiosFunction();
+// const [res, axiosFetch] = useAxiosFunction();
+interface IfetchResult {
+  data?: any;
+}
+
+interface Iresult {
+  data?: object;
+  code?: number;
+  message?: string;
+}
+
+const response = reactive({
+  res: {},
+  loading: true,
+});
 
 const router = useRouter(); //重新導向用
 const checkBox = ref(false); //checkBox勾選判斷
 const steps = ref(1); //控制顯示的頁面
 const redir = ref(false); //判斷是否導向到登入頁
 const time = ref(0); //定時器
+let timer: string | number | NodeJS.Timeout | null | undefined = null;
 const buttonSwitch = ref(false); //控制按鈕disable
 const data = ref({
   name: "dummy01",
@@ -55,16 +70,30 @@ const validate = reactive({
   },
 });
 
-let setTimert = {
-  timer: null,
-};
-
 const toggleCheckboxx = () => {
   checkBox.value = !checkBox.value;
 };
 
+const axiosFetch = async (configObj: any) => {
+  const { axiosInstance, method, url, requestConfig = {} } = configObj;
+  try {
+    response.loading = true;
+
+    const res = await axiosInstance[method.toLowerCase()](
+      url,
+      requestConfig.rawData
+    );
+    // console.log("response: ", res)
+    response.res = res;
+  } catch (err: any) {
+    console.log("err: ", err.response);
+  } finally {
+    response.loading = false;
+  }
+};
+
 // 發送資料
-const formSubmit = () => {
+const formSubmit = async () => {
   // 判斷是否勾選閱讀規章
   if (!checkBox.value) {
     alert("請先閱讀規章!");
@@ -90,7 +119,7 @@ const formSubmit = () => {
     verificationCode: data.value.verificationCode,
   };
 
-  axiosFetch({
+  await axiosFetch({
     axiosInstance: sendData,
     method: "POST",
     url: `/auth/register`,
@@ -99,40 +128,33 @@ const formSubmit = () => {
     },
   });
 
-  watch(
-    res,
-    () => {
-      checkRes();
-    },
-    { deep: true }
-  );
+  const { res, loading }: { res: IfetchResult; loading: Boolean } = response;
 
-  const checkRes = () => {
-    const { res: response, error, loading } = res;
-  
-    if (!loading && error.data) {
-      const { email, password, verificationCode } = JSON.parse(error.data);
+  const result: Iresult = res.data;
 
-      console.log(error.data)
+  if (!loading && result.code === 201) {
+    alert(result.message);
+    // if (email) {
+    //   setErrorMessage(email[0], "email");
+    // } else if (verificationCode) {
+    //   setErrorMessage(verificationCode[0], "verificationCode");
+    // } else if (password) {
+    //   setErrorMessage(password[0], "password");
+    // }
+  } else if (
+    !loading &&
+    !result.code &&
+    result.message === "User successfully registered"
+  ) {
+    steps.value++;
 
-      if (email) {
-        setErrorMessage(email[0], "email");
-      } else if (verificationCode) {
-        setErrorMessage(verificationCode[0], "verificationCode");
-      }else if (password) {
-        setErrorMessage(password[0], "password");
-      }
-    } else if (!loading && response) {
-      steps.value++;
-
-      time.value = 4;
-      redir.value = true;
-      setTimert.timer = setInterval(countDown, 1000);
-    } else {
-      console.log(res)
-      alert("伺服器忙碌中, 請稍後再試!");
-    }
-  };
+    time.value = 4;
+    redir.value = true;
+    timer = setInterval(countDown, 1000);
+  } else {
+    console.log(res);
+    alert("伺服器忙碌中, 請稍後再試!");
+  }
 };
 
 // 倒數器
@@ -140,7 +162,7 @@ const countDown = () => {
   if (time.value > 0) {
     time.value--;
   } else {
-    clearInterval(setTimert.timer);
+    // clearInterval(timer);
     buttonSwitch.value = false;
     if (redir.value) {
       redir.value = false;
@@ -273,7 +295,7 @@ const sendValidateCode = () => {
   if (yes) {
     buttonSwitch.value = true;
     time.value = 60;
-    setTimert.timer = setInterval(countDown, 1000);
+    timer = setInterval(countDown, 1000);
     alert("簡訊驗證碼已發送, 請確認手機是否收到簡訊!");
   }
 };
@@ -403,7 +425,7 @@ const sendValidateCode = () => {
         <router-link to="/login" class="link">返回會員登入</router-link>
       </div>
     </form>
-    
+
     <div class="form-card register" v-if="steps === 2">
       <div class="icon success">
         <i class="fa-solid fa-circle-check"></i>

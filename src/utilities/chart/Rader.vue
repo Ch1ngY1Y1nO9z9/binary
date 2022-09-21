@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 import { defineComponent, h } from "vue";
 
 import { Radar } from "vue-chartjs";

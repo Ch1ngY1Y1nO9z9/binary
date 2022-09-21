@@ -1,5 +1,23 @@
 import { defineStore } from 'pinia'
 
+interface Ires {
+    accessToken: string;
+    user: {
+        name: string
+        gender: string
+        email: string
+        walletAddress: string
+        profilePhotoUrl: string
+        country: string
+        city: string
+        birthday: string
+        invitationCode: string
+        phone: string
+        userPointA: number
+        userPointB: number
+    };
+}
+
 const useUserStore = defineStore('User', {
     state: () => ({
         user: {
@@ -20,8 +38,8 @@ const useUserStore = defineStore('User', {
     }),
     getters: {},
     actions: {
-        storeLogin(res) {
-            const {data} = res.data
+        storeLogin(res: any) {
+            const { data }: { data: Ires } = res
             this.user.access_token = data.accessToken,
                 this.user.name = data.user.name,
                 this.user.gender = data.user.gender,

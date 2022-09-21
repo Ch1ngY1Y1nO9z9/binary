@@ -3,18 +3,45 @@ import { defineProps, reactive } from "vue";
 
 const emit = defineEmits(["change", "require", "sendValidateCode", "reset"]);
 const props = defineProps({
-  name: String,
-  title: String,
-  type: String || undefined,
-  placeholder: String || undefined,
-  model: String || undefined,
-  msg: String || undefined,
-  status: Boolean || false,
-  buttonSwitch: Boolean || false,
-  time: Number || 0,
+  name: {
+    type: String,
+    required: true,
+  },
+  title: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    default: "",
+  },
+  placeholder: {
+    type: String,
+    default: "",
+  },
+  model: {
+    type: String,
+    default: "",
+  },
+  msg: {
+    type: String,
+    default: "",
+  },
+  status: {
+    type: Boolean,
+    default: false,
+  },
+  buttonSwitch: {
+    type: Boolean,
+    default: false,
+  },
+  time: {
+    type: Number,
+    default: 0,
+  },
 });
 
-const checkValue = (e) => {
+const checkValue = (e: any) => {
   if (e.target.value.length == 0 || e.target.value.trim() == "") {
     emit("require", "此欄位不可留空!", props.name);
     emit("change", "", props.name);

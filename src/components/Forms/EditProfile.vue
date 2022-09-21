@@ -17,7 +17,7 @@ const data = reactive({
 })
 
 // 修改checkbox
-const changeCheckbox = (newValue) => {
+const changeCheckbox = (newValue: string) => {
   genderCheckbox.value = newValue;
 };
 

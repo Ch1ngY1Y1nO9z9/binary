@@ -78,20 +78,20 @@ function checkDataValue() {
   }
 }
 
-function getFormColumn(val, key) {
+function getFormColumn(val: string, key: string) {
   if (key === "email") {
     data.value.email = val;
   }
 }
 
-function setErrorMessage(msg, key) {
+function setErrorMessage(msg: string, key: string) {
   if (key === "email") {
     validate.email.status = true;
     validate.email.msg = msg;
   }
 }
 
-function resetErrorMessage(key) {
+function resetErrorMessage(key: string) {
   if (key === "email") {
     validate.email.status = false;
   }

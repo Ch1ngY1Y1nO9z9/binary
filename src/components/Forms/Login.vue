@@ -1,26 +1,53 @@
 <script lang="ts" setup>
-import { reactive, ref, toRefs, watch } from "vue";
+import { onMounted, reactive, ref, toRefs, watch } from "vue";
 import { useRouter } from "vue-router";
-import Input from "../../utilities/input/Input.vue";
+import Input from "/src/utilities/input/Input.vue";
 // axios
-import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
 // store
 import store from "../../store";
 import { storeToRefs } from "pinia";
 
+interface IfetchResult {
+  data?: any;
+}
+
+interface IerrResult {
+  code?: number;
+  message?: string;
+}
+
+interface Iresult {
+  data?: object;
+  code?: number;
+  message?: string;
+}
+
+const response = reactive({
+  res: {},
+  err: {},
+  loading: true,
+});
+
+// const [res, axiosFetch] = useAxiosFunction();
+
 const loginStatus = store.useLoginStore();
 const useUserStore = store.useUserStore();
 const { user } = storeToRefs(useUserStore);
-
-const [res, axiosFetch] = useAxiosFunction();
-
+const { login } = loginStatus;
 const router = useRouter(); //重新導向用
 const buttonSwitch = ref(false); //控制按鈕disable
 const data = ref({
   email: "imtestingtheregister@gmail.com",
   password: "LetMeTestThePassword123456789@@",
 }); //測試用資料
+
+onMounted(()=>{
+  if(login){
+    router.push({ path: "/user_centre" });
+  }
+})
 
 const validate = reactive({
   email: {
@@ -33,8 +60,27 @@ const validate = reactive({
   },
 });
 
+const axiosFetch = async (configObj: any) => {
+  const { axiosInstance, method, url, requestConfig = {} } = configObj;
+  try {
+    response.loading = true;
+
+    const res = await axiosInstance[method.toLowerCase()](
+      url,
+      requestConfig.rawData
+    );
+    // console.log("response: ", res)
+    response.res = res;
+  } catch (err: any) {
+    // console.log("err: ", err.response);
+    response.err = err.response;
+  } finally {
+    response.loading = false;
+  }
+};
+
 // 發送資料
-const formSubmit = () => {
+const formSubmit = async() => {
   // 判斷是否有欄位未填
   if (checkDataValue()) {
     alert("您有欄位尚未填寫!");
@@ -46,7 +92,7 @@ const formSubmit = () => {
     password: data.value.password,
   };
 
-  axiosFetch({
+  await axiosFetch({
     axiosInstance: sendData,
     method: "POST",
     url: `/auth/login`,
@@ -55,36 +101,24 @@ const formSubmit = () => {
     },
   });
 
-  watch(
-    res,
-    () => {
-      checkRes();
-    },
-    { deep: true }
-  );
+  const { res, err , loading }: { res: IfetchResult, err:IfetchResult , loading: Boolean } = response;
 
-  function checkRes() {
-    const { res: response, error, loading } = res;
+  const result: Iresult = res.data;
+  const error: IerrResult = err.data;
 
-    // console.log(response);
-
-    if (!loading && error.data) {
-      const { email, password } = error.data;
-
-      if (email) {
-        setErrorMessage(email[0], "email");
-      } else if (password) {
-        setErrorMessage(password[0], "password");
-      } else {
-        alert("帳號未註冊!");
-      }
-    } else if (!loading && response) {
-      useUserStore.storeLogin(response);
+  if (!loading && error?.code === 401) {
+    if(error.message == 'Unauthorized'){
+      alert('請再次檢查帳號或密碼是否有輸入錯誤!');
+    }
+  } else if (
+    !loading &&
+    result.code === 200
+  ) {
+    useUserStore.storeLogin(result);
       loginStatus.userLogin();
       router.push({ path: "/user_centre" });
-    } else {
-      // alert('伺服器忙碌中, 請稍後再試!')
-    }
+  } else {
+    alert("伺服器忙碌中, 請稍後再試!");
   }
 };
 
@@ -116,7 +150,7 @@ function checkDataValue() {
   }
 }
 
-function getFormColumn(val, key) {
+function getFormColumn(val: string, key: string) {
   if (key === "email") {
     data.value.email = val;
   } else if (key === "password") {
@@ -124,7 +158,7 @@ function getFormColumn(val, key) {
   }
 }
 
-function setErrorMessage(msg, key) {
+function setErrorMessage(msg: string, key: string) {
   if (key === "email") {
     validate.email.status = true;
     validate.email.msg = msg;
@@ -134,7 +168,7 @@ function setErrorMessage(msg, key) {
   }
 }
 
-function resetErrorMessage(key) {
+function resetErrorMessage(key: string) {
   if (key === "email") {
     validate.email.status = false;
   } else if (key === "password") {

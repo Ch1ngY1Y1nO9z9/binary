@@ -1,17 +1,54 @@
 <script lang="ts" setup>
 import { reactive, ref, watch } from "vue";
-import Input from "../../utilities/input/Input.vue";
-import Select from "../../utilities/input/Select.vue";
-
+import Input from "/src/utilities/input/Input.vue";
+import Select from "/src/utilities/input/Select.vue";
 // axios
-import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
+// const [res, axiosFetch] = useAxiosFunction();
 
-const [res, axiosFetch] = useAxiosFunction();
+interface IfetchResult {
+  data?: any;
+}
+
+interface IerrResult {
+  code?: number;
+  message?: string;
+}
+
+interface Iresult {
+  data?: object;
+  code?: number;
+  message?: string;
+}
+
+interface Ifetch {
+  res: {
+    data?: {
+      code?: number
+      data?: {
+        code: number
+        message: string
+      }
+    }
+  };
+  err: {
+    code?: number
+    data?: {
+      code?: number
+    }
+  };
+  loading: boolean;
+}
+
+const response: Ifetch = reactive({
+  res: {},
+  err: {},
+  loading: true,
+});
+
 const steps = ref(1); //控制顯示的頁面
-
 const to_address = import.meta.env.VITE_APP_ADDRESS;
-
 const chainOptions = [
   {
     value: "TRC20",
@@ -21,7 +58,7 @@ const chainOptions = [
   },
 ];
 
-const chainOptionsDefaultValue = chainOptions[1].value
+const chainOptionsDefaultValue = chainOptions[1].value;
 
 const data = ref({
   txid: "",
@@ -51,21 +88,40 @@ const validate = reactive({
   },
 });
 
+const axiosFetch = async (configObj: any) => {
+  const { axiosInstance, method, url, requestConfig = {} } = configObj;
+  try {
+    response.loading = true;
+
+    const res = await axiosInstance[method.toLowerCase()](
+      url,
+      requestConfig.rawData
+    );
+    // console.log("response: ", res)
+    response.res = res;
+  } catch (err: any) {
+    // console.log("err: ", err.response);
+    response.err = err.response;
+  } finally {
+    response.loading = false;
+  }
+};
+
 // 發送資料
 const checkForm = () => {
   // 判斷是否有錯誤未修正
   if (checkValidate()) {
     alert("填寫的資料有錯誤未修正!");
     return false;
-  }else if (checkDataValue()) {
+  } else if (checkDataValue()) {
     alert("您有資料尚未填寫!");
     return false;
-  }else {
+  } else {
     steps.value++;
   }
 };
 
-const formSubmit = () => {
+const formSubmit = async () => {
   let rawData = {
     txid: data.value.txid,
     txtype: data.value.txtype,
@@ -74,7 +130,7 @@ const formSubmit = () => {
     import_amount: data.value.import_amount,
   };
 
-  axiosFetch({
+  await axiosFetch({
     axiosInstance: sendData,
     method: "POST",
     url: `/transaction`,
@@ -83,28 +139,20 @@ const formSubmit = () => {
     },
   });
 
-  watch(
-    res,
-    () => {
-      checkRes();
-    },
-    { deep: true }
-  );
+  const { res, err, loading } = response;
 
-  const checkRes = () => {
-    const { res: response, error, loading } = res;
-    console.log('res: ',res);
-    // console.log("err: ", error.value);
+  const result = res.data;
+  const error = err.data;
 
-    if (!loading && error.value || !response) {
-      const { email, verificationCode } = error;
-      alert('等待入金資料最多三筆，請稍後再試')
-    } else if (!loading && !error.value && response) {
-      steps.value++;
-    } else {
-      alert("伺服器忙碌中, 請稍後再試!");
-    }
-  };
+  console.log(response);
+
+  if (!loading && result?.code === 200) {
+    alert("等待入金資料最多三筆，請稍後再試");
+  } else if (!loading && result?.code === 201) {
+    steps.value++;
+  } else {
+    alert("伺服器忙碌中, 請稍後再試!");
+  }
 };
 
 const change = (val: string, keyName: string) => {
@@ -187,12 +235,11 @@ const resetErrorMessage = (key: string) => {
   }
 };
 
-const toFixed = (number, m) => {
+const toFixed = (number: number, m: number) => {
   if (typeof number !== "number") {
     throw new Error("number不是数字");
   }
-  let result = Math.round(Math.pow(10, m) * number) / Math.pow(10, m);
-  result = String(result);
+  let result = String(Math.round(Math.pow(10, m) * number) / Math.pow(10, m));
   if (result.indexOf(".") == -1) {
     if (m != 0) {
       result += ".";
@@ -382,16 +429,16 @@ const toFixed = (number, m) => {
           </div>
 
           <div class="return-link">
-            若資訊有誤, 請返回&nbsp<span
-              class="link cursor-pointer"
-              @click="steps--"
-              >上一頁</span
-            >
+            若資訊有誤, 請返回 &nbsp
+            <span class="link cursor-pointer" @click="steps--">上一頁</span>
           </div>
         </div>
       </div>
 
-      <div class="succes result-msg" v-if="steps === 3 && !res.error">
+      <div
+        class="succes result-msg"
+        v-if="!response.loading && steps === 3 && !response.err?.code"
+      >
         <div class="icon">
           <i class="fa-solid fa-circle-check"></i>
         </div>
@@ -401,7 +448,10 @@ const toFixed = (number, m) => {
         </div>
       </div>
 
-      <div class="failed result-msg" v-if="steps === 3 && res.error">
+      <div
+        class="failed result-msg"
+        v-if="!response.loading && steps === 3 && response.err?.code"
+      >
         <div class="icon">
           <i class="fa-solid fa-circle-xmark"></i>
         </div>
@@ -411,7 +461,10 @@ const toFixed = (number, m) => {
         </div>
       </div>
 
-      <div class="form-card" v-if="steps === 3 && !res.error">
+      <div
+        class="form-card"
+        v-if="!response.loading && steps === 3 && !response.err?.code"
+      >
         <h2 class="title">加值明細</h2>
         <p class="text">平台於確認收到款項後，自動將點數匯入您的投注錢包中。</p>
         <div class="list">
@@ -466,7 +519,10 @@ const toFixed = (number, m) => {
         </div>
       </div>
 
-      <div class="form-card" v-if="steps === 3 && res.error">
+      <div
+        class="form-card"
+        v-if="!response.loading && steps === 3 && response.err?.code"
+      >
         <p class="text">這裡會需要放一些告知用戶失敗的原因嗎</p>
         <div class="links">
           <router-link to="/user_centre" class="link">返回首頁</router-link>

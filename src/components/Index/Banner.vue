@@ -3,19 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination } from "swiper";
 
 const modules = [Navigation, Pagination];
-
-const pagination = {
-  el: ".banner-swiper-pagination",
-  type: "custom",
-  renderCustom: function (swiper, current, total) {
-    return "0" + current + "/" + ("0" + total);
-  },
-};
-
-const navigation = {
-  nextEl: ".banner-swiper-button-next",
-  prevEl: ".banner-swiper-button-prev",
-};
 </script>
       
 <template>
@@ -24,8 +11,17 @@ const navigation = {
       <swiper
         class="bannerSwiper"
         :modules="modules"
-        :navigation="navigation"
-        :pagination="pagination"
+        :navigation="{
+          nextEl: '.banner-swiper-button-next',
+          prevEl: '.banner-swiper-button-prev',
+        }"
+        :pagination="{
+          el: '.banner-swiper-pagination',
+          type: 'custom',
+          renderCustom: (swiper, current, total) => {
+            return '0' + current + '/' + ('0' + total);
+          },
+        }"
         :grabCursor="true"
       >
         <swiper-slide class="info">

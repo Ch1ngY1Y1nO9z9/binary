@@ -3,28 +3,6 @@ import { Swiper, SwiperSlide } from "swiper/vue";
 import { Navigation, Pagination } from "swiper";
 
 const modules = [Navigation, Pagination];
-
-const IntroSwiperOptions = {
-  pagination: {
-    el: ".intro-swiper-pagination",
-    type: "custom",
-    renderCustom: function (swiper, current, total) {
-      return "0" + current + "/" + ("0" + total);
-    },
-  },
-  navigation: {
-    nextEl: ".intro-swiper-button-next",
-    prevEl: ".intro-swiper-button-prev",
-  },
-};
-
-const featureSwiperOptions = {
-  slidesPerView: "auto",
-  navigation: {
-    nextEl: ".feature-swiper-button-next",
-    prevEl: ".feature-swiper-button-prev",
-  },
-};
 </script>
       
 <template>
@@ -42,7 +20,7 @@ const featureSwiperOptions = {
           :pagination="{
             el: '.intro-swiper-pagination',
             type: 'custom',
-            renderCustom: function (swiper, current, total) {
+            renderCustom: (swiper, current, total) => {
               return '0' + current + '/' + ('0' + total);
             },
           }"

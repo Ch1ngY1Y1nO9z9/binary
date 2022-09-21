@@ -1,31 +1,45 @@
 <script lang="ts" setup>
 import { onMounted, reactive, ref, watch } from "vue";
 import { useRouter } from "vue-router";
-import Input from "../../utilities/input/Input.vue";
+import Input from "/src/utilities/input/Input.vue";
 // axios
-import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
 
 // 取得來自網址query的token
 import routeName from "../../utilities/getRoute/getRoute";
 
-const [res, axiosFetch] = useAxiosFunction();
+// const [res, axiosFetch] = useAxiosFunction();
+interface IfetchResult {
+  data?: any;
+}
+
+interface Iresult {
+  data?: object;
+  code?: number;
+  message?: string;
+}
+
+const response = reactive({
+  res: {},
+  loading: true,
+});
+
 const steps = ref(1); //控制顯示的頁面
-const router = useRouter()
-const token = routeName().query.token
+const router = useRouter();
+const token = routeName().query.token;
 
-onMounted(()=>{
-    // 驅逐沒帶query的訪問
-    if(!token){
-        router.push({ path: "/" });
-    }
-})
-
+onMounted(() => {
+  // 驅逐沒帶query的訪問
+  if (!token) {
+    router.push({ path: "/" });
+  }
+});
 
 const data = ref({
   password: "",
   passwordConfirmation: "",
-  token
+  token,
 }); //測試用資料
 
 const validate = reactive({
@@ -39,8 +53,26 @@ const validate = reactive({
   },
 });
 
+const axiosFetch = async (configObj: any) => {
+  const { axiosInstance, method, url, requestConfig = {} } = configObj;
+  try {
+    response.loading = true;
+
+    const res = await axiosInstance[method.toLowerCase()](
+      url,
+      requestConfig.rawData
+    );
+    // console.log("response: ", res)
+    response.res = res;
+  } catch (err: any) {
+    console.log("err: ", err.response);
+  } finally {
+    response.loading = false;
+  }
+};
+
 // 發送資料
-const formSubmit = () => {
+const formSubmit = async () => {
   // 判斷是否有錯誤未修正
   if (checkValidate()) {
     alert("填寫的資料有錯誤未修正!");
@@ -58,49 +90,32 @@ const formSubmit = () => {
     passwordConfirmation: data.value.passwordConfirmation,
   };
 
-  //   無法使用暫時關著
-  //   axiosFetch({
-  //     axiosInstance: sendData,
-  //     method: "POST",
-  //     url: `/auth/forgot-password`,
-  //     requestConfig: {
-  //       rawData,
-  //     },
-  //   });
+  // api尚未完成 暫不啟用
+  // await axiosFetch({
+  //   axiosInstance: sendData,
+  //   method: "POST",
+  //   url: `/auth/forgot-password`,
+  //   requestConfig: {
+  //     rawData,
+  //   },
+  // });
 
-  watch(
-    res,
-    () => {
-      checkRes();
-    },
-    { deep: true }
-  );
-};
+  // const { res, loading }: { res: IfetchResult; loading: Boolean } = response;
 
-const checkRes = () => {
-  const { res: response, error, loading } = res;
+  // const result: Iresult = res.data;
 
-  // console.log(response, error, loading);
-  window.scrollTo(0, 0);
-
-  if (!loading && error) {
-    // console.log("err: ", error);
-    const { email, verificationCode } = error;
-
-    if (email) {
-      setErrorMessage(email[0], "email");
-    } else if (verificationCode) {
-      setErrorMessage(verificationCode[0], "verificationCode");
-    }
-  } else if (!loading && error && response) {
-    steps.value++;
-
-    time.value = 4;
-    redir.value = true;
-    setTimert.timer = setInterval(countDown, 1000);
-  } else {
-    alert("伺服器忙碌中, 請稍後再試!");
-  }
+  // if (!loading && result.code === 201) {
+  //   alert(result.message);
+  // } else if (
+  //   !loading &&
+  //   !result.code &&
+  //   result.message === "User successfully registered"
+  // ) {
+  //   steps.value++;
+  // } else {
+  //   console.log(res);
+  //   alert("伺服器忙碌中, 請稍後再試!");
+  // }
 };
 
 const change = (val: string, keyName: string) => {

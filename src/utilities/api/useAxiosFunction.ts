@@ -1,7 +1,7 @@
-import { onMounted, reactive} from 'vue'
+import { onMounted, reactive } from 'vue'
 
 
-export default function useAxiosFunction() {
+const useAxiosFunction = () => {
     const response = reactive({
         res: [],
         error: {},
@@ -9,7 +9,7 @@ export default function useAxiosFunction() {
         controller: {}
     })
 
-    const axiosFetch = async (configObj) => {
+    const axiosFetch = async (configObj: any) => {
         const { axiosInstance, method, url, requestConfig = {} } = configObj
         try {
             response.loading = true
@@ -19,7 +19,7 @@ export default function useAxiosFunction() {
             const res = await axiosInstance[method.toLowerCase()](url, requestConfig.rawData)
             // console.log("response: ", res)
             response.res = res
-        } catch (err) {
+        } catch (err: any) {
             console.log("err: ", err.response)
             response.error = err.response
         } finally {
@@ -29,8 +29,10 @@ export default function useAxiosFunction() {
 
     onMounted(() => {
         // 清除此reqeust減少暫存
-        return () => response.controller && response.controller.abort()
+        // return () => response.controller && response.controller.abort()
     })
 
     return [response, axiosFetch]
 }
+
+export default useAxiosFunction

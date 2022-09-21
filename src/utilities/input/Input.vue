@@ -2,20 +2,55 @@
 import { defineProps, reactive } from "vue";
 const emit = defineEmits(["change", "require", "reset", "checkPassword"]);
 const props = defineProps({
-  title: String,
-  type: String || undefined,
-  placeholder: String || undefined,
-  model: String || undefined,
-  msg: String || undefined,
-  status: Boolean || false,
-  rules: String || undefined,
-  name: String,
-  address: Boolean || false,
-  password: Boolean || false,
+  title: {
+    type: String,
+    required: true,
+  },
+  type: {
+    type: String,
+    default: "",
+  },
+  placeholder: {
+    type: String,
+    default: "",
+  },
+  model: {
+    type: String,
+    default: "",
+  },
+  msg: {
+    type: String,
+    default: "",
+  },
+  status: {
+    type: Boolean,
+    default: false,
+  },
+  rules: {
+    type: String,
+    default: "",
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  address: {
+    type: Boolean,
+    default: false,
+  },
+  password: {
+    type: Boolean,
+    default: false,
+  },
 });
 
-const checkValue = (e) => {
-  if (props.type === "text" || props.type === 'password' || props.type === 'tel' || props.type === 'email') {
+const checkValue = (e: any) => {
+  if (
+    props.type === "text" ||
+    props.type === "password" ||
+    props.type === "tel" ||
+    props.type === "email"
+  ) {
     if (e.target.value.length == 0 || e.target.value.trim() == "") {
       emit("require", "此欄位不可留空!", props.name);
       emit("change", "", props.name);
@@ -48,11 +83,11 @@ const checkValue = (e) => {
   }
 };
 
-const checkRules = (e) => {
+const checkRules = (e: any) => {
   if (props.rules == "NumberOnly") {
     e.target.value = e.target.value.replace(/[^0-9-]/g, "");
     checkValue(e);
-  }else{
+  } else {
     checkValue(e);
   }
 };

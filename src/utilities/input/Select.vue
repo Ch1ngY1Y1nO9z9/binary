@@ -1,16 +1,38 @@
 <script lang="ts" setup>
-import { defineProps, reactive } from "vue";
+import { defineProps, reactive, PropType } from "vue";
 const emit = defineEmits(["change"]);
+interface option {
+  value: string;
+}
+
 const props = defineProps({
-  title: String,
-  model: String || undefined,
-  msg: String || undefined,
-  name: String,
-  options: Array || [{}],
-  defaultValue: String || "",
+  title: {
+    type: String,
+    required: true,
+  },
+  model: {
+    type: String,
+    default: '',
+  },
+  msg: {
+    type: String,
+    default: '',
+  },
+  name: {
+    type: String,
+    required: true,
+  },
+  options: {
+    type: Array as PropType<option[]>,
+    required: true,
+  },
+  defaultValue: {
+    type: String,
+    default: '',
+  },
 });
 
-const checkValue = (e) => {
+const checkValue = (e: any) => {
   emit("change", e.target.value, props.name);
 };
 </script>

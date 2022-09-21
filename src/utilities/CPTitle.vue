@@ -1,10 +1,22 @@
 <script lang="ts" setup>
 import { defineProps } from "vue";
 const props = defineProps({
-  title: String,
-  subtitle: String,
-  returnText: String,
-  returnLink: String,
+  title: {
+    type: String,
+    required: true,
+  },
+  subtitle: {
+    type: String,
+    required: true,
+  },
+  returnText: {
+    type: String,
+    required: true,
+  },
+  returnLink: {
+    type: String,
+    required: true,
+  },
 });
 
 </script>

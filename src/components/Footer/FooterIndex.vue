@@ -1,6 +1,3 @@
-<script setup>
-</script>
-
 <template>
   <footer>
     <div class="footer-flowers-left">

@@ -1,19 +1,32 @@
 <script lang="ts" setup>
-import { ref, reactive } from "vue";
-import Input from "../../utilities/input/Input.vue";
-import ValidateInput from "../../utilities/input/ValidateInput.vue";
+import { ref, reactive, watch, defineProps, PropType } from "vue";
+import Input from "/src/utilities/input/Input.vue";
+import ValidateInput from "/src/utilities/input/ValidateInput.vue";
 // axios
-import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
-const [res, axiosFetch] = useAxiosFunction();
+// const [res, axiosFetch] = useAxiosFunction();
+interface IfetchResult {
+  data?: any;
+}
+
+interface Iresult {
+  data?: object;
+  code?: number;
+  message?: string;
+}
+
+const response = reactive({
+  res: {},
+  loading: true,
+});
 
 const time = ref(0); //定時器
-const msgButtonSwitch = ref(false)
+const msgButtonSwitch = ref(false);
 const buttonSwitch = ref(true);
-let setTimert = {
-  timer: null,
-};
-const switchButton = (type) => {
+let timer: string | number | NodeJS.Timer | null | undefined = null;
+
+const switchButton = (type: string) => {
   // 切換表單時重設另一邊的狀態和資料
   buttonSwitch.value = !buttonSwitch.value;
 
@@ -86,8 +99,26 @@ const validate = reactive({
   },
 });
 
+const axiosFetch = async (configObj: any) => {
+  const { axiosInstance, method, url, requestConfig = {} } = configObj;
+  try {
+    response.loading = true;
+
+    const res = await axiosInstance[method.toLowerCase()](
+      url,
+      requestConfig.rawData
+    );
+    // console.log("response: ", res)
+    response.res = res;
+  } catch (err: any) {
+    console.log("err: ", err.response);
+  } finally {
+    response.loading = false;
+  }
+};
+
 // 發送資料
-const formSubmit = (type) => {
+const formSubmit = async (type: string) => {
   // 判斷是否有錯誤未修正
   if (checkValidate()) {
     alert("填寫的資料有錯誤未修正!");
@@ -99,6 +130,7 @@ const formSubmit = (type) => {
     alert("請正確填寫資料!");
     return false;
   }
+  let rawData: object = {};
 
   if (type === "account") {
     let rawData = {
@@ -115,39 +147,35 @@ const formSubmit = (type) => {
   }
 
   //   無法使用暫時關著
-  //   axiosFetch({
-  //     axiosInstance: sendData,
-  //     method: "POST",
-  //     url: `/auth/forgot-password`,
-  //     requestConfig: {
-  //       rawData,
-  //     },
-  //   });
-
-  watch(
-    res,
-    () => {
-      checkRes();
+  await axiosFetch({
+    axiosInstance: sendData,
+    method: "POST",
+    url: `/auth/forgot-password`,
+    requestConfig: {
+      rawData,
     },
-    { deep: true }
-  );
-};
+  });
 
-const checkRes = () => {
-  const { res: response, error, loading } = res;
+  const { res, loading }: { res: IfetchResult; loading: Boolean } = response;
 
-  // console.log(response, error, loading);
-  if (!loading && error) {
-    // console.log("err: ", error);
-    const { email, verificationCode } = error;
+  const result: Iresult = res.data;
 
-    if (email) {
-      setErrorMessage(email[0], "email");
-    } else if (verificationCode) {
-      setErrorMessage(verificationCode[0], "verificationCode");
-    }
-  } else if (!loading && error && response) {
+  if (!loading && result.code === 201) {
+    alert(result.message);
+    // if (email) {
+    //   setErrorMessage(email[0], "email");
+    // } else if (verificationCode) {
+    //   setErrorMessage(verificationCode[0], "verificationCode");
+    // } else if (password) {
+    //   setErrorMessage(password[0], "password");
+    // }
+  } else if (
+    !loading &&
+    !result.code &&
+    result.message === "User successfully registered"
+  ) {
   } else {
+    console.log(res);
     alert("伺服器忙碌中, 請稍後再試!");
   }
 };
@@ -229,7 +257,7 @@ const resetErrorMessage = (key: string) => {
 const sendValidateCode = () => {
   msgButtonSwitch.value = true;
   time.value = 60;
-  setTimert.timer = setInterval(countDown, 1000);
+  timer = setInterval(countDown, 1000);
   alert("簡訊驗證碼已發送, 請確認手機是否收到簡訊!");
 };
 
@@ -238,11 +266,10 @@ const countDown = () => {
   if (time.value > 0) {
     time.value--;
   } else {
-    clearInterval(setTimert.timer);
+    // clearInterval(timer);
     buttonSwitch.value = false;
   }
 };
-
 </script>
 
 <template>

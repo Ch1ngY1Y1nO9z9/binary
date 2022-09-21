@@ -4,35 +4,35 @@ import { Navigation } from "swiper";
 
 const modules = [Navigation];
 
-const newsSwiperOption = {
-  navigation: {
-    nextEl: ".news-swiper-button-next",
-    prevEl: ".news-swiper-button-prev",
-  },
-  slidesPerView: "auto",
-  spaceBetween: 30,
-  freeMode: true,
-  on: {
-    resize: function () {
-      this.update();
-    },
-  },
-};
+// const newsSwiperOption = {
+//   navigation: {
+//     nextEl: ".news-swiper-button-next",
+//     prevEl: ".news-swiper-button-prev",
+//   },
+//   slidesPerView: "auto",
+//   spaceBetween: 30,
+//   freeMode: true,
+//   on: {
+//     resize: function () {
+//       this.update();
+//     },
+//   },
+// };
 
-const popularSwiperOption = {
-  navigation: {
-    nextEl: ".popular-swiper-button-next",
-    prevEl: ".popular-swiper-button-prev",
-  },
-  slidesPerView: "auto",
-  spaceBetween: 30,
-  freeMode: true,
-  on: {
-    resize: function () {
-      this.update();
-    },
-  },
-};
+// const popularSwiperOption = {
+//   navigation: {
+//     nextEl: ".popular-swiper-button-next",
+//     prevEl: ".popular-swiper-button-prev",
+//   },
+//   slidesPerView: "auto",
+//   spaceBetween: 30,
+//   freeMode: true,
+//   on: {
+//     resize: function () {
+//       this.update();
+//     },
+//   },
+// };
 </script>
       
 <template>

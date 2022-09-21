@@ -32,7 +32,7 @@ const swiperOptions = {
       <swiper
         class="topNewsSwiper"
         :navigation="true"
-        :effect="coverflow"
+        effect="coverflow"
         :grabCursor="true"
         :centeredSlides="true"
       >
