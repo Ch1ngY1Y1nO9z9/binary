@@ -15,7 +15,7 @@ const props = defineProps({
 });
 
 const checkValue = (e) => {
-  if (props.type === "text") {
+  if (props.type === "text" || props.type === 'password' || props.type === 'tel') {
     if (e.target.value.length == 0 || e.target.value.trim() == "") {
       emit("require", "此欄位不可留空!", props.name);
       emit("change", "", props.name);
@@ -52,6 +52,8 @@ const checkRules = (e) => {
   if (props.rules == "NumberOnly") {
     e.target.value = e.target.value.replace(/[^0-9-]/g, "");
     checkValue(e);
+  }else{
+    checkValue(e);
   }
 };
 </script>
@@ -79,7 +81,7 @@ const checkRules = (e) => {
         :value="props.model"
         @keyup="checkRules"
         @blur="checkValue"
-        min="0.01"
+        min="0.1"
         step="0.1"
       />
     </div>

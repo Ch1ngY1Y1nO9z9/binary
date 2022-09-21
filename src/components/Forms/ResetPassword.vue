@@ -62,7 +62,7 @@ const formSubmit = () => {
   //   axiosFetch({
   //     axiosInstance: sendData,
   //     method: "POST",
-  //     url: `/api/auth/forgot-password`,
+  //     url: `/auth/forgot-password`,
   //     requestConfig: {
   //       rawData,
   //     },
@@ -206,4 +206,5 @@ const resetErrorMessage = (key: string) => {
   </div>
 </template>
 
+<style src="../../assets/css/layout.css" scoped></style>  
 <style src="../../assets/css/account/account.scss" scoped></style>

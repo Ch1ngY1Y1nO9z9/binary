@@ -93,7 +93,7 @@ const formSubmit = () => {
   axiosFetch({
     axiosInstance: sendData,
     method: "POST",
-    url: `/api/auth/register`,
+    url: `/auth/register`,
     requestConfig: {
       rawData,
     },
@@ -421,7 +421,8 @@ const sendValidateCode = () => {
   </div>
 </template>
 
-<style src="../../assets/css/login/login.css" scoped></style>
+<style src="../../assets/css/layout.css" scoped></style>  
+<style src="../../assets/css/login/login.scss" scoped></style>
 <style lang="css" scoped>
 .input-row .input-col label .checkbox-mask.clicked svg {
   display: block;

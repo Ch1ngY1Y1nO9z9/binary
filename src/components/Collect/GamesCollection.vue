@@ -318,4 +318,5 @@
   </div>
 </template>
 
+<style lang="scss" scoped src="../../assets/css/layout.scss"></style>
 <style lang="scss" scoped src="../../assets/css/collect/collect.scss"></style>

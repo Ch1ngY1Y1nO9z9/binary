@@ -5,17 +5,19 @@ import { resolve } from "path";
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [vue()],
-  resolve:{
+  resolve: {
     alias: {
       '@': resolve(__dirname, './src')
     }
   },
-  css: {
-    preprocessorOptions: {
-      scss: {
-        additionalData: `
-          @import "./src/assets/css/layout.scss";
-        `
+  server: {
+    host: '127.0.0.1',
+    port: 5173,
+    proxy: {
+      '/api': {
+        target: 'https://main.oaostand.xyz/',
+        changeOrigin: true,
+        secure: false
       }
     }
   }

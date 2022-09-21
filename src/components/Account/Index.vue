@@ -23,7 +23,7 @@ const {
 const [response, refetch] = useAxios({
   axiosInstance: apiSetting,
   method: "GET",
-  url: "/api/auth/user-profile",
+  url: "/auth/user-profile",
   requestConfig: {
     data: {},
   },
@@ -100,5 +100,6 @@ const formRow = [
     </div>
   </div>
 </template>
+
   <style src="../../assets/css/layout.css" scoped></style>  
   <style src="../../assets/css/account/account.css" scoped></style>

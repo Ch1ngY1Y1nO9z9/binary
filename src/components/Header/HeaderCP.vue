@@ -90,7 +90,7 @@ const navButtons = [
     <div class="custom-container c-1620 flex">
       <div class="header-l flex-none">
         <router-link to="/" class="logo">
-          <img src="/images/logo.svg" alt="logo" />
+          <img src="/images/layout_logo.svg" alt="logo" />
           <span class="site-name">共同市場</span>
         </router-link>
       </div>

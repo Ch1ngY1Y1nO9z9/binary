@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref } from "vue";
+import { reactive, ref, watch } from "vue";
 import Input from "../../utilities/input/Input.vue";
 import Select from "../../utilities/input/Select.vue";
 
@@ -10,13 +10,7 @@ import sendData from "../../api/getDataFunction";
 const [res, axiosFetch] = useAxiosFunction();
 const steps = ref(1); //控制顯示的頁面
 
-const data = ref({
-  txid: "",
-  txtype: "",
-  from_address: "",
-  password: "",
-  import_amount: '0',
-}); //預設資料
+const to_address = import.meta.env.VITE_APP_ADDRESS;
 
 const chainOptions = [
   {
@@ -26,6 +20,17 @@ const chainOptions = [
     value: "ERC20",
   },
 ];
+
+const chainOptionsDefaultValue = chainOptions[1].value
+
+const data = ref({
+  txid: "",
+  txtype: chainOptionsDefaultValue,
+  from_address: "",
+  to_address,
+  password: "",
+  import_amount: "1",
+}); //預設資料
 
 const validate = reactive({
   txid: {
@@ -47,24 +52,20 @@ const validate = reactive({
 });
 
 // 發送資料
-const formSubmit = () => {
-  // 判斷是否勾選閱讀規章
-  if (!checkBox.value) {
-    alert("請先閱讀規章!");
-    return false;
-  }
+const checkForm = () => {
   // 判斷是否有錯誤未修正
   if (checkValidate()) {
     alert("填寫的資料有錯誤未修正!");
     return false;
-  }
-
-  // 判斷是否有資料未填
-  if (checkDataValue()) {
+  }else if (checkDataValue()) {
     alert("您有資料尚未填寫!");
     return false;
+  }else {
+    steps.value++;
   }
+};
 
+const formSubmit = () => {
   let rawData = {
     txid: data.value.txid,
     txtype: data.value.txtype,
@@ -76,7 +77,7 @@ const formSubmit = () => {
   axiosFetch({
     axiosInstance: sendData,
     method: "POST",
-    url: `/api/auth/register`,
+    url: `/transaction`,
     requestConfig: {
       rawData,
     },
@@ -92,20 +93,13 @@ const formSubmit = () => {
 
   const checkRes = () => {
     const { res: response, error, loading } = res;
+    console.log('res: ',res);
+    // console.log("err: ", error.value);
 
-    // console.log(response, error, loading);
-    window.scrollTo(0, 0);
-
-    if (!loading && error) {
-      // console.log("err: ", error);
+    if (!loading && error.value || !response) {
       const { email, verificationCode } = error;
-
-      if (email) {
-        setErrorMessage(email[0], "email");
-      } else if (verificationCode) {
-        setErrorMessage(verificationCode[0], "verificationCode");
-      }
-    } else if (!loading && error && response) {
+      alert('等待入金資料最多三筆，請稍後再試')
+    } else if (!loading && !error.value && response) {
       steps.value++;
     } else {
       alert("伺服器忙碌中, 請稍後再試!");
@@ -115,7 +109,6 @@ const formSubmit = () => {
 
 const change = (val: string, keyName: string) => {
   getFormColumn(val, keyName);
-  console.log(data.value)
 };
 
 const require = (msg: string, key: string) => {
@@ -193,6 +186,27 @@ const resetErrorMessage = (key: string) => {
     validate.import_amount.status = false;
   }
 };
+
+const toFixed = (number, m) => {
+  if (typeof number !== "number") {
+    throw new Error("number不是数字");
+  }
+  let result = Math.round(Math.pow(10, m) * number) / Math.pow(10, m);
+  result = String(result);
+  if (result.indexOf(".") == -1) {
+    if (m != 0) {
+      result += ".";
+      result += new Array(m + 1).join("0");
+    }
+  } else {
+    let arr = result.split(".");
+    if (arr[1].length < m) {
+      arr[1] += new Array(m - arr[1].length + 1).join("0");
+    }
+    result = arr.join(".");
+  }
+  return result;
+};
 </script>
 
 <template>
@@ -202,6 +216,7 @@ const resetErrorMessage = (key: string) => {
         <Select
           title="鏈"
           name="txtype"
+          :defaultValue="chainOptionsDefaultValue"
           :options="chainOptions"
           :model="data.txtype"
           @change="change"
@@ -274,12 +289,12 @@ const resetErrorMessage = (key: string) => {
           <div class="right">
             <div class="spend">
               <span class="title">花費</span>
-              {{data.import_amount}}
+              {{ data.import_amount }}
             </div>
             <hr />
             <div class="buy">
               <span class="title">買入</span>
-              {{(parseInt(data.import_amount)*31).toFixed(3)}}
+              {{ toFixed(Number(data.import_amount) * 31, 2) }}
             </div>
           </div>
         </div>
@@ -313,11 +328,154 @@ const resetErrorMessage = (key: string) => {
           @reset="reset"
         />
         <div class="submit">
-          <button type="submit">下一步</button>
+          <button type="button" @click="checkForm">下一步</button>
         </div>
       </form>
+
+      <div class="form-card" v-if="steps === 2">
+        <h2 class="title">加值確認</h2>
+        <p class="text">
+          請確認您輸入的資訊是否有誤，平台於確認收到款項後，自動將點數匯入您的投注錢包中。
+        </p>
+        <div class="list">
+          <div class="row">
+            <div class="col">鍊</div>
+            <div class="col">{{ data.txtype }}</div>
+          </div>
+          <div class="row">
+            <div class="col">官方收幣地址</div>
+            <div class="col">{{ data.to_address }}</div>
+          </div>
+          <div class="row">
+            <div class="col">會員發幣地址</div>
+            <div class="col">{{ data.from_address }}</div>
+          </div>
+          <div class="row point">
+            <div class="left">
+              <div class="col">入金金額 (USDT)</div>
+              <div class="col">
+                <span class="icon">
+                  <i class="fa-solid fa-up-down"></i>
+                </span>
+                買入點數
+              </div>
+            </div>
+            <div class="right">
+              <div class="col">{{ data.import_amount }}</div>
+              <div class="col">
+                {{ toFixed(Number(data.import_amount) * 31, 2) }}
+              </div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">TXID</div>
+            <div class="col">{{ data.txid }}</div>
+          </div>
+          <div class="row pic">
+            <div class="col">交易明細截圖</div>
+            <div class="picture">
+              <img src="" alt="" />
+            </div>
+          </div>
+          <div class="submit">
+            <button type="button" @click="formSubmit">確認加值</button>
+          </div>
+
+          <div class="return-link">
+            若資訊有誤, 請返回&nbsp<span
+              class="link cursor-pointer"
+              @click="steps--"
+              >上一頁</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div class="succes result-msg" v-if="steps === 3 && !res.error">
+        <div class="icon">
+          <i class="fa-solid fa-circle-check"></i>
+        </div>
+        <div class="msg-detail">
+          <div class="title">加值成功</div>
+          <div class="text">您可以在會員功能中找到該操作紀錄</div>
+        </div>
+      </div>
+
+      <div class="failed result-msg" v-if="steps === 3 && res.error">
+        <div class="icon">
+          <i class="fa-solid fa-circle-xmark"></i>
+        </div>
+        <div class="msg-detail">
+          <div class="title">加值失敗</div>
+          <div class="text">請確認資訊後，重新操作。</div>
+        </div>
+      </div>
+
+      <div class="form-card" v-if="steps === 3 && !res.error">
+        <h2 class="title">加值明細</h2>
+        <p class="text">平台於確認收到款項後，自動將點數匯入您的投注錢包中。</p>
+        <div class="list">
+          <div class="row">
+            <div class="col">單號</div>
+            <div class="col">123456789012345</div>
+          </div>
+          <div class="row">
+            <div class="col">訂單時間</div>
+            <div class="col">2022/07/20 17:56</div>
+          </div>
+          <div class="row">
+            <div class="col">鍊</div>
+            <div class="col">TRC、ERC</div>
+          </div>
+          <div class="row">
+            <div class="col">官方收幣地址</div>
+            <div class="col">AABB12345666</div>
+          </div>
+          <div class="row">
+            <div class="col">會員發幣地址</div>
+            <div class="col">CBA987654321</div>
+          </div>
+          <div class="row point">
+            <div class="left">
+              <div class="col">入金金額 (USDT)</div>
+              <div class="col">
+                <span class="icon">
+                  <i class="fa-solid fa-up-down"></i>
+                </span>
+                買入點數
+              </div>
+            </div>
+            <div class="right">
+              <div class="col">1,000</div>
+              <div class="col">100,000</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">TXID</div>
+            <div class="col">DEF987654321</div>
+          </div>
+          <div class="row pic">
+            <div class="col">交易明細截圖</div>
+            <div class="picture">
+              <img src="" alt="" />
+            </div>
+          </div>
+          <div class="submit">
+            <router-link to="/user_centre">返回會員中心</router-link>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-card" v-if="steps === 3 && error">
+        <p class="text">這裡會需要放一些告知用戶失敗的原因嗎</p>
+        <div class="links">
+          <router-link to="/user_centre" class="link">返回首頁</router-link>
+          <router-link to="/user_centre" class="link">會員中心</router-link>
+        </div>
+      </div>
     </div>
   </div>
 </template>
 
+<style src="../../assets/css/layout.css" scoped></style>
 <style src="../../assets/css/purse/purse.scss" scoped></style>

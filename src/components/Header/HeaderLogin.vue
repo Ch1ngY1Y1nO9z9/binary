@@ -378,5 +378,5 @@ const navButtons = [
   </div>
 </template> 
 
-    
-<style src="../../assets/css/login/login.scss" scoped></style>  
+<style src="../../assets/css/layout.css" scoped></style>  
+<style src="../../assets/css/login/login.css" scoped></style>  

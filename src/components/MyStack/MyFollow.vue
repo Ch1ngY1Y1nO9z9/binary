@@ -232,4 +232,5 @@
         </div>
 </template>
 
+<style lang="scss" scoped src="../../assets/css/layout.scss"></style>
 <style src="../../assets/css/mystack/mystack.scss" scoped></style>

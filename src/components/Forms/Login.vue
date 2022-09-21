@@ -49,7 +49,7 @@ const formSubmit = () => {
   axiosFetch({
     axiosInstance: sendData,
     method: "POST",
-    url: `/api/auth/login`,
+    url: `/auth/login`,
     requestConfig: {
       rawData,
     },
@@ -184,4 +184,5 @@ function resetErrorMessage(key) {
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>
+<style src="../../assets/css/layout.css" scoped></style>  
+<style src="../../assets/css/login/login.scss" scoped></style>

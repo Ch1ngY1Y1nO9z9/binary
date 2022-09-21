@@ -186,12 +186,12 @@ const genderCheckbox = ref(gender);
             </div>
             <span class="msg"></span>
             <div class="notice">
-              <a href="../login/forgotpassword.html">忘記密碼?</a>
+              <router-link to="/forgotpassword">忘記密碼?</router-link>
             </div>
           </div>
 
           <div class="links">
-            <a href="./index.html" class="link">取消</a>
+            <router-link to="/account/profile" class="link">取消</router-link>
             <button type="submit" class="link">儲存</button>
           </div>
         </div>
@@ -201,4 +201,4 @@ const genderCheckbox = ref(gender);
 </template>
 
 <style src="../../assets/css/layout.css" scoped></style>  
-  <style src="../../assets/css/account/account.css" scoped></style>
+<style src="../../assets/css/account/account.scss" scoped></style>

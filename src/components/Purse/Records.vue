@@ -349,4 +349,5 @@
   </div>
 </template>
 
+<style lang="scss" scoped src="../../assets/css/layout.scss"></style>
 <style src="../../assets/css/purse/purse.scss" scoped></style>
