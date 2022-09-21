@@ -9,7 +9,7 @@ const [res, axiosFetch] = useAxiosFunction();
 const steps = ref(1); //控制顯示的頁面
 
 const data = ref({
-  email: "imtestingtheregister@gmail.com",
+  email: "",
 }); //測試用資料
 
 const validate = reactive({

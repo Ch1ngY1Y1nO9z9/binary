@@ -25,11 +25,10 @@ const [response, refetch] = useAxios({
   method: "GET",
   url: "/auth/user-profile",
   requestConfig: {
-    data: {},
   },
 });
 
-console.log(response);
+// console.log(response);
 
 // 表單打包
 const formRow = [

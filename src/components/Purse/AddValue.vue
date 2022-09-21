@@ -466,7 +466,7 @@ const toFixed = (number, m) => {
         </div>
       </div>
 
-      <div class="form-card" v-if="steps === 3 && error">
+      <div class="form-card" v-if="steps === 3 && res.error">
         <p class="text">這裡會需要放一些告知用戶失敗的原因嗎</p>
         <div class="links">
           <router-link to="/user_centre" class="link">返回首頁</router-link>

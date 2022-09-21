@@ -15,7 +15,7 @@ const props = defineProps({
 });
 
 const checkValue = (e) => {
-  if (props.type === "text" || props.type === 'password' || props.type === 'tel') {
+  if (props.type === "text" || props.type === 'password' || props.type === 'tel' || props.type === 'email') {
     if (e.target.value.length == 0 || e.target.value.trim() == "") {
       emit("require", "此欄位不可留空!", props.name);
       emit("change", "", props.name);

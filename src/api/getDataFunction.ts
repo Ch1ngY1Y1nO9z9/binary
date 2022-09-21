@@ -5,7 +5,7 @@ import { storeToRefs } from "pinia";
 const BASE_URL = `${import.meta.env.VITE_TABLET_HOST}api`
 
 const useUserStore = store.useUserStore(pinia);
-const { user } = useUserStore;
+const { access_token } = useUserStore.user;
 
 // 建立axios request的實例
 export default axios.create({
@@ -13,7 +13,6 @@ export default axios.create({
     headers: {
         'Content-Type': 'application/json',
         'Accept': 'application/json',
-        'Authorization': 'bearer ' + user.access_token
     }
 })
 

@@ -8,6 +8,7 @@ import sendData from "../../api/getDataFunction";
 const [res, axiosFetch] = useAxiosFunction();
 
 const time = ref(0); //定時器
+const msgButtonSwitch = ref(false)
 const buttonSwitch = ref(true);
 let setTimert = {
   timer: null,
@@ -136,8 +137,6 @@ const checkRes = () => {
   const { res: response, error, loading } = res;
 
   // console.log(response, error, loading);
-  window.scrollTo(0, 0);
-
   if (!loading && error) {
     // console.log("err: ", error);
     const { email, verificationCode } = error;
@@ -228,7 +227,7 @@ const resetErrorMessage = (key: string) => {
 };
 
 const sendValidateCode = () => {
-  buttonSwitch.value = true;
+  msgButtonSwitch.value = true;
   time.value = 60;
   setTimert.timer = setInterval(countDown, 1000);
   alert("簡訊驗證碼已發送, 請確認手機是否收到簡訊!");
@@ -241,10 +240,6 @@ const countDown = () => {
   } else {
     clearInterval(setTimert.timer);
     buttonSwitch.value = false;
-    if (redir.value) {
-      redir.value = false;
-      router.push({ path: "/login" });
-    }
   }
 };
 
@@ -384,7 +379,7 @@ const countDown = () => {
           title="簡訊驗證碼(6碼)"
           type="text"
           placeholder="輸入驗證碼"
-          :buttonSwitch="buttonSwitch"
+          :buttonSwitch="msgButtonSwitch"
           name="verificationCode"
           :model="wallet_data.verificationCode"
           :status="validate.verificationCode.status"

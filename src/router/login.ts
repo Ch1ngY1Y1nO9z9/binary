@@ -25,12 +25,12 @@ const Unvertify = {
 const Vertify = {
     path: '/email_vertify',
     name: 'Vertify',
-    component: ForgetPasswordTemplate
+    component: VertifyTemplate
 }
 const ForgetPassword = {
     path: '/forgotPassword',
     name: 'ForgetPassword',
-    component: VertifyTemplate
+    component: ForgetPasswordTemplate
 }
 const ResetPassword = {
     path: '/resetPassword',

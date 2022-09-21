@@ -1,3 +1,19 @@
+<script lang="ts" setup>
+// 引入寫好的axios(並非從套件來, 而是先設定好的實例)
+import useAxios from "../../utilities/api/useAxios";
+import apiSetting from "../../api/basicSetting";
+
+const [response, refetch] = useAxios({
+  axiosInstance: apiSetting,
+  method: "GET",
+  url: "/auth/user-friends",
+  requestConfig: {},
+});
+
+// const { res, error, loading } = response;
+
+</script>
+
 <template>
   <div class="commission">
     <div class="custom-container c-840 p-200">

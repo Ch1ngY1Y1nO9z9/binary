@@ -4,14 +4,14 @@ const useUserStore = defineStore('User', {
     state: () => ({
         user: {
             access_token: '',
-            name: 'dummy01',
-            gender: 'male',
-            email: 'imtestingtheregister@gmail.com',
+            name: '',
+            gender: '',
+            email: '',
             wallet_address: '',
             profile_photo_url: '',
-            country: '台灣',
-            city: '台中市',
-            birthday: '1971-01-01',
+            country: '',
+            city: '',
+            birthday: '',
             invitation_code: '',
             phone: '',
             user_pointA: 0,
@@ -21,19 +21,20 @@ const useUserStore = defineStore('User', {
     getters: {},
     actions: {
         storeLogin(res) {
-            this.user.access_token = res.accessToken,
-                this.user.name = res.user.name,
-                this.user.gender = res.user.gender,
-                this.user.email = res.user.email,
-                this.user.wallet_address = res.user.walletAddress,
-                this.user.profile_photo_url = res.user.profilePhotoUrl,
-                this.user.country = res.user.country,
-                this.user.city = res.user.city,
-                this.user.birthday = res.user.birthday,
-                this.user.invitation_code = res.user.invitationCode,
-                this.user.phone = res.user.phone,
-                this.user.user_pointA = res.user.userPointA,
-                this.user.user_pointB = res.user.userPointB
+            const {data} = res.data
+            this.user.access_token = data.accessToken,
+                this.user.name = data.user.name,
+                this.user.gender = data.user.gender,
+                this.user.email = data.user.email,
+                this.user.wallet_address = data.user.walletAddress,
+                this.user.profile_photo_url = data.user.profilePhotoUrl,
+                this.user.country = data.user.country,
+                this.user.city = data.user.city,
+                this.user.birthday = data.user.birthday,
+                this.user.invitation_code = data.user.invitationCode,
+                this.user.phone = data.user.phone,
+                this.user.user_pointA = data.user.userPointA,
+                this.user.user_pointB = data.user.userPointB
         }
     },
 })

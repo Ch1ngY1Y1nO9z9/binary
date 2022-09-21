@@ -109,26 +109,27 @@ const formSubmit = () => {
 
   const checkRes = () => {
     const { res: response, error, loading } = res;
+  
+    if (!loading && error.data) {
+      const { email, password, verificationCode } = JSON.parse(error.data);
 
-    // console.log(response, error, loading);
-    window.scrollTo(0, 0);
-
-    if (!loading && error) {
-      // console.log("err: ", error);
-      const { email, verificationCode } = error;
+      console.log(error.data)
 
       if (email) {
         setErrorMessage(email[0], "email");
       } else if (verificationCode) {
         setErrorMessage(verificationCode[0], "verificationCode");
+      }else if (password) {
+        setErrorMessage(password[0], "password");
       }
-    } else if (!loading && error && response) {
+    } else if (!loading && response) {
       steps.value++;
 
       time.value = 4;
       redir.value = true;
       setTimert.timer = setInterval(countDown, 1000);
     } else {
+      console.log(res)
       alert("伺服器忙碌中, 請稍後再試!");
     }
   };

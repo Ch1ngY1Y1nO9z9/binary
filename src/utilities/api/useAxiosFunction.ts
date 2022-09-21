@@ -18,10 +18,10 @@ export default function useAxiosFunction() {
 
             const res = await axiosInstance[method.toLowerCase()](url, requestConfig.rawData)
             // console.log("response: ", res)
-            response.res = res.data.data
+            response.res = res
         } catch (err) {
-            // console.log(err.response.data)
-            response.error = JSON.parse(err.response.data)
+            console.log("err: ", err.response)
+            response.error = err.response
         } finally {
             response.loading = false
         }

@@ -66,21 +66,21 @@ const formSubmit = () => {
   function checkRes() {
     const { res: response, error, loading } = res;
 
-    console.log(response, error, loading);
+    // console.log(response);
 
-    if (loading && error) {
-      // console.log("err: ", error);
-      const { email, password } = error;
+    if (!loading && error.data) {
+      const { email, password } = error.data;
 
       if (email) {
         setErrorMessage(email[0], "email");
       } else if (password) {
         setErrorMessage(password[0], "password");
+      } else {
+        alert("帳號未註冊!");
       }
     } else if (!loading && response) {
-      useUserStore.storeLogin(response)
-      loginStatus.userLogin()
-      console.log(user)
+      useUserStore.storeLogin(response);
+      loginStatus.userLogin();
       router.push({ path: "/user_centre" });
     } else {
       // alert('伺服器忙碌中, 請稍後再試!')
@@ -174,7 +174,9 @@ function resetErrorMessage(key) {
         @reset="reset"
       />
       <div class="submit">
-        <button type="button" @click="formSubmit" :disabled="buttonSwitch">登入</button>
+        <button type="button" @click="formSubmit" :disabled="buttonSwitch">
+          登入
+        </button>
       </div>
       <div class="links">
         <router-link to="/forgotpassword" class="link">忘記密碼?</router-link>

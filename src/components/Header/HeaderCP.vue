@@ -9,7 +9,7 @@ const loginStatus = store.useLoginStore();
 const useUserStore = store.useUserStore();
 const { login } = storeToRefs(loginStatus);
 const { user } = storeToRefs(useUserStore);
-console.log(user.value);
+// console.log(user.value);
 
 const menu_switch = ref(false);
 const menu_collapse = ref(false);
@@ -35,7 +35,7 @@ const router = useRouter();
 let currentPathObject = router.currentRoute.value;
 
 // 測試用
-console.log("Route Object", currentPathObject);
+// console.log("Route Object", currentPathObject);
 
 const navButtons = [
   {

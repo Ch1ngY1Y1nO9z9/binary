@@ -5,7 +5,7 @@ export default function useAxios(configObj) {
     const response = reactive({
         res: [],
         error: {},
-        loading: true,
+        loading: false,
         controller: {},
     })
 
@@ -25,10 +25,10 @@ export default function useAxios(configObj) {
     
                 const res = await axiosInstance[method.toLowerCase()](url, requestConfig.rawData)
                 // console.log("response: ", res)
-                response.res = res.data
+                response.res = res
             } catch (err) {
-                // console.log(err.response.data)
-                response.error = JSON.parse(err.response.data)
+                // console.log(err.response)
+                response.error = JSON.parse(err.response)
             } finally {
                 response.loading = false
             }
