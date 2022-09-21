@@ -135,14 +135,14 @@ const formSubmit = async () => {
   const result = res.data;
 
   if (!loading && result.code === 201) {
-    alert(result.message.email[0]);
-    // if (email) {
-    //   setErrorMessage(email[0], "email");
-    // } else if (verificationCode) {
-    //   setErrorMessage(verificationCode[0], "verificationCode");
-    // } else if (password) {
-    //   setErrorMessage(password[0], "password");
-    // }
+    // alert(result.message.email[0]);
+    if (result.message.email) {
+      setErrorMessage(result.message.email[0], "email");
+    } else if (result.message.verificationCode) {
+      setErrorMessage(result.message.verificationCode[0], "verificationCode");
+    } else if (result.message.verificationCode) {
+      setErrorMessage(result.message.password[0], "password");
+    }
   } else if (
     !loading &&
     !result.code
