@@ -14,7 +14,9 @@ interface IfetchResult {
 interface Iresult {
   data?: object;
   code?: number;
-  message?: string;
+  message?: {
+    email: [];
+  }|'';
 }
 
 const response = reactive({
@@ -30,11 +32,11 @@ const time = ref(0); //定時器
 let timer: string | number | NodeJS.Timeout | null | undefined = null;
 const buttonSwitch = ref(false); //控制按鈕disable
 const data = ref({
-  name: "dummy01",
-  email: "imtestingtheregister@gmail.com",
-  password: "LetMeTestThePassword123456789@@",
-  passwordConfirmation: "LetMeTestThePassword123456789@@",
-  phone: "0978562100",
+  name: "",
+  email: "",
+  password: "",
+  passwordConfirmation: "",
+  phone: "",
   verificationCode: "666666",
   invCode: "",
 }); //測試用資料
@@ -130,10 +132,10 @@ const formSubmit = async () => {
 
   const { res, loading }: { res: IfetchResult; loading: Boolean } = response;
 
-  const result: Iresult = res.data;
+  const result = res.data;
 
   if (!loading && result.code === 201) {
-    alert(result.message);
+    alert(result.message.email[0]);
     // if (email) {
     //   setErrorMessage(email[0], "email");
     // } else if (verificationCode) {
@@ -143,8 +145,7 @@ const formSubmit = async () => {
     // }
   } else if (
     !loading &&
-    !result.code &&
-    result.message === "User successfully registered"
+    !result.code
   ) {
     steps.value++;
 
