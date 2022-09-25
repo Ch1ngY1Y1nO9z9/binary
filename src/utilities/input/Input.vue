@@ -133,7 +133,7 @@ const checkRules = (e: any) => {
   }
 };
 
-const checkValidate = (e) => {
+const checkValidate = (e: any) => {
 
   checkValue(e)
   if(props.needAxios){

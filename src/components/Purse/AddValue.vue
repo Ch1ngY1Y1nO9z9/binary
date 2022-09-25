@@ -133,7 +133,7 @@ const formSubmit = async () => {
     txtype: data.value.txtype,
     from_address: data.value.from_address,
     password: data.value.password,
-    import_amount: data.value.import_amount,f
+    import_amount: data.value.import_amount,
   };
 
   // 發送前在Header增加Authorization
