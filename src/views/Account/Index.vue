@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import { ref } from "vue";
 import LayoutCP from "../../layouts/LayoutCP.vue";
-import Title from "../../utilities/CPTitle.vue";
+import Title from "/src/utilities/CPTitle.vue";
 import routeName from "../../utilities/getRoute/getRoute";
 
 const title = ref("");

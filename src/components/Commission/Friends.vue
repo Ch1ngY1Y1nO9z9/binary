@@ -1,205 +1,57 @@
 <script lang="ts" setup>
 // 引入寫好的axios(並非從套件來, 而是先設定好的實例)
-import useAxios from "../../utilities/api/useAxios";
+import useAxiosFunction from "../../utilities/api/useAxiosFunction";
 import apiSetting from "../../api/basicSetting";
+import { storeToRefs } from "pinia";
+import store from "../../store";
+import { onMounted, reactive, ref } from "vue";
 
-const [response, refetch] = useAxios({
-  axiosInstance: apiSetting,
-  method: "GET",
-  url: "/auth/user-friends",
-  requestConfig: {},
+const useUserStore = store.useUserStore();
+const { user } = useUserStore;
+
+const List = ref();
+
+interface IfetchData {
+  res: any
+  err: {};
+  loading: boolean;
+  controller: object
+}
+
+onMounted(async() => {
+  apiSetting.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${user.access_token}`;
+
+  const response: IfetchData = await useAxiosFunction({
+    axiosInstance: apiSetting,
+    method: "GET",
+    url: "/auth/user-friends",
+    requestConfig: {},
+  });
+
+  const { res, err, loading, controller } = response;
+  List.value = res.data
 });
-
-// const { res, error, loading } = response;
-
 </script>
 
 <template>
   <div class="commission">
     <div class="custom-container c-840 p-200">
       <div class="friends-cards">
-        <div class="card">
+        <div v-for="person in List" :key="person.uuid" class="card">
           <div class="account">
             <div class="account-pic">
-              <img src="" alt="avatar" />
+              <img :src="person.profilePhotoUrl" alt="avatar" />
             </div>
             <div class="account-detail">
               <div class="name">
-                Gatsby556
+                {{person.name}}
                 <span class="status status-r">推薦人</span>
-                <span class="status status-g">上線中</span>
+                <span v-if="person.status" class="status status-g">上線中</span>
+                <span v-if="!person.status" class="status offline">離線</span>
               </div>
-              <div class="points">有效投注(點)：100,000</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556
-                <span class="status offline">3天前</span>
-              </div>
-              <div class="points">有效投注(點)：100</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556Gatsby556
-                <span class="status offline">58分鐘前</span>
-              </div>
-              <div class="points">有效投注(點)：100,000,000</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556
-                <span class="status status-g">上線中</span>
-              </div>
-              <div class="points">有效投注(點)：100,000,000</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556
-                <span class="status offline">3天前</span>
-              </div>
-              <div class="points">有效投注(點)：100,000</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556Gatsby556
-                <span class="status offline">58分鐘前</span>
-              </div>
-              <div class="points">有效投注(點)：100</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556
-                <span class="status status-g">上線中</span>
-              </div>
-              <div class="points">有效投注(點)：100,000,000</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556
-                <span class="status offline">3天前</span>
-              </div>
-              <div class="points">有效投注(點)：100</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556Gatsby556
-                <span class="status offline">58分鐘前</span>
-              </div>
-              <div class="points">有效投注(點)：100,000,000</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556Gatsby556
-                <span class="status offline">58分鐘前</span>
-              </div>
-              <div class="points">有效投注(點)：100,000,000</div>
-            </div>
-          </div>
-          <div class="msg-icon">
-            <i class="fa-solid fa-comment-dots"></i>
-          </div>
-        </div>
-        <div class="card">
-          <div class="account">
-            <div class="account-pic">
-              <img src="" alt="avatar" />
-            </div>
-            <div class="account-detail">
-              <div class="name">
-                Gatsby556
-                <span class="status status-g">上線中</span>
-              </div>
-              <div class="points">有效投注(點)：100,000,000</div>
+              <div class="points">有效投注(點)：{{person.userPointA+person.userPointB}}</div>
             </div>
           </div>
           <div class="msg-icon">

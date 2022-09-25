@@ -135,11 +135,17 @@
                 color: $orange-5;
             }
 
-            &.error~.msg,&.error+.msg {
+            &.error~.msg,
+            &.error+.msg {
                 display: block;
             }
 
             &.error {
+                input.input-control,
+                select.input-control {
+                    border-color: $red-1;
+                }
+
                 .checkbox-mask {
                     border: 1px solid $red-1;
                 }
@@ -325,7 +331,6 @@
         border-radius: 50%;
         margin: auto;
         margin-bottom: 35px;
-        background: $orange-4;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -632,16 +637,28 @@
                             }
                         }
                     }
+
+                    &.error {
+                        input {
+                            border-color: $red-1;
+                        }
+
+                        &+.msg {
+                            opacity: 1;
+                            color: $red-1;
+                        }
+                    }
                 }
 
                 span.msg {
+                    opacity: 0;
                     width: 100%;
                 }
 
                 .notice {
                     margin-left: auto;
 
-                    a{
+                    a {
                         @include Sans(400, 14px, 14px, .05em);
                         color: $gray-4;
                     }
@@ -658,7 +675,7 @@
         .input-row {
             margin-top: 0;
             padding: 15px 0;
-            border-bottom:  1px solid $gray-2;
+            border-bottom: 1px solid $gray-2;
         }
 
         .order-card {
@@ -670,18 +687,18 @@
 
                 &.header {
                     border-bottom: 0;
-    
+
                     &+.row {
                         padding-top: 0;
                     }
-                    
+
                     .col {
                         margin-bottom: 10px;
-    
+
                         .icon {
                             color: $gray-5;
                         }
-    
+
                         .delete-btn {
                             font-size: 18px;
                             color: $gray-4;

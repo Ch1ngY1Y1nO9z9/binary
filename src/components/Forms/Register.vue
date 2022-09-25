@@ -4,35 +4,19 @@ import { useRouter } from "vue-router";
 import Input from "/src/utilities/input/Input.vue";
 import ValidateInput from "/src/utilities/input/ValidateInput.vue";
 // axios
-// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+import axiosFetchFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
-// const [res, axiosFetch] = useAxiosFunction();
-interface IfetchResult {
-  data?: any;
-}
-
-interface Iresult {
-  data?: object;
-  code?: number;
-  message?:
-    | {
-        email: [];
-      }
-    | "";
-}
-
-const response = reactive({
-  res: {},
-  loading: true,
-});
+import WebsiteTerms from "../../utilities/websiteTerms.vue";
 
 const router = useRouter(); //重新導向用
 const checkBox = ref(false); //checkBox勾選判斷
 const steps = ref(1); //控制顯示的頁面
 const redir = ref(false); //判斷是否導向到登入頁
 const time = ref(0); //定時器
+const showModal = ref(false); //Modal框顯示
 let timer: string | number | NodeJS.Timeout | null | undefined = null;
 const buttonSwitch = ref(false); //控制按鈕disable
+
 const data = ref({
   name: "",
   email: "",
@@ -78,31 +62,34 @@ const toggleCheckboxx = () => {
   checkBox.value = !checkBox.value;
 };
 
-const axiosFetch = async (configObj: any) => {
-  const { axiosInstance, method, url, requestConfig = {} } = configObj;
-  try {
-    response.loading = true;
+interface IaxiosEmail {
+  res: {
+    data?: object;
+    message?: any;
+  };
+  err: {
+    message?: string;
+    code?: number;
+  };
+  loading: boolean;
+  controller: object;
+}
 
-    const res = await axiosInstance[method.toLowerCase()](
-      url,
-      requestConfig.rawData
-    );
-    // console.log("response: ", res)
-    response.res = res;
-  } catch (err: any) {
-    console.log("err: ", err.response);
-  } finally {
-    response.loading = false;
-  }
-};
+interface IfetchData {
+  res: {
+    data?: object;
+    message?: { [key: string]: string[] };
+  };
+  err: {
+    message?: string;
+    code?: number;
+  };
+  loading: boolean;
+  controller: object;
+}
 
 // 發送資料
 const formSubmit = async () => {
-  // 判斷是否勾選閱讀規章
-  if (!checkBox.value) {
-    alert("請先閱讀規章!");
-    return false;
-  }
   // 判斷是否有錯誤未修正
   if (checkValidate()) {
     alert("填寫的資料有錯誤未修正!");
@@ -110,8 +97,13 @@ const formSubmit = async () => {
   }
 
   // 判斷是否有資料未填
-  if (checkDataValue()) {
-    alert("您有資料尚未填寫!");
+  if (!checkDataValue()) {
+    return false;
+  }
+
+  // 判斷是否勾選閱讀規章
+  if (!checkBox.value) {
+    alert("請先閱讀規章!");
     return false;
   }
 
@@ -121,9 +113,15 @@ const formSubmit = async () => {
     password: data.value.password,
     passwordConfirmation: data.value.passwordConfirmation,
     verificationCode: data.value.verificationCode,
+    invitation_code: data.value.invCode
   };
 
-  await axiosFetch({
+  const reserResponse = (response: IfetchData) => {
+    response.res = {};
+    response.err = {};
+  };
+
+  const response: IfetchData = await axiosFetchFunction({
     axiosInstance: sendData,
     method: "POST",
     url: `/auth/register`,
@@ -132,47 +130,32 @@ const formSubmit = async () => {
     },
   });
 
-  const { res, loading }: { res: IfetchResult; loading: Boolean } = response;
+  const { res, err, loading } = response;
 
-  const result = res.data;
+  console.log(res);
 
-  if (!loading && result.code === 201) {
+  if (!loading && res.message) {
     // alert(result.message.email[0]);
-
-    Object.keys(result.message).forEach((col: string) => {
-      let total_msg: string = "";
-
-      result.message[col].forEach((msg: string, index: number) => {
-        if (
-          result.message[col].length === 1 ||
-          index + 1 == result.message[col].length
-        ) {
-          total_msg += msg;
-        } else {
-          total_msg += msg + ", ";
-        }
-      });
-
-      setErrorMessage(total_msg, col);
+    Object.entries(res.message).forEach(([key, value]) => {
+      setErrorMessage(value.join(", "), key);
     });
 
-    // if (result.message.email) {
-    //   setErrorMessage(result.message.email[0], "email");
-    // } else if (result.message.verificationCode) {
-    //   setErrorMessage(result.message.verificationCode[0], "verificationCode");
-    // } else if (result.message.verificationCode) {
-    //   setErrorMessage(result.message.password[0], "password");
-    // }
-  } else if (!loading && !result.code) {
+    return false
+  }else if(err.code === 401){
+    console.log(err)
+    return false
+  }
+  
+  if (!loading && !res) {
     steps.value++;
-
     time.value = 4;
     redir.value = true;
     timer = setInterval(countDown, 1000);
   } else {
-    console.log(res);
     alert("伺服器忙碌中, 請稍後再試!");
   }
+
+  reserResponse(response);
 };
 
 // 倒數器
@@ -227,17 +210,17 @@ const checkValidate = () => {
 };
 
 const checkDataValue = () => {
-  if (
-    data.value.name &&
-    data.value.email &&
-    data.value.password &&
-    data.value.passwordConfirmation &&
-    data.value.phone &&
-    data.value.verificationCode
-  ) {
-    return false;
-  } else {
-    return true;
+  let checked = 0
+  Object.entries(data.value).forEach(([key, value]) => {
+    if (key != "invCode" && value.length == 0) {
+      setErrorMessage("此欄位不可留空!", key);
+      checked++
+    }
+  });
+  if(checked != 0){
+    return false
+  }else{
+    return true
   }
 };
 
@@ -302,6 +285,17 @@ const resetErrorMessage = (key: string) => {
   }
 };
 
+const passwordRuleValidate = (msgSwitch: boolean) => {
+  if (msgSwitch) {
+    setErrorMessage(
+      "密碼長度須超過8個字元且包含大小寫英文、特殊字元符號與數字",
+      "password"
+    );
+  } else {
+    resetErrorMessage("password");
+  }
+};
+
 const sendValidateCode = () => {
   if (!data.value.phone) {
     alert("請先填寫手機號碼再點擊發送");
@@ -315,6 +309,31 @@ const sendValidateCode = () => {
     time.value = 60;
     timer = setInterval(countDown, 1000);
     alert("簡訊驗證碼已發送, 請確認手機是否收到簡訊!");
+  }
+};
+
+const validLoading = ref(false);
+const axiosValidte = async (key: string) => {
+  if (validate.email.status) {
+    return false;
+  }
+
+  validLoading.value = true;
+
+  const response: IaxiosEmail = await axiosFetchFunction({
+    axiosInstance: sendData,
+    method: "GET",
+    url: `/auth/account_check?email=${data.value.email}`,
+    requestConfig: {},
+  });
+
+  const { res, err, loading, controller } = response;
+  validLoading.value = loading;
+
+  if (res.message === '該信箱已註冊過') {
+    setErrorMessage(res.message, "email");
+  } else {
+    resetErrorMessage("email");
   }
 };
 </script>
@@ -341,12 +360,15 @@ const sendValidateCode = () => {
         placeholder="輸入Email"
         name="email"
         rules="Email"
+        needAxios="true"
         :model="data.email"
         :status="validate.email.status"
         :msg="validate.email.msg"
         @change="change"
         @require="require"
         @reset="reset"
+        @axiosValidte="axiosValidte"
+        :validLoading="validLoading"
       />
 
       <Input
@@ -362,6 +384,7 @@ const sendValidateCode = () => {
         @require="require"
         @reset="reset"
         @checkPassword="checkPassword"
+        @passwordRuleValidate="passwordRuleValidate"
       />
 
       <Input
@@ -431,8 +454,23 @@ const sendValidateCode = () => {
             >
               <i class="fa-solid fa-check"></i>
             </span>
-            我已仔細閱讀 <router-link to="#">＜XXXX規章＞</router-link>
+            我已仔細閱讀
+            <button type="button" @click="showModal = true">
+              ＜XXXX規章＞
+            </button>
           </label>
+          <n-modal v-model:show="showModal">
+            <n-card
+              style="width: 60%"
+              title="XXXX規章"
+              :bordered="false"
+              size="huge"
+              role="dialog"
+              aria-modal="true"
+            >
+              <WebsiteTerms />
+            </n-card>
+          </n-modal>
         </div>
       </div>
       <div class="submit">

@@ -1,10 +1,11 @@
 <script lang="ts" setup>
 // 引入寫好的axios(並非從套件來, 而是先設定好的實例)
-import useAxios from "../../utilities/api/useAxios";
+import useAxiosFunction from "../../utilities/api/useAxiosFunction";
 import apiSetting from "../../api/basicSetting";
 
 import { storeToRefs } from "pinia";
 import store from "../../store";
+import { onMounted, ref } from "vue";
 
 const useUserStore = store.useUserStore();
 const { user } = storeToRefs(useUserStore);
@@ -18,24 +19,42 @@ const {
   gender,
   profile_photo_url,
   invitation_code,
+  access_token,
+  uuid,
 } = user.value;
 
-const [response, refetch] = useAxios({
-  axiosInstance: apiSetting,
-  method: "GET",
-  url: "/auth/user-profile",
-  requestConfig: {
-  },
+onMounted(() => {
+  // 發送前在Header增加Authorization
+  apiSetting.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${access_token}`;
+
+  const response = useAxiosFunction({
+    axiosInstance: apiSetting,
+    method: "GET",
+    url: "/auth/user-profile",
+    requestConfig: {},
+  });
 });
 
-// console.log(response);
+const changeColor = ref(false);
+const copyText = ref("點擊複製");
+const copyInvCode = async () => {
+  changeColor.value = !changeColor.value;
+  await navigator.clipboard.writeText(invitation_code);
+  if (changeColor.value) {
+    copyText.value = "已複製!";
+  } else {
+    copyText.value = "點擊複製!";
+  }
+};
 
 // 表單打包
 const formRow = [
   {
     name: "numbering",
     title: "用戶編號",
-    value: "ABC123456789",
+    value: uuid,
   },
   {
     name: "name",
@@ -67,6 +86,11 @@ const formRow = [
     title: "發幣地址",
     value: wallet_address,
   },
+  {
+    name: "invitation_code",
+    title: "推薦碼",
+    value: invitation_code,
+  },
 ];
 </script>
   
@@ -78,7 +102,11 @@ const formRow = [
           <img :src="profile_photo_url" alt="avatar" />
         </div>
         <div class="account-setting list">
-          <div class="row" v-for="row in formRow" :key="row.name">
+          <div
+            class="row w-full"
+            v-for="row in formRow"
+            :key="row.name"
+          >
             <div class="col">
               {{ row.title }}
             </div>
@@ -88,6 +116,20 @@ const formRow = [
                 >菁英公爵</span
               >
             </div>
+            <n-popover v-if="row.name == 'invitation_code'" trigger="hover">
+              <template #trigger>
+                <span
+                  class="cursor-pointer icon ml-auto mt-[-5px]"
+                  :class="{ yellow: changeColor }"
+                  @mousedown="copyInvCode"
+                  @mouseup="copyInvCode"
+                >
+                  <i class="fa-solid fa-copy"></i>
+                </span>
+              </template>
+              {{ copyText }}
+            </n-popover>
+
             <router-link
               v-if="row.name === 'numbering'"
               to="/account/profile_edit"
@@ -102,3 +144,9 @@ const formRow = [
 
   <style src="../../assets/css/layout.css" scoped></style>  
   <style src="../../assets/css/account/account.css" scoped></style>
+
+  <style lang="scss">
+.yellow {
+  color: rgba(252, 189, 31, 1);
+}
+</style>

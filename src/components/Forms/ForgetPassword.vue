@@ -1,11 +1,10 @@
 <script lang="ts" setup>
 import { reactive, ref, watch } from "vue";
-import Input from "../../utilities/input/Input.vue";
+import Input from "/src/utilities/input/Input.vue";
 // axios
-import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+import axiosFetchFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
 
-const [res, axiosFetch] = useAxiosFunction();
 const steps = ref(1); //控制顯示的頁面
 
 const data = ref({
@@ -27,8 +26,8 @@ const nextStep = () => {
     return false;
   }
 
-  steps.value++
-}
+  steps.value++;
+};
 
 // 發送資料
 const formSubmit = () => {
@@ -36,17 +35,32 @@ const formSubmit = () => {
     email: data.value.email,
   };
 
-  //   無法使用暫時關著
-  //   axiosFetch({
-  //     axiosInstance: sendData,
-  //     method: "POST",
-  //     url: `/auth/forgot-password`,
-  //     requestConfig: {
-  //       rawData,
-  //     },
-  //   });
+  interface IfetchData {
+    res: {
+      data?: object;
+      message?: string;
+    };
+    err: {
+      message?: string;
+      code?: number;
+    };
+    loading: boolean;
+    controller: object;
+  }
 
+  
   //   不管成功與否都回覆成功避免被試出註冊人
+  const response = axiosFetchFunction({
+    axiosInstance: sendData,
+    method: "POST",
+    url: `/auth/forgot-password`,
+    requestConfig: {
+      rawData,
+    },
+  });
+
+  console.log(response)
+
   steps.value++;
 };
 

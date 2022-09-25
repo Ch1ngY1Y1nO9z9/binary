@@ -33,7 +33,7 @@ const ForgetPassword = {
     component: ForgetPasswordTemplate
 }
 const ResetPassword = {
-    path: '/resetPassword',
+    path: '/reset-password',
     name: 'ResetPassword',
     component: ResetPasswordTemplate
 }

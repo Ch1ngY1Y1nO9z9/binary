@@ -6,7 +6,7 @@ const BASE_URL = `${import.meta.env.VITE_TABLET_HOST}api`
 export default axios.create({
     baseURL: BASE_URL,
     headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'multipart/form-data',
         'Accept': 'application/json'
     }
 })

@@ -4,8 +4,13 @@ import Input from "/src/utilities/input/Input.vue";
 import Select from "/src/utilities/input/Select.vue";
 // axios
 // import useAxiosFunction from "../../utilities/api/useAxiosFunction";
-import sendData from "../../api/getDataFunction";
-// const [res, axiosFetch] = useAxiosFunction();
+import uploadFIleSetting from "../../api/fileUploadFunction";
+
+import { storeToRefs } from "pinia";
+import store from "../../store";
+
+const useUserStore = store.useUserStore();
+const { user } = useUserStore;
 
 interface IfetchResult {
   data?: any;
@@ -25,18 +30,18 @@ interface Iresult {
 interface Ifetch {
   res: {
     data?: {
-      code?: number
+      code?: number;
       data?: {
-        code: number
-        message: string
-      }
-    }
+        code: number;
+        message: string;
+      };
+    };
   };
   err: {
-    code?: number
+    code?: number;
     data?: {
-      code?: number
-    }
+      code?: number;
+    };
   };
   loading: boolean;
 }
@@ -61,12 +66,14 @@ const chainOptions = [
 const chainOptionsDefaultValue = chainOptions[1].value;
 
 const data = ref({
-  txid: "",
+  txid: "9a2468889936b87b8d64211e1d2a36afebff6c73eaa8fa4a849cfe099076e723",
   txtype: chainOptionsDefaultValue,
-  from_address: "",
+  from_address:
+    "9a2468889936b87b8d64211e1d2a36afebff6c73eaa8fa4a849cfe099076e723",
   to_address,
   password: "",
   import_amount: "1",
+  image: undefined
 }); //預設資料
 
 const validate = reactive({
@@ -113,8 +120,7 @@ const checkForm = () => {
   if (checkValidate()) {
     alert("填寫的資料有錯誤未修正!");
     return false;
-  } else if (checkDataValue()) {
-    alert("您有資料尚未填寫!");
+  } else if (!checkDataValue()) {
     return false;
   } else {
     steps.value++;
@@ -127,11 +133,16 @@ const formSubmit = async () => {
     txtype: data.value.txtype,
     from_address: data.value.from_address,
     password: data.value.password,
-    import_amount: data.value.import_amount,
+    import_amount: data.value.import_amount,f
   };
 
+  // 發送前在Header增加Authorization
+  uploadFIleSetting.defaults.headers.common[
+    "Authorization"
+  ] = `Bearer ${user.access_token}`;
+
   await axiosFetch({
-    axiosInstance: sendData,
+    axiosInstance: uploadFIleSetting,
     method: "POST",
     url: `/transaction`,
     requestConfig: {
@@ -181,12 +192,14 @@ const checkValidate = () => {
 };
 
 const checkDataValue = () => {
-  if (
-    data.value.txid &&
-    data.value.from_address &&
-    data.value.password &&
-    data.value.import_amount
-  ) {
+  let checked = 0;
+  Object.entries(data.value).forEach(([key, value]) => {
+    if (key != "image" && value.length == 0) {
+      setErrorMessage("此欄位不可留空!", key);
+      checked++;
+    }
+  });
+  if (checked != 0) {
     return false;
   } else {
     return true;
@@ -254,6 +267,32 @@ const toFixed = (number: number, m: number) => {
   }
   return result;
 };
+
+const fillInAddress = () => {
+  if(user.wallet_address !== null){
+    data.value.from_address = user.wallet_address;
+  }
+};
+
+const imagePreview = ref<string>("");
+function pickFile(e: any) {
+  var input = e.target as any;
+  if (input.files && input.files[0]) {
+    data.value.image = input.files[0]
+    // create a new FileReader to read this image and convert to base64 format
+    var reader = new FileReader();
+    // Define a callback function to run, when FileReader finishes its job
+    reader.onload = (e) => {
+      // Note: arrow function used here, so that "this.imageData" refers to the imageData of Vue component
+      // Read image as base64 and set to imageData
+      if (e.target !== null) {
+        imagePreview.value = e.target.result as string;
+      }
+    };
+    // Start the reader job - read file as a data url (base64 format)
+    reader.readAsDataURL(input.files[0]);
+  }
+}
 </script>
 
 <template>
@@ -297,6 +336,7 @@ const toFixed = (number: number, m: number) => {
           @change="change"
           @require="require"
           @reset="reset"
+          @fillInAddress="fillInAddress"
         />
 
         <Input
@@ -341,25 +381,32 @@ const toFixed = (number: number, m: number) => {
             <hr />
             <div class="buy">
               <span class="title">買入</span>
-              {{ toFixed(Number(data.import_amount) * 31, 2) }}
+              {{ toFixed(Number(data.import_amount) * 10, 0) }}
             </div>
           </div>
         </div>
         <div class="input-row">
           <label for="files" class="input-label"
             >交易明細截圖上傳
-            <div class="upload-img">+</div>
+            <div class="upload-img cursor-pointer">+</div>
           </label>
           <div class="input-col">
             <input
               id="files"
               type="file"
-              name="files"
               class="input-control hidden"
               accept=".jpg,.png,.jpeg,.JPG,.PNG,.JPEG"
+              @change="pickFile"
             />
           </div>
           <span class="msg"></span>
+
+          <n-image
+            class="mt-5"
+            v-if="imagePreview.length"
+            object-fit="cover"
+            :src="imagePreview"
+          />
         </div>
         <Input
           title="錢包密碼"
@@ -389,13 +436,13 @@ const toFixed = (number: number, m: number) => {
             <div class="col">鍊</div>
             <div class="col">{{ data.txtype }}</div>
           </div>
-          <div class="row">
+          <div class="row flex-col">
             <div class="col">官方收幣地址</div>
-            <div class="col">{{ data.to_address }}</div>
+            <div class="col break-words">{{ data.to_address }}</div>
           </div>
-          <div class="row">
+          <div class="row flex-col">
             <div class="col">會員發幣地址</div>
-            <div class="col">{{ data.from_address }}</div>
+            <div class="col break-words">{{ data.from_address }}</div>
           </div>
           <div class="row point">
             <div class="left">
@@ -410,18 +457,18 @@ const toFixed = (number: number, m: number) => {
             <div class="right">
               <div class="col">{{ data.import_amount }}</div>
               <div class="col">
-                {{ toFixed(Number(data.import_amount) * 31, 2) }}
+                {{ toFixed(Number(data.import_amount) * 10, 0) }}
               </div>
             </div>
           </div>
-          <div class="row">
-            <div class="col">TXID</div>
-            <div class="col">{{ data.txid }}</div>
+          <div class="row flex-col">
+            <div class="col">TXID(交易編號)</div>
+            <div class="col break-words">{{ data.txid }}</div>
           </div>
           <div class="row pic">
             <div class="col">交易明細截圖</div>
-            <div class="picture">
-              <img src="" alt="" />
+            <div class="picture h-auto">
+              <n-image object-fit="cover" :src="imagePreview" />
             </div>
           </div>
           <div class="submit">
@@ -504,13 +551,13 @@ const toFixed = (number: number, m: number) => {
             </div>
           </div>
           <div class="row">
-            <div class="col">TXID</div>
+            <div class="col">TXID(交易編號)</div>
             <div class="col">DEF987654321</div>
           </div>
           <div class="row pic">
             <div class="col">交易明細截圖</div>
             <div class="picture">
-              <img src="" alt="" />
+              <n-image class="w-full" object-fit="cover" :src="imagePreview" />
             </div>
           </div>
           <div class="submit">
@@ -535,3 +582,13 @@ const toFixed = (number: number, m: number) => {
 
 <style src="../../assets/css/layout.css" scoped></style>
 <style src="../../assets/css/purse/purse.scss" scoped></style>
+
+<style lang="scss" scoped>
+
+.n-image {
+    width: 100%
+  }
+  .n-image img {
+    width: 100% !important
+  }
+</style>

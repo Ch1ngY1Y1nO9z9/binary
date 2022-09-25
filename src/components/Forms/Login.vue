@@ -2,35 +2,14 @@
 import { onMounted, reactive, ref, toRefs, watch } from "vue";
 import { useRouter } from "vue-router";
 import Input from "/src/utilities/input/Input.vue";
+
+import NaiveInput from "/src/utilities/input/NaiveInput.vue";
 // axios
-// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+import axiosFetchFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
 // store
 import store from "../../store";
 import { storeToRefs } from "pinia";
-
-interface IfetchResult {
-  data?: any;
-}
-
-interface IerrResult {
-  code?: number;
-  message?: string;
-}
-
-interface Iresult {
-  data?: object;
-  code?: number;
-  message?: string;
-}
-
-const response = reactive({
-  res: {},
-  err: {},
-  loading: true,
-});
-
-// const [res, axiosFetch] = useAxiosFunction();
 
 const loginStatus = store.useLoginStore();
 const useUserStore = store.useUserStore();
@@ -43,11 +22,11 @@ const data = ref({
   password: "LetMeTestThePassword123456789@@",
 }); //測試用資料
 
-onMounted(()=>{
-  if(login){
+onMounted(() => {
+  if (login) {
     router.push({ path: "/user_centre" });
   }
-})
+});
 
 const validate = reactive({
   email: {
@@ -60,27 +39,8 @@ const validate = reactive({
   },
 });
 
-const axiosFetch = async (configObj: any) => {
-  const { axiosInstance, method, url, requestConfig = {} } = configObj;
-  try {
-    response.loading = true;
-
-    const res = await axiosInstance[method.toLowerCase()](
-      url,
-      requestConfig.rawData
-    );
-    // console.log("response: ", res)
-    response.res = res;
-  } catch (err: any) {
-    // console.log("err: ", err.response);
-    response.err = err.response;
-  } finally {
-    response.loading = false;
-  }
-};
-
 // 發送資料
-const formSubmit = async() => {
+const formSubmit = async () => {
   // 判斷是否有欄位未填
   if (checkDataValue()) {
     alert("您有欄位尚未填寫!");
@@ -92,7 +52,26 @@ const formSubmit = async() => {
     password: data.value.password,
   };
 
-  await axiosFetch({
+  interface IfetchData {
+    res: {
+      data?: object;
+      message?: string;
+      code?: number
+    };
+    err: {
+      message?: string
+      code?: number
+    };
+    loading: boolean;
+    controller: object;
+  }
+
+  const reserResponse = (response: IfetchData) => {
+    response.res = {}
+    response.err = {}
+}
+
+  const response: IfetchData = await axiosFetchFunction({
     axiosInstance: sendData,
     method: "POST",
     url: `/auth/login`,
@@ -101,25 +80,21 @@ const formSubmit = async() => {
     },
   });
 
-  const { res, err , loading }: { res: IfetchResult, err:IfetchResult , loading: Boolean } = response;
+  const { res, err, loading } = response;
 
-  const result: Iresult = res.data;
-  const error: IerrResult = err.data;
+  if (!loading && err.code === 401) {
+    alert("請再次檢查帳號或密碼是否有輸入錯誤!");
+  } else if (!loading && res.code === 200) {
+    useUserStore.storeLogin(res);
 
-  if (!loading && error?.code === 401) {
-    if(error.message == 'Unauthorized'){
-      alert('請再次檢查帳號或密碼是否有輸入錯誤!');
-    }
-  } else if (
-    !loading &&
-    result.code === 200
-  ) {
-    useUserStore.storeLogin(result);
-      loginStatus.userLogin();
-      router.push({ path: "/user_centre" });
+    loginStatus.userLogin();
+    router.push({ path: "/user_centre" });
   } else {
+
     alert("伺服器忙碌中, 請稍後再試!");
   }
+
+  reserResponse(response)
 };
 
 const change = (val: string, keyName: string) => {
@@ -206,6 +181,7 @@ function resetErrorMessage(key: string) {
         :msg="validate.password.msg"
         @change="change"
         @reset="reset"
+        @keyup.enter="formSubmit"
       />
       <div class="submit">
         <button type="button" @click="formSubmit" :disabled="buttonSwitch">

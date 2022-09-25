@@ -46,7 +46,6 @@ const checkValue = (e: any) => {
     emit("require", "此欄位不可留空!", props.name);
     emit("change", "", props.name);
   } else {
-    console.log(123);
     emit("reset", props.name);
     emit("change", e.target.value, props.name);
   }

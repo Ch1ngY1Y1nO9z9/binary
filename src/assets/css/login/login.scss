@@ -109,6 +109,9 @@ section.content {
                     }
 
                     &.error {
+                        .input-control {
+                            border-color: $red-1;
+                        }
                         .checkbox-mask {
                             border: 1px solid $red-1;
                         }
