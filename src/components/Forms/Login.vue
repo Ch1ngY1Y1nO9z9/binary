@@ -18,8 +18,8 @@ const { login } = loginStatus;
 const router = useRouter(); //重新導向用
 const buttonSwitch = ref(false); //控制按鈕disable
 const data = ref({
-  email: "imtestingtheregister@gmail.com",
-  password: "LetMeTestThePassword123456789@@",
+  email: "",
+  password: "",
 }); //測試用資料
 
 onMounted(() => {

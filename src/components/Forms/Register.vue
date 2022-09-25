@@ -141,9 +141,6 @@ const formSubmit = async () => {
     });
 
     return false
-  }else if(err.code === 401){
-    console.log(err)
-    return false
   }
   
   if (!loading && !res) {
