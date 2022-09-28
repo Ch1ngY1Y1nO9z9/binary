@@ -118,6 +118,7 @@ const formRow = [
             class="row w-full"
             v-for="row in formRow"
             :key="row.name"
+            :class="{'flex-col': row.name == 'address'}"
           >
             <div class="col">
               {{ row.title }}
