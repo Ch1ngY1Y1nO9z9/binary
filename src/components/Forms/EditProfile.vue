@@ -221,6 +221,12 @@ interface IfetchData {
 }
 
 const passwordCheck = async () => {
+
+  let rawData = {
+    email,
+    password: password.value
+  }
+
   // 發送前在Header增加Authorization
   sendData.defaults.headers.common[
     "Authorization"
@@ -228,9 +234,11 @@ const passwordCheck = async () => {
 
   const response = await useAxiosFunction<IfetchData>({
     axiosInstance: sendData,
-    method: "GET",
-    url: `/auth/password_check?email=${email}&password=${password.value}`,
-    requestConfig: {},
+    method: "POST",
+    url: `/auth/password_check`,
+    requestConfig: {
+      rawData
+    },
   });
 
   const { res } = response;
