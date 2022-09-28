@@ -333,6 +333,13 @@
         justify-content: center;
         align-items: center;
         overflow: hidden;
+        background: $orange-4;
+        font-size: 60px;
+
+        .default-icon {
+            color: $white-1;
+            opacity: .5;
+        }
 
         img {
             width: 100%;
@@ -359,6 +366,15 @@
 
         &.edit {
             margin-bottom: 10px;
+
+            .defalut-icon {
+                color: $white-1;
+                opacity: .5;
+            }
+
+            .fileUploadLabel {
+                position: absolute;
+            }
         }
 
         &.error+.pic_notify {
@@ -505,16 +521,7 @@
                     align-items: center;
                 }
             }
-
-            a {
-                @include Sans(400, 14px, 14px, .05em);
-                display: inline-block;
-                margin-left: auto;
-                color: $blue-5;
-                text-decoration: underline;
-            }
         }
-
 
         &.edit {
             .row {
@@ -662,6 +669,15 @@
                 }
             }
         }
+    }
+
+    .editProfile {
+        @include Sans(400, 14px, 14px, .05em);
+        display: inline-block;
+        margin-left: auto;
+        color: $blue-5;
+        text-decoration: underline;
+        margin-top: 30px;
     }
 
     .order-cards.list {

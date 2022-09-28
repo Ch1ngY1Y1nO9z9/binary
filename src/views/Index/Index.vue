@@ -1,6 +1,6 @@
 
 <script lang="ts" setup>
-import LayoutIndex from '../../layouts/LayoutIndex.vue'
+import LayoutIndex from '/src/layouts/LayoutIndex.vue'
 import Banner from "/src/components/Index/Banner.vue";
 import TopNews from "/src/components/Index/TopNews.vue";
 import NewsList from "/src/components/Index/NewsList.vue";
@@ -10,7 +10,6 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/effect-coverflow";
-import "../../assets/js/swiper.js";
 </script>
 
 <template>

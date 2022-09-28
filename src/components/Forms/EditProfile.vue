@@ -5,7 +5,7 @@ import store from "../../store";
 import { UploadFileInfo } from "naive-ui";
 // axios
 import useAxiosFunction from "../../utilities/api/useAxiosFunction";
-import apiSetting from "../../api/basicSetting";
+import sendData from "../../api/getDataFunction";
 import uploadFIleSetting from "../../api/fileUploadFunction";
 
 import { useRouter } from "vue-router";
@@ -214,33 +214,28 @@ const checkPassword = () => {
 
 interface IfetchData {
   res: {
-    data?: object;
-    message?: string;
-    code?: number;
+    data: object;
+    message: string;
+    code: number;
   };
-  err: {
-    message?: string;
-    code?: number;
-  };
-  loading: boolean;
-  controller: object;
 }
+
 const passwordCheck = async () => {
   // 發送前在Header增加Authorization
-  apiSetting.defaults.headers.common[
+  sendData.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${access_token}`;
 
-  const response: IfetchData = await useAxiosFunction({
-    axiosInstance: apiSetting,
+  const response = await useAxiosFunction<IfetchData>({
+    axiosInstance: sendData,
     method: "GET",
     url: `/auth/password_check?email=${email}&password=${password.value}`,
     requestConfig: {},
   });
 
-  const { res, err, loading, controller } = response;
+  const { res } = response;
 
-  if (err.code === 401) {
+  if (res.code === 401) {
     passwordValidate.value.status = true;
     passwordValidate.value.msg = "密碼錯誤";
     return true;
@@ -270,16 +265,12 @@ const submitForm = async () => {
           profile_photo_path: data.profile_photo_path,
         };
 
-        console.log(data.profile_photo_path)
-
-        console.log(rawData)
-
         // 發送前在Header增加Authorization
         uploadFIleSetting.defaults.headers.common[
           "Authorization"
         ] = `Bearer ${access_token}`;
 
-        const response: IfetchData = await useAxiosFunction({
+        const response = await useAxiosFunction<IfetchData>({
           axiosInstance: uploadFIleSetting,
           method: "POST",
           url: `/auth/update`,
@@ -288,8 +279,8 @@ const submitForm = async () => {
           },
         });
 
-        const { res, err, loading, controller } = response;
-        console.log(res)
+        const { res } = response;
+
         if (res.code === 200) {
           // 成功則更新pinia的內容
           useUserStore.updateLogin(res);
@@ -314,7 +305,8 @@ const submitForm = async () => {
           class="account_pic edit error bg-center bg-cover"
           :style="`background-image: url(${imagePreview})`"
         >
-          <label for="fileUpload">
+          <i v-if="imagePreview == null" class="fa-solid fa-user defalut-icon"></i>
+          <label class="fileUploadLabel" for="fileUpload">
             <div class="upload-icon">
               <i class="fa-solid fa-image"></i>
             </div>
@@ -543,5 +535,4 @@ const submitForm = async () => {
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>  
 <style src="../../assets/css/account/account.scss" scoped></style>

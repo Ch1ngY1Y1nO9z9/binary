@@ -1,0 +1,211 @@
+.events {
+    .flex {
+        .event {
+            width: 100%;
+            max-width: 265px;
+            height: 120px;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+            border-radius: 10px;
+            padding: 18px 15px;
+            margin-bottom: 24px;
+            cursor: pointer;
+
+            @include Serif(24px, 24px, .05em);
+            color: $white-1;
+        }
+    }
+}
+
+.custom-card {
+    width: 750px;
+    padding: 25px;
+    background: $white-1;
+    border-radius: 20px;
+
+    @include Sans(700, 14px, 14px, .05em);
+    color: $white-1;
+
+    .card-header {
+        display: flex;
+        align-items: flex-end;
+        padding: 147px 35px 20px 35px;
+        margin-bottom: 30px;
+        position: relative;
+        border-radius: 10px;
+        background-image: url('/public/images/event/signup.jpg');
+
+        button {
+            font-size: 25px;
+            position: absolute;
+            right: 15px;
+            top: 15px;
+        }
+
+        .date {
+            @include Sans(700, 14px, 14px, .05em);
+        }
+    }
+
+    .card-body {
+        padding: 0 28px;
+        margin-bottom: 25px;
+        cursor: default;
+
+        .dayly-rewards {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+
+            .reward {
+                margin-bottom: 15px;
+
+                .pill-date {
+                    max-width: 100px;
+                    margin: auto;
+                    background: $blue-5;
+                    padding-bottom: 5px;
+                    font-size: 18px;
+                    line-height: 24px;
+                    text-align: center;
+                    position: relative;
+                    z-index: 1;
+                }
+
+                .content {
+                    width: 150px;
+                    height: 150px;
+                    margin-top: -15px;
+                    background: $orange-1;
+                    position: relative;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    border-radius: 10px;
+
+                    @include reward-shadow;
+
+                    .get-icon {
+                        display: none;
+                        justify-content: center;
+                        align-items: center;
+                        width: 80px;
+                        height: 80px;
+                        position: absolute;
+                        background: $yellow-5;
+                        font-size: 30px;
+
+                        transform: rotateZ(-15deg);
+                    }
+
+                    .icon {
+                        svg {
+                            font-size: 50px;
+                            color: $orange-5;
+                        }
+
+                        p {
+                            color: $gray-5;
+                            margin-top: 15px;
+
+                            span {
+                                font-size: 18px;
+                                line-height: 18px;
+                            }
+                        }
+                    }
+                }
+
+                &:last-child {
+                    .pill-date {
+                        margin-left: 25px;
+                    }
+
+                    .content {
+                        width: 315px;
+                        padding: 30px 35px;
+                        align-items: flex-end;
+                        justify-content: flex-start;
+                        overflow: hidden;
+
+                        .icon {
+                            display: flex;
+                            flex-direction: row-reverse;
+
+                            svg {
+                                font-size: 178px;
+                                transform: rotateZ(-15deg);
+                                position: absolute;
+                                right: 0;
+                                top: 0;
+                            }
+
+                            p {
+                                span {
+                                    font-size: 30px;
+                                }
+                            }
+                        }
+                    }
+                }
+
+                &.get {
+                    .pill-date {
+                        background: $gray-2;
+                    }
+
+                    .content {
+                        background: $gray-2;
+
+                        .get-icon {
+                            display: flex;
+                        }
+
+                        .icon {
+                            svg {
+                                color: $gray-3;
+                            }
+
+                            p {
+                                color: $gray-3;
+                            }
+                        }
+                    }
+                }
+
+                &.current {
+                    .content {
+                        background: $orange-5;
+
+                        .icon {
+                            svg {
+                                color: $yellow-5;
+                            }
+
+                            p {
+                                color: $white-1;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+
+    .card-footer {
+        text-align: center;
+
+        button {
+            width: 100%;
+            max-width: 646px;
+            background: $orange-5;
+            padding: 15px 0;
+            text-align: center;
+
+            &:hover {
+                @include hover-yellow
+            }
+        }
+    }
+}

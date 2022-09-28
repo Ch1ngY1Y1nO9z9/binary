@@ -3,27 +3,19 @@ import { onMounted, reactive, ref, watch } from "vue";
 import { useRouter } from "vue-router";
 import Input from "/src/utilities/input/Input.vue";
 // axios
-// import useAxiosFunction from "../../utilities/api/useAxiosFunction";
+import axiosFetchFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
 
 // 取得來自網址query的token
 import routeName from "../../utilities/getRoute/getRoute";
 
-// const [res, axiosFetch] = useAxiosFunction();
-interface IfetchResult {
-  data?: any;
+interface IfetchData {
+  res: {
+    data: object;
+    message: string;
+    code: number;
+  };
 }
-
-interface Iresult {
-  data?: object;
-  code?: number;
-  message?: string;
-}
-
-const response = reactive({
-  res: {},
-  loading: true,
-});
 
 const steps = ref(1); //控制顯示的頁面
 const router = useRouter();
@@ -53,24 +45,6 @@ const validate = reactive({
   },
 });
 
-const axiosFetch = async (configObj: any) => {
-  const { axiosInstance, method, url, requestConfig = {} } = configObj;
-  try {
-    response.loading = true;
-
-    const res = await axiosInstance[method.toLowerCase()](
-      url,
-      requestConfig.rawData
-    );
-    // console.log("response: ", res)
-    response.res = res;
-  } catch (err: any) {
-    console.log("err: ", err.response);
-  } finally {
-    response.loading = false;
-  }
-};
-
 // 發送資料
 const formSubmit = async () => {
   // 判斷是否有錯誤未修正
@@ -88,34 +62,32 @@ const formSubmit = async () => {
   let rawData = {
     password: data.value.password,
     passwordConfirmation: data.value.passwordConfirmation,
+    token: data.value.token,
   };
 
   // api尚未完成 暫不啟用
-  // await axiosFetch({
-  //   axiosInstance: sendData,
-  //   method: "POST",
-  //   url: `/auth/forgot-password`,
-  //   requestConfig: {
-  //     rawData,
-  //   },
-  // });
+  const response = await axiosFetchFunction<IfetchData>({
+    axiosInstance: sendData,
+    method: "POST",
+    url: `/auth/reset-password`,
+    requestConfig: {
+      rawData,
+    },
+  });
 
-  // const { res, loading }: { res: IfetchResult; loading: Boolean } = response;
+  const { res } = response;
 
-  // const result: Iresult = res.data;
+  console.log(res);
 
-  // if (!loading && result.code === 201) {
-  //   alert(result.message);
-  // } else if (
-  //   !loading &&
-  //   !result.code &&
-  //   result.message === "User successfully registered"
-  // ) {
-  //   steps.value++;
-  // } else {
-  //   console.log(res);
-  //   alert("伺服器忙碌中, 請稍後再試!");
-  // }
+  if (res.code === 401) {
+    alert("重設失敗! 請再次到忘記密碼頁面申請密碼重設");
+  } else if (res.code === 200) {
+    alert("已成功重設密碼!");
+    router.push({ path: "/login" });
+  } else {
+    console.log(res);
+    alert("伺服器忙碌中, 請稍後再試!");
+  }
 };
 
 const change = (val: string, keyName: string) => {
@@ -131,11 +103,15 @@ const reset = (key: string) => {
 };
 
 const checkPassword = () => {
-  if (data.value.password !== data.value.passwordConfirmation) {
-    setErrorMessage("密碼不符", "passwordConfirmation");
+  if (!validate.password.status) {
+    if (data.value.password !== data.value.passwordConfirmation) {
+      setErrorMessage("密碼不符", "passwordConfirmation");
+    } else {
+      reset("password");
+      reset("passwordConfirmation");
+    }
   } else {
-    resetErrorMessage("password");
-    resetErrorMessage("passwordConfirmation");
+    setErrorMessage("密碼未依指定格式輸入", "passwordConfirmation");
   }
 };
 
@@ -180,6 +156,17 @@ const resetErrorMessage = (key: string) => {
     validate.passwordConfirmation.status = false;
   }
 };
+
+const passwordRuleValidate = (msgSwitch: boolean) => {
+  if (msgSwitch) {
+    setErrorMessage(
+      "密碼長度須超過8個字元且包含大小寫英文、特殊字元符號與數字",
+      "password"
+    );
+  } else {
+    reset("password");
+  }
+};
 </script>
 
 <template>
@@ -198,6 +185,7 @@ const resetErrorMessage = (key: string) => {
         @require="require"
         @reset="reset"
         @checkPassword="checkPassword"
+        @passwordRuleValidate="passwordRuleValidate"
       />
 
       <Input
@@ -221,5 +209,4 @@ const resetErrorMessage = (key: string) => {
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>  
 <style src="../../assets/css/account/account.scss" scoped></style>

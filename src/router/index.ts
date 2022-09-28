@@ -10,6 +10,7 @@ import Purse from './purse'
 import Collect from './collect'
 import MyStake from './myStake'
 import Commission from './commission'
+import Events from './events'
 
 // 宣告各頁面的路由
 const { Login, Register, Unvertify, Vertify, ForgetPassword, ResetPassword } = User
@@ -33,7 +34,8 @@ let routes = [
   Account,
   Collect,
   MyStake,
-  Commission
+  Commission,
+  Events
 ]
 
 export default createRouter({ history, routes })

@@ -127,4 +127,4 @@ const swiperOptions = {
   </section>
 </template>
   
-<style src="../../assets/css/index.css" scoped></style>
+<style src="../../assets/css/index/top-news/top-news.scss" scoped></style>

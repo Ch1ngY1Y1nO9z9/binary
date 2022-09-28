@@ -31,4 +31,4 @@ const props = defineProps({
   </h1>
 </template>
 
-<style src="../assets/css/layout.css" scoped></style>
+<style src="../assets/css/pagetitle.scss" scoped></style>

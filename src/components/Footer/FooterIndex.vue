@@ -54,4 +54,4 @@
   <div class="bottom-line"></div>
 </template>
 
-<style src="../../assets/css/index.css" scoped></style>
+<style src="../../assets/css/footer/Footer-index.scss" scoped></style>

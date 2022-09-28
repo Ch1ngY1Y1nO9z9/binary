@@ -1,0 +1,115 @@
+h1.pagetitle {
+    @include Serif(48px, 69px, .05em);
+    color: $gray-5;
+    text-align: center;
+    margin-bottom: 70px;
+    position: relative;
+
+    &::before {
+        content: '';
+        position: absolute;
+        left: calc(50% - 127px);
+        bottom: 27px;
+        z-index: -1;
+
+        width: 90px;
+        height: 70px;
+
+        background-image: url('../images/content-page/title-logo.svg');
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+}
+
+h1.pagetitle.cp {
+    display: flex;
+    justify-content: space-between;
+    text-align: left;
+
+    width: 100%;
+    max-width: 1056px;
+    margin: 0 auto;
+    margin-bottom: 70px;
+
+    &::before {
+        content: initial;
+    }
+
+
+    .title {
+        padding-left: 25px;
+        @include Serif(48px, 48px, .05em);
+        color: $gray-5;
+        padding-bottom: 2px;
+
+        &::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: 20px;
+            z-index: -1;
+
+            width: 90px;
+            height: 70px;
+
+            background-image: url('../images/content-page/title-logo.svg');
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+        }
+
+        .subtitle {
+            @include Serif(14px, 14px, .05em);
+            margin-bottom: 5px;
+        }
+    }
+
+
+    .return-btn {
+        @include Sans(700, 14px, 14px, .1em);
+        text-align: center;
+        padding: 12px 0 14px;
+
+        display: inline-block;
+        width: 150px;
+        height: 40px;
+        align-self: flex-end;
+
+        @include btn-gray;
+
+    }
+}
+
+.icon-title {
+    display: flex;
+    justify-content: space-between;
+
+    h3 {
+        display: flex;
+        align-items: center;
+        @include Serif(30px, 30px, .05em);
+        color: $gray-5;
+
+        span.icon {
+            display: inline-block;
+            height: 15px;
+            margin-right: 10px;
+
+            img {
+                width: auto;
+                height: 100%;
+                fill: $gray-5;
+            }
+        }
+    }
+
+    .btn {
+        @include Sans(700, 14px, 14px, .1em);
+        @include btn-orange;
+        width: 150px;
+        text-align: center;
+        padding: 12px 0 14px;
+    }
+
+}

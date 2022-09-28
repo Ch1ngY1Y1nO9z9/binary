@@ -390,7 +390,7 @@ const navButtons = [
   </div>
 </template>
 
-<style src="../../assets/css/index.scss" scoped></style>
+<style src="../../assets/css/header/Header-index.scss" scoped></style>
 <style scoped>
   header {
     margin-bottom: 0 !important;

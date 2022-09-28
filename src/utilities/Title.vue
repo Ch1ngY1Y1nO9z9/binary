@@ -13,4 +13,4 @@ const props = defineProps({
     <style>
 </style>
 
-<style src="../assets/css/layout.css" scoped></style>
+<style src="../assets/css/pagetitle.scss" scoped></style>

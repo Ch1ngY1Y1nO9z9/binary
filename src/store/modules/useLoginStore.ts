@@ -8,9 +8,13 @@ const useLoginStore = defineStore('Login',{
     getters: {},
     actions: {
         userLogin() {
-            this.login = !this.login
+            this.login = true
+        },
+        userLogout() {
+            this.login = false
         }
     },
+    persist: true
 })
 
 export default useLoginStore

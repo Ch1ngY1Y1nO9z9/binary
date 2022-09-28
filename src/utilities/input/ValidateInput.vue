@@ -83,3 +83,5 @@ const checkValue = (e: any) => {
     <span class="msg">{{ props.msg }}</span>
   </div>
 </template>
+<style lang="scss" src="../../assets/css/form.scss" scoped></style>
+<style lang="scss" src="../../assets/css/login/login.scss" scoped></style>

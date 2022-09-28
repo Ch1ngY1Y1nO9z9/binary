@@ -102,8 +102,9 @@ const checkValue = (e: any) => {
 const checkRules = (e: any) => {
   if (props.rules === "NumberOnly") {
     e.target.value = e.target.value.replace(/[^0-9-]/g, "");
-    checkValue(e);
-  } else if (props.rules === "Comfirmation") {
+  }
+
+  if (props.rules === "Comfirmation") {
     let lengthRule = 0;
     let otherRule = 0;
     let RegRule =
@@ -126,20 +127,21 @@ const checkRules = (e: any) => {
     } else {
       emit("passwordRuleValidate", false);
     }
-
-    checkValue(e);
-  } else {
-    checkValue(e);
   }
+
+  if (props.rules === "ResetEveryTime") {
+    emit("reset", props.name);
+  }
+
+  checkValue(e);
 };
 
 const checkValidate = (e: any) => {
-
-  checkValue(e)
-  if(props.needAxios){
-    emit('axiosValidte',name)
+  checkValue(e);
+  if (props.needAxios) {
+    emit("axiosValidte", name);
   }
-}
+};
 </script>
 
 <template>
@@ -168,6 +170,7 @@ const checkValidate = (e: any) => {
         class="input-control"
         :placeholder="props.placeholder"
         :value="props.model"
+        :ref="props.name"
         @keyup="checkRules"
         @blur="checkValidate"
         min="0.1"

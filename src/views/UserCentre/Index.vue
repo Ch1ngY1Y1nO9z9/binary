@@ -18,5 +18,3 @@ import MenuList from "../../components/UserCentre/MenuList.vue";
     </div>
   </LayoutCP>
 </template>
-
-<style src="../../assets/css/layout.css" scoped></style>

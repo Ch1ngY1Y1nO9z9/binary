@@ -3,12 +3,12 @@ const activeity = [
   {
     title: "好友推廣",
     link: "/user_centre/promote",
-    pic: "",
+    pic: "/images/event/friends-promote.jpg",
   },
   {
     title: "我的活動",
-    link: "/user_centre/activity",
-    pic: "",
+    link: "/events/index",
+    pic: "/images/event/my-event.jpg",
   },
 ];
 </script>
@@ -24,4 +24,4 @@ const activeity = [
   </div>
 </template>
 
-<style src="../../assets/css/user/centre.css" scoped></style>
+<style src="../../assets/css/user/centre.scss" scoped></style>

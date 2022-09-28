@@ -234,4 +234,4 @@ const modules = [Navigation, Pagination];
   </section>
 </template>
   
-<style src="../../assets/css/index.css" scoped></style>
+<style src="../../assets/css/index/banner/banner.scss" scoped></style>

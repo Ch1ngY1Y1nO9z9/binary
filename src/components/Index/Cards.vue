@@ -56,4 +56,4 @@
   </section>
 </template>
   
-<style src="../../assets/css/index.css" scoped></style>
+<style src="../../assets/css/index/cards/cards.scss" scoped></style>

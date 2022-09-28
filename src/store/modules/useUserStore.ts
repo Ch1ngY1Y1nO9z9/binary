@@ -87,8 +87,25 @@ const useUserStore = defineStore('User', {
                 this.user.phone = data.phone,
                 this.user.user_pointA = data.userPointA,
                 this.user.user_pointB = data.userPointB
+        },
+        logout() {
+            this.user.access_token = '',
+            this.user.name = '',
+            this.user.gender = '',
+            this.user.email = '',
+            this.user.wallet_address = '',
+            this.user.profile_photo_url = '',
+            this.user.country = '',
+            this.user.city = '',
+            this.user.birthday = '',
+            this.user.invitation_code = '',
+            this.user.phone = '',
+            this.user.user_pointA = 0,
+            this.user.user_pointB = 0,
+            this.user.uuid = ''
         }
     },
+    persist: true
 })
 
 export default useUserStore

@@ -1,5 +1,3 @@
-import { onMounted, reactive } from 'vue'
-
 interface configObj {
     axiosInstance: any,
     method: string,
@@ -9,31 +7,32 @@ interface configObj {
     }
 }
 
-const response = reactive({
-    res: {},
-    err: {},
-    loading: false,
-    controller: {}
-})
+interface AxiosResponse<T> {
+    res:{
+        code: number;
+        message: '';
+        data:  T | null
+    },
+}
 
-const axiosFetch = async (configObj: configObj) => {
+export default async function axiosFetch<T>(configObj: configObj) {
+    const response:AxiosResponse<T> = {
+        res: {
+            code: 0,
+            message: '',
+            data: null
+        },
+    }
+
     const { axiosInstance, method, url, requestConfig = {} } = configObj
     try {
-        response.loading = true
-        const ctrl = new AbortController()
-        response.controller = ctrl
-
         const res = await axiosInstance[method.toLowerCase()](url, requestConfig.rawData)
         console.log("response: ", res)
         response.res = res.data
     } catch (err: any) {
         console.log("err: ", err.response)
-        response.err = err.response.data
+        response.res = err.response.data
     } finally {
-        response.loading = false
-
         return response
     }
 }
-
-export default axiosFetch

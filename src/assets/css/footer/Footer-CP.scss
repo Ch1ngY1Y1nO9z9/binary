@@ -1,0 +1,136 @@
+footer {
+    width: 100%;
+    padding-top: 50px;
+    background: $blue-5;
+    position: relative;
+    overflow: hidden;
+
+    .footer-flowers-left {
+        width: 40%;
+        min-width: 314px;
+        overflow: hidden;
+
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        z-index: 1;
+
+        @media(max-width: 593px) {
+            z-index: 2;
+        }
+
+        object {
+            width: 100%;
+            position: relative;
+        }
+    }
+
+    .footer-flowers-right {
+        width: 40%;
+        min-width: 298px;
+        overflow: hidden;
+
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        z-index: 1;
+
+        object {
+            width: 100%;
+            position: relative;
+            margin-left: auto;
+        }
+    }
+
+    .footer-links {
+        display: flex;
+        justify-content: center;
+
+        position: relative;
+        z-index: 2;
+
+        @media(max-width: 593px) {
+            padding-top: 150px;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .link {
+            padding: 6px 25px;
+            position: relative;
+
+            @media(max-width: 593px) {
+                margin-bottom: 35px;
+            }
+
+            &::before {
+                content: '';
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 40px;
+                border: 1px solid $gray-3;
+            }
+
+            @media(max-width: 593px) {
+                &::after {
+                    content: '';
+                    position: absolute;
+                    right: 0;
+                    top: 0;
+                    height: 40px;
+                    border: 1px solid $gray-3;
+                }
+            }
+
+            &:last-child::after {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                height: 40px;
+                border: 1px solid $gray-3;
+            }
+
+            a {
+                @include Sans(700, 18px, 26px, .3em);
+                text-align: center;
+                color: $white-1;
+
+                &:hover {
+                    color: $yellow-5;
+                }
+            }
+        }
+    }
+
+    .logo {
+        position: relative;
+        z-index: 2;
+
+        width: 100%;
+        padding: 40px 0;
+
+        @include Sans(400, 80px, .8, 0);
+        text-align: center;
+        color: $white-1;
+    }
+
+    .site-rights {
+        position: relative;
+        z-index: 2;
+
+        padding-bottom: 20px;
+
+        @include Sans(500, 14px, 14px, .1em);
+        text-align: center;
+        color: $yellow-5;
+    }
+}
+
+.bottom-line {
+    position: relative;
+    z-index: 2;
+    height: 24px;
+    background: $yellow-5;
+}

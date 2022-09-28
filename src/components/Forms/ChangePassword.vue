@@ -193,11 +193,15 @@ const reset = (key: string) => {
 };
 
 const checkPassword = () => {
-  if (account_data.value.password !== account_data.value.passwordConfirmation) {
-    setErrorMessage("密碼不符", "passwordConfirmation");
+  if (!validate.password.status) {
+    if (account_data.value.password !== account_data.value.passwordConfirmation) {
+      setErrorMessage("密碼不符", "passwordConfirmation");
+    } else {
+      reset("password");
+      reset("passwordConfirmation");
+    }
   } else {
-    resetErrorMessage("password");
-    resetErrorMessage("passwordConfirmation");
+    setErrorMessage("密碼未依指定格式輸入", "passwordConfirmation");
   }
 };
 
@@ -270,6 +274,18 @@ const countDown = () => {
     buttonSwitch.value = false;
   }
 };
+
+
+const passwordRuleValidate = (msgSwitch: boolean) => {
+  if (msgSwitch) {
+    setErrorMessage(
+      "密碼長度須超過8個字元且包含大小寫英文、特殊字元符號與數字",
+      "password"
+    );
+  } else {
+    reset("password");
+  }
+};
 </script>
 
 <template>
@@ -298,9 +314,9 @@ const countDown = () => {
         <p class="text">為了保護您帳戶的安全，不要隨意分享你的密碼給其他人。</p>
 
         <Input
-          title="目前錢包密碼"
+          title="目前密碼"
           type="password"
-          placeholder="輸入目前錢包密碼"
+          placeholder="輸入目前密碼"
           name="old_password"
           rules="Comfirmation"
           :model="account_data.old_password"
@@ -312,9 +328,9 @@ const countDown = () => {
         />
 
         <Input
-          title="新錢包密碼"
+          title="新密碼"
           type="password"
-          placeholder="輸入新錢包密碼"
+          placeholder="輸入新密碼"
           name="password"
           rules="Comfirmation"
           :model="account_data.password"
@@ -324,12 +340,13 @@ const countDown = () => {
           @require="require"
           @reset="reset"
           @checkPassword="checkPassword"
+          @passwordRuleValidate="passwordRuleValidate"
         />
 
         <Input
-          title="確認新錢包密碼"
+          title="確認新密碼"
           type="password"
-          placeholder="確認新錢包密碼"
+          placeholder="確認新密碼"
           name="passwordConfirmation"
           rules="Comfirmation"
           :model="account_data.passwordConfirmation"
@@ -435,5 +452,4 @@ const countDown = () => {
   </div>
 </template>
   
-<style src="../../assets/css/layout.css" scoped></style>  
 <style src="../../assets/css/account/account.scss" scoped></style>

@@ -13,8 +13,6 @@ import { storeToRefs } from "pinia";
 
 const loginStatus = store.useLoginStore();
 const useUserStore = store.useUserStore();
-const { user } = storeToRefs(useUserStore);
-const { login } = loginStatus;
 const router = useRouter(); //重新導向用
 const buttonSwitch = ref(false); //控制按鈕disable
 const data = ref({
@@ -23,7 +21,7 @@ const data = ref({
 }); //測試用資料
 
 onMounted(() => {
-  if (login) {
+  if (loginStatus.login) {
     router.push({ path: "/user_centre" });
   }
 });
@@ -39,8 +37,18 @@ const validate = reactive({
   },
 });
 
+interface IfetchData {
+  res: {
+    data: object;
+    message: string;
+    code: number;
+  };
+}
+
 // 發送資料
 const formSubmit = async () => {
+  buttonSwitch.value = true //啟動防連點
+
   // 判斷是否有欄位未填
   if (checkDataValue()) {
     alert("您有欄位尚未填寫!");
@@ -52,26 +60,7 @@ const formSubmit = async () => {
     password: data.value.password,
   };
 
-  interface IfetchData {
-    res: {
-      data?: object;
-      message?: string;
-      code?: number
-    };
-    err: {
-      message?: string
-      code?: number
-    };
-    loading: boolean;
-    controller: object;
-  }
-
-  const reserResponse = (response: IfetchData) => {
-    response.res = {}
-    response.err = {}
-}
-
-  const response: IfetchData = await axiosFetchFunction({
+  const response = await axiosFetchFunction<IfetchData>({
     axiosInstance: sendData,
     method: "POST",
     url: `/auth/login`,
@@ -80,21 +69,27 @@ const formSubmit = async () => {
     },
   });
 
-  const { res, err, loading } = response;
+  const { res } = response;
 
-  if (!loading && err.code === 401) {
+  if (res.code === 401) {
     alert("請再次檢查帳號或密碼是否有輸入錯誤!");
-  } else if (!loading && res.code === 200) {
+  } else if (res.code === 200) {
     useUserStore.storeLogin(res);
 
     loginStatus.userLogin();
     router.push({ path: "/user_centre" });
   } else {
-
     alert("伺服器忙碌中, 請稍後再試!");
   }
 
-  reserResponse(response)
+  buttonSwitch.value = false //解除防連點
+
+  // 結束後清空內容
+  response.res = {
+    data: null,
+    code: 0,
+    message: "",
+  };
 };
 
 const change = (val: string, keyName: string) => {
@@ -196,5 +191,4 @@ function resetErrorMessage(key: string) {
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>  
 <style src="../../assets/css/login/login.scss" scoped></style>

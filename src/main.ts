@@ -6,8 +6,7 @@ import AOS from "aos";
 import "aos/dist/aos.css";
 import {pinia} from './store'
 import piniaPluginPersistedstate from "pinia-plugin-persistedstate";
-
-pinia.use(piniaPluginPersistedstate);
+pinia.use(piniaPluginPersistedstate)
 
 AOS.init();
 

@@ -1,36 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&family=Noto+Serif+TC:wght@900&family=Trade+Winds&display=swap');
-@import './_var';
-@import './_container';
-
-@import './header/_style';
-@import './index/banner/_style';
-@import './index/top-news/_style';
-@import './index/news-list/_style';
-@import './index/follow/_style';
-@import './index/cards/_style';
-@import './index/footer/_style';
-
 // css animate
 @import url('https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css');
 @import url('https://unpkg.com/aos@2.3.1/dist/aos.css');
-
-html {
-    scroll-behavior: smooth;
-    @media (max-width: 593px) {
-        overflow-x: hidden;
-        overflow-y: visible;
-    }
-}
-
-body {
-    overflow-x: hidden;
-    overflow-y: visible;
-}
-
-.bottom-line {
-    position: relative;
-    z-index: 2;
-    height: 24px;
-    background: $yellow-5;
-}

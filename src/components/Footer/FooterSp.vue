@@ -40,4 +40,4 @@
   <div class="bottom-line"></div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>
+<style src="../../assets/css/footer/Footer-SP.scss" scoped></style>

@@ -9,7 +9,7 @@ const loginStatus = store.useLoginStore();
 const useUserStore = store.useUserStore();
 const { login } = storeToRefs(loginStatus);
 const { user } = storeToRefs(useUserStore);
-// console.log(user.value);
+console.log(user.value);
 
 const menu_switch = ref(false);
 const menu_collapse = ref(false);
@@ -83,6 +83,12 @@ const navButtons = [
     link: "/news",
   },
 ];
+
+const logout = ()=>{
+  useUserStore.logout()
+  loginStatus.userLogout()
+  router.push({path: "/"})
+}
 </script>
 
 <template>
@@ -113,17 +119,21 @@ const navButtons = [
             <input type="text" class="search" placeholder="搜尋" />
             <i class="fa-solid fa-magnifying-glass"></i>
           </div>
-          <div class="point">
+          <button type="button" class="point">
             <i class="fa-solid fa-sack-dollar"></i>
             <div class="number">{{ user.user_pointA }}</div>
-          </div>
-          <div
+          </button>
+          <button type="button" class="text-white text-[30px] mr-[40px]" @click="logout" >
+            <i class="fa-solid fa-right-from-bracket"></i>
+          </button>
+          <button
+            type="button"
             class="notify"
             :class="{ active: notify_switch }"
             @click="switchNotifyMenu"
           >
             <i class="fa-solid fa-bell"></i>
-          </div>
+        </button>
           <button class="account">
             <i class="fa-solid fa-user"></i>
           </button>
@@ -243,42 +253,34 @@ const navButtons = [
     </div>
 
     <div class="fixed-buttons">
-            <div class="quick_link">
-                <div class="menu-btn">
-                    <div class="icon">
-                        <i class="fa-solid fa-angle-up"></i>
-                        <!-- <i class="fa-solid fa-angle-down"></i> -->
-                    </div>
-                    <div class="title">注單</div>
-                </div>
-                <div class="btn-list">
-                    <a href="#">
-                        <div class="number">
-                            5
-                        </div>
-                        搓合中
-                    </a>
-                    <a href="#">
-                        <div class="number">
-                            8
-                        </div>
-                        已成交
-                    </a>
-                    <a href="#">
-                        <div class="number">
-                            99+
-                        </div>
-                        未成交
-                    </a>
-                </div>
-            </div>
-            <a href="#" class="quick_link">
-                客服中心
-            </a>
-            <a href="#header" class="btt">
-                <i class="fa-solid fa-arrow-up"></i>
-            </a>
+      <div class="quick_link">
+        <div class="menu-btn">
+          <div class="icon">
+            <i class="fa-solid fa-angle-up"></i>
+            <!-- <i class="fa-solid fa-angle-down"></i> -->
+          </div>
+          <div class="title">注單</div>
         </div>
+        <div class="btn-list">
+          <a href="#">
+            <div class="number">5</div>
+            搓合中
+          </a>
+          <a href="#">
+            <div class="number">8</div>
+            已成交
+          </a>
+          <a href="#">
+            <div class="number">99+</div>
+            未成交
+          </a>
+        </div>
+      </div>
+      <a href="#" class="quick_link"> 客服中心 </a>
+      <a href="#header" class="btt">
+        <i class="fa-solid fa-arrow-up"></i>
+      </a>
+    </div>
   </header>
 
   <div
@@ -424,4 +426,4 @@ const navButtons = [
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>
+<style src="../../assets/css/header/Header-CP.scss" scoped></style>

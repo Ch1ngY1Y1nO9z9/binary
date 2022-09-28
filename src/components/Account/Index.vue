@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 // 引入寫好的axios(並非從套件來, 而是先設定好的實例)
 import useAxiosFunction from "../../utilities/api/useAxiosFunction";
-import apiSetting from "../../api/basicSetting";
+import sendData from "../../api/getDataFunction";
 
 import { storeToRefs } from "pinia";
 import store from "../../store";
@@ -23,18 +23,28 @@ const {
   uuid,
 } = user.value;
 
-onMounted(() => {
+interface IfetchData {
+  res: {
+    data: object;
+    message: string;
+    code: number;
+  };
+}
+
+onMounted(async () => {
   // 發送前在Header增加Authorization
-  apiSetting.defaults.headers.common[
+  sendData.defaults.headers.common[
     "Authorization"
   ] = `Bearer ${access_token}`;
 
-  const response = useAxiosFunction({
-    axiosInstance: apiSetting,
+  const response = await useAxiosFunction<IfetchData>({
+    axiosInstance: sendData,
     method: "GET",
     url: "/auth/user-profile",
     requestConfig: {},
   });
+
+  useUserStore.updateLogin(response.res)
 });
 
 const changeColor = ref(false);
@@ -92,6 +102,7 @@ const formRow = [
     value: invitation_code,
   },
 ];
+
 </script>
   
 <template>
@@ -99,7 +110,8 @@ const formRow = [
     <div class="custom-container c-624 p-150">
       <div class="form-card">
         <div class="account_pic">
-          <img :src="profile_photo_url" alt="avatar" />
+          <img v-if="profile_photo_url != null" :src="profile_photo_url" alt="avatar" />
+          <i v-if="profile_photo_url == null" class="fa-solid fa-user defalut-icon"></i>
         </div>
         <div class="account-setting list">
           <div
@@ -119,7 +131,7 @@ const formRow = [
             <n-popover v-if="row.name == 'invitation_code'" trigger="hover">
               <template #trigger>
                 <span
-                  class="cursor-pointer icon ml-auto mt-[-5px]"
+                  class="cursor-pointer icon ml-auto mt-[-10px] text-[#0046AE] text-[20px]"
                   :class="{ yellow: changeColor }"
                   @mousedown="copyInvCode"
                   @mouseup="copyInvCode"
@@ -129,24 +141,23 @@ const formRow = [
               </template>
               {{ copyText }}
             </n-popover>
-
-            <router-link
-              v-if="row.name === 'numbering'"
-              to="/account/profile_edit"
-              >修改個人檔案</router-link
-            >
           </div>
         </div>
+        <router-link class="editProfile" to="/account/profile_edit">修改個人檔案</router-link>
       </div>
     </div>
   </div>
 </template>
 
-  <style src="../../assets/css/layout.css" scoped></style>  
-  <style src="../../assets/css/account/account.css" scoped></style>
+  <style src="../../assets/css/account/account.scss" scoped></style>
 
   <style lang="scss">
 .yellow {
   color: rgba(252, 189, 31, 1);
+}
+
+.defalut-icon {
+  color: white;
+  opacity: .5;
 }
 </style>

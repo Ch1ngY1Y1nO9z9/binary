@@ -97,5 +97,4 @@ import RadarChart from "../../utilities/chart/Rader.vue";
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>
 <style lang="scss" scoped src="../../assets/css/results/results.scss"></style>

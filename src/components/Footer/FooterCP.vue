@@ -44,4 +44,4 @@
   <div class="bottom-line"></div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>
+<style src="../../assets/css/footer/Footer-CP.scss" scoped></style>

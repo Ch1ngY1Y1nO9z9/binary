@@ -90,4 +90,14 @@
             }
         }
     }
+
+    .none-list {
+        @include Sans(400, 18px, 18px, initial);
+        color: $gray-3;
+        text-align: center;
+
+        svg {
+            color: $hr-gray;
+        }
+    }
 }

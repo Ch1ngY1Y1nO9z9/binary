@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import { reactive, ref, toRefs, watch } from "vue";
+import { reactive, ref, toRefs, watch, onMounted } from "vue";
 import { useRouter } from "vue-router";
 import Input from "/src/utilities/input/Input.vue";
 import ValidateInput from "/src/utilities/input/ValidateInput.vue";
@@ -7,6 +7,7 @@ import ValidateInput from "/src/utilities/input/ValidateInput.vue";
 import axiosFetchFunction from "../../utilities/api/useAxiosFunction";
 import sendData from "../../api/getDataFunction";
 import WebsiteTerms from "../../utilities/websiteTerms.vue";
+import store from "../../store";
 
 const router = useRouter(); //重新導向用
 const checkBox = ref(false); //checkBox勾選判斷
@@ -16,6 +17,14 @@ const time = ref(0); //定時器
 const showModal = ref(false); //Modal框顯示
 let timer: string | number | NodeJS.Timeout | null | undefined = null;
 const buttonSwitch = ref(false); //控制按鈕disable
+
+const loginStatus = store.useLoginStore();
+
+onMounted(() => {
+  if (loginStatus.login) {
+    router.push({ path: "/user_centre" });
+  }
+});
 
 const data = ref({
   name: "",
@@ -30,62 +39,44 @@ const data = ref({
 const validate = reactive({
   name: {
     status: false,
-    msg: "此名稱已有使用者使用!",
+    msg: "",
   },
   email: {
     status: false,
-    msg: "請輸入正確的Email格式，如：12345@gmail.com",
+    msg: "",
   },
   password: {
     status: false,
-    msg: "此欄位不可為空!",
+    msg: "",
   },
   passwordConfirmation: {
     status: false,
-    msg: "密碼不符",
+    msg: "",
   },
   phone: {
     status: false,
-    msg: "請確認手機號碼是否正確",
+    msg: "",
   },
   verificationCode: {
     status: false,
-    msg: "輸入的驗證碼有誤，請確認後再次輸入或重新發送驗證碼",
+    msg: "",
   },
   invCode: {
     status: false,
-    msg: "此邀請碼不存在，請確認後再次輸入",
+    msg: "",
   },
 });
 
-const toggleCheckboxx = () => {
+const toggleCheckbox = () => {
   checkBox.value = !checkBox.value;
 };
 
-interface IaxiosEmail {
-  res: {
-    data?: object;
-    message?: any;
-  };
-  err: {
-    message?: string;
-    code?: number;
-  };
-  loading: boolean;
-  controller: object;
-}
-
 interface IfetchData {
   res: {
-    data?: object;
-    message?: { [key: string]: string[] };
+    data: object;
+    message: string;
+    code: number;
   };
-  err: {
-    message?: string;
-    code?: number;
-  };
-  loading: boolean;
-  controller: object;
 }
 
 // 發送資料
@@ -113,15 +104,10 @@ const formSubmit = async () => {
     password: data.value.password,
     passwordConfirmation: data.value.passwordConfirmation,
     verificationCode: data.value.verificationCode,
-    invitation_code: data.value.invCode
+    invitation_code: data.value.invCode,
   };
 
-  const reserResponse = (response: IfetchData) => {
-    response.res = {};
-    response.err = {};
-  };
-
-  const response: IfetchData = await axiosFetchFunction({
+  const response = await axiosFetchFunction<IfetchData>({
     axiosInstance: sendData,
     method: "POST",
     url: `/auth/register`,
@@ -130,20 +116,19 @@ const formSubmit = async () => {
     },
   });
 
-  const { res, err, loading } = response;
+  const { res } = response;
 
-  console.log(res);
-
-  if (!loading && res.message) {
+  if (res.code == 401) {
     // alert(result.message.email[0]);
-    Object.entries(res.message).forEach(([key, value]) => {
-      setErrorMessage(value.join(", "), key);
-    });
+    // Object.entries(res.message).forEach(([key, value]) => {
+    //   setErrorMessage(value.join(", "), key);
+    // });
 
-    return false
+    setErrorMessage(res.message, "invCode");
+    return false;
   }
-  
-  if (!loading && !res) {
+
+  if (res.code == 200) {
     steps.value++;
     time.value = 4;
     redir.value = true;
@@ -152,7 +137,12 @@ const formSubmit = async () => {
     alert("伺服器忙碌中, 請稍後再試!");
   }
 
-  reserResponse(response);
+  // 結束後清空內容
+  response.res = {
+    data: null,
+    code: 0,
+    message: '',
+  };
 };
 
 // 倒數器
@@ -178,15 +168,33 @@ const require = (msg: string, key: string) => {
 };
 
 const reset = (key: string) => {
-  resetErrorMessage(key);
+  if (key === "name") {
+    validate.name.status = false;
+  } else if (key === "email") {
+    validate.email.status = false;
+  } else if (key === "password") {
+    validate.password.status = false;
+  } else if (key === "passwordConfirmation") {
+    validate.passwordConfirmation.status = false;
+  } else if (key === "phone") {
+    validate.phone.status = false;
+  } else if (key === "verificationCode") {
+    validate.verificationCode.status = false;
+  } else if (key === "invCode") {
+    validate.invCode.status = false;
+  }
 };
 
 const checkPassword = () => {
-  if (data.value.password !== data.value.passwordConfirmation) {
-    setErrorMessage("密碼不符", "passwordConfirmation");
+  if (!validate.password.status) {
+    if (data.value.password !== data.value.passwordConfirmation) {
+      setErrorMessage("密碼不符", "passwordConfirmation");
+    } else {
+      reset("password");
+      reset("passwordConfirmation");
+    }
   } else {
-    resetErrorMessage("password");
-    resetErrorMessage("passwordConfirmation");
+    setErrorMessage("密碼未依指定格式輸入", "passwordConfirmation");
   }
 };
 
@@ -207,17 +215,17 @@ const checkValidate = () => {
 };
 
 const checkDataValue = () => {
-  let checked = 0
+  let checked = 0;
   Object.entries(data.value).forEach(([key, value]) => {
     if (key != "invCode" && value.length == 0) {
       setErrorMessage("此欄位不可留空!", key);
-      checked++
+      checked++;
     }
   });
-  if(checked != 0){
-    return false
-  }else{
-    return true
+  if (checked != 0) {
+    return false;
+  } else {
+    return true;
   }
 };
 
@@ -264,24 +272,6 @@ const setErrorMessage = (msg: string, key: string) => {
   }
 };
 
-const resetErrorMessage = (key: string) => {
-  if (key === "name") {
-    validate.name.status = false;
-  } else if (key === "email") {
-    validate.email.status = false;
-  } else if (key === "password") {
-    validate.password.status = false;
-  } else if (key === "passwordConfirmation") {
-    validate.passwordConfirmation.status = false;
-  } else if (key === "phone") {
-    validate.phone.status = false;
-  } else if (key === "verificationCode") {
-    validate.verificationCode.status = false;
-  } else if (key === "invCode") {
-    validate.invCode.status = false;
-  }
-};
-
 const passwordRuleValidate = (msgSwitch: boolean) => {
   if (msgSwitch) {
     setErrorMessage(
@@ -289,7 +279,7 @@ const passwordRuleValidate = (msgSwitch: boolean) => {
       "password"
     );
   } else {
-    resetErrorMessage("password");
+    reset("password");
   }
 };
 
@@ -317,20 +307,20 @@ const axiosValidte = async (key: string) => {
 
   validLoading.value = true;
 
-  const response: IaxiosEmail = await axiosFetchFunction({
+  const response = await axiosFetchFunction({
     axiosInstance: sendData,
     method: "GET",
     url: `/auth/account_check?email=${data.value.email}`,
     requestConfig: {},
   });
 
-  const { res, err, loading, controller } = response;
-  validLoading.value = loading;
+  const { res } = response;
+  validLoading.value = false;
 
-  if (res.message === '該信箱已註冊過') {
+  if (res.code == 401) {
     setErrorMessage(res.message, "email");
   } else {
-    resetErrorMessage("email");
+    reset("email");
   }
 };
 </script>
@@ -434,10 +424,12 @@ const axiosValidte = async (key: string) => {
         type="text"
         placeholder="若您無邀請碼, 請略過此處"
         name="invCode"
+        rules="ResetEveryTime"
         :model="data.invCode"
         :status="validate.invCode.status"
         :msg="validate.invCode.msg"
         @change="change"
+        @reset="reset"
       />
 
       <div class="input-row">
@@ -447,14 +439,14 @@ const axiosValidte = async (key: string) => {
             <span
               class="checkbox-mask"
               :class="{ clicked: checkBox }"
-              @:click="toggleCheckboxx"
+              @:click="toggleCheckbox"
             >
               <i class="fa-solid fa-check"></i>
             </span>
             我已仔細閱讀
-            <button type="button" @click="showModal = true">
-              ＜XXXX規章＞
-            </button>
+          </label>
+          <label class="terms-label cursor-pointer" @click="showModal = true">
+            ＜XXXX規章＞
           </label>
           <n-modal v-model:show="showModal">
             <n-card
@@ -497,7 +489,6 @@ const axiosValidte = async (key: string) => {
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>  
 <style src="../../assets/css/login/login.scss" scoped></style>
 <style lang="css" scoped>
 .input-row .input-col label .checkbox-mask.clicked svg {

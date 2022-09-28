@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-
-import "../../assets/css/login/login.css";
 import Title from "../../utilities/Title.vue";
 import LoginForm from "../../components/Forms/Login.vue";
 import LoginLayout from "../../layouts/LayoutLogin.vue";
@@ -15,3 +13,4 @@ import LoginLayout from "../../layouts/LayoutLogin.vue";
     <LoginForm />
   </LoginLayout>
 </template>
+<style lang="scss" src="../../assets/css/login/login.scss" scoped></style>

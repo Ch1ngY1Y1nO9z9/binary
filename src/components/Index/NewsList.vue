@@ -181,4 +181,4 @@ const modules = [Navigation];
   </section>
 </template>
   
-<style src="../../assets/css/index.css" scoped></style>
+<style src="../../assets/css/index/news-list/news-list.scss" scoped></style>

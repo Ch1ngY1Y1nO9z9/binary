@@ -1,6 +1,4 @@
 <script lang="ts" setup>
-
-import "../../assets/css/login/login.css";
 import Title from "../../utilities/Title.vue";
 import LoginLayout from "../../layouts/LayoutLogin.vue";
 import Unvertify from "../../components/Login/Unvertify.vue";
@@ -16,4 +14,4 @@ import Unvertify from "../../components/Login/Unvertify.vue";
   </LoginLayout>
 </template>
     
-    
+<style lang="scss" src="../../assets/css/login/login.scss" scoped></style>

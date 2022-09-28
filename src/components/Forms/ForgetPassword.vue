@@ -30,7 +30,7 @@ const nextStep = () => {
 };
 
 // 發送資料
-const formSubmit = () => {
+const formSubmit = async () => {
   let rawData = {
     email: data.value.email,
   };
@@ -39,18 +39,12 @@ const formSubmit = () => {
     res: {
       data?: object;
       message?: string;
-    };
-    err: {
-      message?: string;
-      code?: number;
-    };
-    loading: boolean;
-    controller: object;
+    }
   }
 
   
   //   不管成功與否都回覆成功避免被試出註冊人
-  const response = axiosFetchFunction({
+  const response = await axiosFetchFunction({
     axiosInstance: sendData,
     method: "POST",
     url: `/auth/forgot-password`,
@@ -58,8 +52,6 @@ const formSubmit = () => {
       rawData,
     },
   });
-
-  console.log(response)
 
   steps.value++;
 };
@@ -171,5 +163,4 @@ function resetErrorMessage(key: string) {
   </div>
 </template>
 
-<style src="../../assets/css/layout.css" scoped></style>  
 <style src="../../assets/css/login/login.scss" scoped></style>

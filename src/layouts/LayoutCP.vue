@@ -11,9 +11,9 @@ import Footer from "../components/Footer/FooterCP.vue";
 
 const slot = useSlots();
 
-onMounted(()=>{
+onMounted(() => {
   window.scrollTo(0, 0);
-})
+});
 </script>
   <template>
   <Header />
@@ -26,3 +26,17 @@ onMounted(()=>{
 
   <Footer />
 </template>
+
+<style lang="scss" scoped>
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+}
+.content {
+  width: 100%;
+  position: relative;
+}
+</style>
