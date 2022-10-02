@@ -12,7 +12,7 @@
 
       <div class="news-list">
         <div class="cards">
-          <a href="./content.html" class="card">
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -30,8 +30,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -48,8 +48,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -67,8 +67,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -85,8 +85,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -104,8 +104,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -122,8 +122,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -141,8 +141,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -159,8 +159,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -178,8 +178,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -196,8 +196,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -215,8 +215,8 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
-          <a href="./content.html" class="card">
+          </router-link>
+          <router-link to="/news/type/content" class="card">
             <div class="left">
               <img src="" alt="news picture" />
             </div>
@@ -233,7 +233,7 @@
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
+          </router-link>
         </div>
       </div>
 
@@ -242,12 +242,8 @@
           <i class="fa-solid fa-angle-left"></i>
         </button>
         <div class="pages">
-          <a class="active" href="#">1</a>
-          <a href="#">2</a>
-          <a href="#">3</a>
-          <a href="#">...</a>
-          <a href="#">13</a>
-        </div>
+          <router-link tos=/news/typeactive" "#">1</router-link>
+          <router-link to="/ne/typews">2</a     <router-link to="/ne/typews">3</a     <router-link to="/new/types">...</       <router-link to="/ne/typews">13</    </div>
         <button class="next-arrow">
           <i class="fa-solid fa-angle-right"></i>
         </button>

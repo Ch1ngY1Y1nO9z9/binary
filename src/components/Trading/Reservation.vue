@@ -14,7 +14,7 @@ const router = useRouter(); //重新導向用
   />
   <div class="trading">
     <div class="custom-container c-624 p-200">
-      <form class="form-card" action="./index.html" method="get">
+      <form class="form-card">
         <h2 class="title">我要預定</h2>
 
         <div class="board wallets single">

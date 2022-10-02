@@ -19,11 +19,7 @@ const steps = ref(1);
           <div class="title"><span class="icon"></span>出金錢包 (點)</div>
           <div class="point">200</div>
         </div>
-        <form
-          class="form-card"
-          action="./pointtrading-2-comfirm.html"
-          method="get"
-        >
+        <form class="form-card">
           <div class="input-row">
             <label for="point" class="input-label">販售點數</label>
             <div class="input-col">
@@ -104,7 +100,7 @@ const steps = ref(1);
       </template>
 
       <template v-if="steps === 2">
-        <form class="form-card" action="./pointtrading-3-success.html">
+        <form class="form-card">
           <h2 class="title">交易確認</h2>
           <div class="list">
             <div class="row">

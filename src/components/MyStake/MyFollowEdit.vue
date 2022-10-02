@@ -39,7 +39,7 @@ import Title from "../../utilities/CPTitle.vue";
           </div>
         </div>
 
-        <form class="form-card" action="./user_list.html" method="get">
+        <form class="form-card">
           <div class="input-row">
             <label for="chain" class="input-label">跟單類型</label>
             <div class="input-col">
@@ -84,8 +84,8 @@ import Title from "../../utilities/CPTitle.vue";
           <div class="input-row">
             <label for="password" class="input-label"
               >錢包密碼
-              <a class="link float-right" href="../login/forgotpassword.html"
-                >忘記密碼?</a
+              <router-link class="link float-right" to="/forgotPassword"
+                >忘記密碼?</router-link
               ></label
             >
             <div class="input-col">
@@ -101,7 +101,7 @@ import Title from "../../utilities/CPTitle.vue";
           </div>
 
           <div class="links">
-            <a href="./user_list.html" class="link">取消</a>
+            <router-link to="/myStake/myFollow" class="link">取消</router-link>
             <button type="submit" class="link">修改</button>
           </div>
         </form>

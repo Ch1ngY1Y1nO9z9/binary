@@ -19,7 +19,7 @@ const modules = [Navigation];
         }"
       >
         <swiper-slide>
-          <a href="./content.html" class="link hvr-float">
+          <router-link to="/news/type/content" class="link hvr-float">
             <div class="pic" style="background-image: url()"></div>
             <div class="description">
               <div class="tag">
@@ -30,10 +30,10 @@ const modules = [Navigation];
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
+          </router-link>
         </swiper-slide>
         <swiper-slide>
-          <a href="./content.html" class="link hvr-float">
+          <router-link to="/news/type/content" class="link hvr-float">
             <div class="pic" style="background-image: url()"></div>
             <div class="description">
               <div class="tag">
@@ -44,10 +44,10 @@ const modules = [Navigation];
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
+          </router-link>
         </swiper-slide>
         <swiper-slide>
-          <a href="./content.html" class="link hvr-float">
+          <router-link to="/news/type/content" class="link hvr-float">
             <div class="pic" style="background-image: url()"></div>
             <div class="description">
               <div class="tag">
@@ -58,10 +58,10 @@ const modules = [Navigation];
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
+          </router-link>
         </swiper-slide>
         <swiper-slide>
-          <a href="./content.html" class="link hvr-float">
+          <router-link to="/news/type/content" class="link hvr-float">
             <div class="pic" style="background-image: url()"></div>
             <div class="description">
               <div class="tag">
@@ -72,10 +72,10 @@ const modules = [Navigation];
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
+          </router-link>
         </swiper-slide>
         <swiper-slide>
-          <a href="./content.html" class="link hvr-float">
+          <router-link to="/news/type/content" class="link hvr-float">
             <div class="pic" style="background-image: url()"></div>
             <div class="description">
               <div class="tag">
@@ -86,7 +86,7 @@ const modules = [Navigation];
               </div>
               <div class="time">3分鐘前</div>
             </div>
-          </a>
+          </router-link>
         </swiper-slide>
       </swiper>
       <div class="topnews-swiper-button-prev swiper-button-prev">

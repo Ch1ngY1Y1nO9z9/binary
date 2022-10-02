@@ -65,8 +65,8 @@ const steps = ref(0);
           <div class="input-row">
             <label for="password" class="input-label"
               >錢包密碼
-              <a class="link float-right" href="../login/forgotpassword.html"
-                >忘記密碼?</a
+              <router-link class="link float-right" to="/forgotPassword"
+                >忘記密碼?</router-link
               ></label
             >
             <div class="input-col">

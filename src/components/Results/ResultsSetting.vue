@@ -51,7 +51,7 @@ console.log(setting);
             </div>
           </div>
 
-          <form class="form-card" action="./list.html" method="get">
+          <form class="form-card">
             <div class="input-row">
               <label for="chain" class="input-label">跟單類型</label>
               <div class="input-col">
@@ -114,8 +114,8 @@ console.log(setting);
             <div class="input-row">
               <label for="password" class="input-label"
                 >錢包密碼
-                <a class="link float-right" href="../login/forgotpassword.html"
-                  >忘記密碼?</a
+                <router-link class="link float-right" to="/forgotPassword"
+                  >忘記密碼?</router-link
                 ></label
               >
               <div class="input-col">
@@ -167,7 +167,7 @@ console.log(setting);
               </div>
             </div>
           </div>
-          <form class="form-card" action="./list.html" method="get">
+          <form class="form-card">
             <div class="input-row">
               <label for="chain" class="input-label">跟單類型</label>
               <div class="input-col">
@@ -213,8 +213,8 @@ console.log(setting);
             <div class="input-row">
               <label for="password" class="input-label"
                 >錢包密碼
-                <a class="link float-right" href="../login/forgotpassword.html"
-                  >忘記密碼?</a
+                <router-link class="link float-right" to="/forgotPassword"
+                  >忘記密碼?</router-link
                 ></label
               >
               <div class="input-col">
