@@ -1,29 +1,29 @@
 <script lang="ts" setup>
 import { Swiper, SwiperSlide } from "swiper/vue";
-import { Navigation } from "swiper";
+import { Navigation, EffectCoverflow } from "swiper";
 
-const modules = [Navigation];
+const modules = [Navigation, EffectCoverflow];
 
-const swiperOptions = {
-  navigation: {
-    nextEl: ".topnews-swiper-button-next",
-    prevEl: ".topnews-swiper-button-prev",
-  },
-  effect: "coverflow",
-  grabCursor: true,
-  centeredSlides: true,
-  slidesPerView: "auto",
-  coverflowEffect: {
-    rotate: 0,
-    stretch: "40%",
-    depth: 350,
-    modifier: 1,
-    slideShadows: false,
-  },
-  initialSlide: 1,
-  observer: true,
-  observeParents: true,
-};
+// const swiperOptions = {
+//   navigation: {
+//     nextEl: ".topnews-swiper-button-next",
+//     prevEl: ".topnews-swiper-button-prev",
+//   },
+//   effect: "coverflow",
+//   grabCursor: true,
+//   centeredSlides: true,
+//   slidesPerView: "auto",
+//   coverflowEffect: {
+//     rotate: 0,
+//     stretch: "40%",
+//     depth: 350,
+//     modifier: 1,
+//     slideShadows: false,
+//   },
+//   initialSlide: 1,
+//   observer: true,
+//   observeParents: true,
+// };
 </script>
       
 <template>
@@ -31,10 +31,23 @@ const swiperOptions = {
     <div class="custom-container c-1575">
       <swiper
         class="topNewsSwiper"
-        :navigation="true"
-        effect="coverflow"
+        :slidePerView="'auto'"
+        :initialSlide="0"
+        :navigation="{
+          nextEl: '.topnews-swiper-button-next',
+          prevEl: '.topnews-swiper-button-prev',
+        }"
+        :effect="'coverflow'"
+        :coverflowEffect="{
+          rotate: 0,
+          stretch: 0.4,
+          depth: 350,
+          modifier: 1,
+          slideShadows: false,
+        }"
         :grabCursor="true"
         :centeredSlides="true"
+        :modules="modules"
       >
         <swiper-slide>
           <router-link

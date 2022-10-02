@@ -7,9 +7,23 @@ section.content {
                 justify-content: space-between;
                 margin-bottom: 50px;
 
-                .title {
+                h3 {
+                    display: flex;
+                    align-items: center;
                     @include Serif(30px, 30px, .05em);
                     color: $gray-5;
+            
+                    span.icon {
+                        display: inline-block;
+                        height: 15px;
+                        margin-right: 10px;
+            
+                        img {
+                            width: auto;
+                            height: 100%;
+                            fill: $gray-5;
+                        }
+                    }
                 }
 
                 .buttons {

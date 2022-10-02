@@ -40,47 +40,47 @@ let currentPathObject = router.currentRoute.value;
 const navButtons = [
   {
     title: "娛樂",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "財經",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "國際",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "體育",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "政治",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "社會",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "幣圈",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "體育",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "政治",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "社會",
-    link: "/news",
+    link: "/news/type",
   },
   {
     title: "幣圈",
-    link: "/news",
+    link: "/news/type",
   },
 ];
 
@@ -164,21 +164,21 @@ const logout = ()=>{
                   </router-link>
                 </div>
                 <div class="buttons">
-                  <router-link to="/stake/hot" class="menu-botton">
+                  <router-link to="/stake" class="menu-botton">
                     <i class="fa-solid fa-fire"></i>
                     <div>熱門下注</div>
                   </router-link>
-                  <router-link to="/lottery/list" class="menu-botton">
+                  <button type="button" class="menu-botton">
                     <i class="fa-solid fa-rectangle-list"></i>
                     <div>投注列表</div>
-                  </router-link>
-                  <router-link to="/trading" class="menu-botton">
+                  </button>
+                  <router-link to="/trading_center/index" class="menu-botton">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                     <div>交易中心</div>
                   </router-link>
                 </div>
                 <div class="buttons">
-                  <router-link to="/results" class="menu-botton">
+                  <router-link to="member_results/index" class="menu-botton">
                     <i class="fa-solid fa-address-card"></i>
                     <div>會員戰績</div>
                   </router-link>
@@ -199,19 +199,19 @@ const logout = ()=>{
                     <i class="fa-solid fa-newspaper"></i>
                     <div>新聞列表</div>
                   </router-link>
-                  <router-link to="/stake/hot" class="menu-botton">
+                  <router-link to="/stake" class="menu-botton">
                     <i class="fa-solid fa-fire"></i>
                     <div>熱門下注</div>
                   </router-link>
-                  <router-link to="/lottery/list" class="menu-botton">
+                  <button type="button" class="menu-botton">
                     <i class="fa-solid fa-rectangle-list"></i>
                     <div>投注列表</div>
-                  </router-link>
-                  <router-link to="/trading" class="menu-botton">
+                  </button>
+                  <router-link to="/trading_center/index" class="menu-botton">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                     <div>交易中心</div>
                   </router-link>
-                  <router-link to="/results" class="menu-botton">
+                  <router-link to="/member_results/index" class="menu-botton">
                     <i class="fa-solid fa-address-card"></i>
                     <div>會員戰績</div>
                   </router-link>

@@ -1,25 +1,25 @@
-import News from '../views/News/Index.vue';
-import NewsList from '../views/News/List.vue';
-import NewsContent from '../views/News/Content.vue';
+import Index from '../views/News/Index.vue';
+import List from '../views/News/List.vue';
+import Content from '../views/News/Content.vue';
 
-const NewsRoutes = {
-    path: '/News',
-    name: 'News',
-    component: News,
-    children: [
-        {
-            path: '/*',
-            name: 'NewsList',
-            component: NewsList,
-            children: [
-                {
-                    path: '/*',
-                    name: 'NewsContent',
-                    component: NewsContent
-                }
-            ]
-        }
-    ]
+const NewsIndex = {
+    path: '/news',
+    name: 'NewsIndex',
+    component: Index
 }
 
-export default NewsRoutes
+const NewsList = {
+    path: '/news/type',
+    name: 'NewsList',
+    component: List,
+}
+
+const NewsContent = {
+    path: '/news/type/content',
+    name: 'NewsContent',
+    component: Content
+}
+
+const News = { NewsIndex, NewsList, NewsContent }
+
+export default News

@@ -45,15 +45,15 @@ const menulist = [
     links: [
       {
         linkName: "注單追蹤",
-        link: "/mystack/track",
+        link: "/myStake/track",
       },
       {
         linkName: "我的跟單列表",
-        link: "/mystack/myFollow",
+        link: "/myStake/myFollow",
       },
       {
         linkName: "金融定期定額列表",
-        link: "/mystack/schedule",
+        link: "/myStake/schedule",
       },
     ],
   },

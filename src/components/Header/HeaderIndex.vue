@@ -12,6 +12,7 @@ const { user } = storeToRefs(useUserStore);
 console.log(user.value);
 
 const menu_switch = ref(false);
+const menu_name = ref("");
 const menu_collapse = ref(false);
 const notify_switch = ref(false);
 
@@ -23,7 +24,12 @@ const switchMenu = () => {
   }
 };
 
-const switchCollapse = () => {
+const switchCollapse = (name: string) => {
+  menu_name.value = name;
+  collapseController();
+};
+
+const collapseController = () => {
   menu_collapse.value = !menu_collapse.value;
 };
 
@@ -37,7 +43,7 @@ let currentPathObject = router.currentRoute.value;
 // 測試用
 console.log("Route Object", currentPathObject);
 
-const navButtons = [
+const newsButtons = [
   {
     title: "娛樂",
     link: "/news",
@@ -81,6 +87,25 @@ const navButtons = [
   {
     title: "幣圈",
     link: "/news",
+  },
+];
+
+const betsButtons = [
+  {
+    title: "話題時事",
+    link: "#",
+  },
+  {
+    title: "體育競技",
+    link: "#",
+  },
+  {
+    title: "金融期權(準備中)",
+    link: "#",
+  },
+  {
+    title: "互動益智(準備中)",
+    link: "#",
   },
 ];
 </script>
@@ -143,7 +168,7 @@ const navButtons = [
                 <div class="buttons">
                   <button
                     class="menu-botton collapse-menu"
-                    @click="switchCollapse"
+                    @click="switchCollapse('news')"
                   >
                     <i class="fa-solid fa-comment-dots"></i>
                     <div>話題新聞</div>
@@ -154,21 +179,21 @@ const navButtons = [
                   </router-link>
                 </div>
                 <div class="buttons">
-                  <router-link to="/stake/hot" class="menu-botton">
+                  <router-link to="/stake" class="menu-botton">
                     <i class="fa-solid fa-fire"></i>
                     <div>熱門下注</div>
                   </router-link>
-                  <router-link to="/lottery/list" class="menu-botton">
+                  <button type="button" class="menu-botton">
                     <i class="fa-solid fa-rectangle-list"></i>
                     <div>投注列表</div>
-                  </router-link>
-                  <router-link to="/trading" class="menu-botton">
+                  </button>
+                  <router-link to="/trading_center/index" class="menu-botton">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                     <div>交易中心</div>
                   </router-link>
                 </div>
                 <div class="buttons">
-                  <router-link to="/results" class="menu-botton">
+                  <router-link to="/member_results/index" class="menu-botton">
                     <i class="fa-solid fa-address-card"></i>
                     <div>會員戰績</div>
                   </router-link>
@@ -189,19 +214,19 @@ const navButtons = [
                     <i class="fa-solid fa-newspaper"></i>
                     <div>新聞列表</div>
                   </router-link>
-                  <router-link to="/stake/hot" class="menu-botton">
+                  <router-link to="/stake" class="menu-botton">
                     <i class="fa-solid fa-fire"></i>
                     <div>熱門下注</div>
                   </router-link>
-                  <router-link to="/lottery/list" class="menu-botton">
+                  <button type="button" class="menu-botton">
                     <i class="fa-solid fa-rectangle-list"></i>
                     <div>投注列表</div>
-                  </router-link>
-                  <router-link to="/trading" class="menu-botton">
+                  </button>
+                  <router-link to="/trading_center/index" class="menu-botton">
                     <i class="fa-solid fa-hand-holding-dollar"></i>
                     <div>交易中心</div>
                   </router-link>
-                  <router-link to="/results" class="menu-botton">
+                  <router-link to="/member_results/index" class="menu-botton">
                     <i class="fa-solid fa-address-card"></i>
                     <div>會員戰績</div>
                   </router-link>
@@ -217,7 +242,7 @@ const navButtons = [
               <div class="close-btn">
                 <button
                   class="menu-link-button burger-style"
-                  @click="switchCollapse"
+                  @click="switchCollapse('')"
                 >
                   <span></span>
                 </button>
@@ -225,14 +250,26 @@ const navButtons = [
               <div class="modal-layout">
                 <div class="link-list">
                   <nav class="menu-links">
-                    <router-link
-                      v-for="button in navButtons"
-                      :key="button.title"
-                      :to="button.link"
-                      class="menu-link"
-                    >
-                      {{ button.title }}
-                    </router-link>
+                    <template v-if="menu_name === 'news'">
+                      <router-link
+                        v-for="button in newsButtons"
+                        :key="button.title"
+                        :to="button.link"
+                        class="menu-link"
+                      >
+                        {{ button.title }}
+                      </router-link>
+                    </template>
+                    <template v-if="menu_name === 'betList'">
+                      <router-link
+                        v-for="button in betsButtons"
+                        :key="button.title"
+                        :to="button.link"
+                        class="menu-link"
+                      >
+                        {{ button.title }}
+                      </router-link>
+                    </template>
                   </nav>
                 </div>
               </div>
@@ -392,7 +429,7 @@ const navButtons = [
 
 <style src="../../assets/css/header/Header-index.scss" scoped></style>
 <style scoped>
-  header {
-    margin-bottom: 0 !important;
-  }
+header {
+  margin-bottom: 0 !important;
+}
 </style>

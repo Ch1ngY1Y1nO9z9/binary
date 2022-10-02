@@ -1,0 +1,45 @@
+.related {
+    .custom-container {
+        padding-top: 70px;
+
+        .section-title {
+            @include Serif(30px, 43px, .05em);
+            color: $gray-5;
+
+            padding-bottom: 30px;
+            border-bottom: 2px solid $gray-2;
+
+            .icon {
+                display: inline-block;
+                font-size: 26px;
+                margin-right: 15px;
+            }
+        }
+
+        .list {
+            @include Sans(400, 14px, 20px, .05em);
+            color: $gray-5;
+
+
+            .news-link {
+                display: block;
+                padding: 10px 0;
+                word-break: keep-all;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+
+                border-bottom: 2px solid $gray-2;
+
+                &:hover {
+                    color: $orange-5;
+                }
+
+                .icon {
+                    display: inline-block;
+                    font-size: 12px;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+}

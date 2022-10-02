@@ -122,7 +122,7 @@ const modules = [Navigation];
           }"
         >
           <swiper-slide>
-            <router-link to="/stake/news_list" class="link hvr-float">
+            <router-link to="/news" class="link hvr-float">
               <img src="" alt="" />
               <div class="pic" style="background-image: url()"></div>
               <div class="tag">
@@ -134,7 +134,7 @@ const modules = [Navigation];
             </router-link>
           </swiper-slide>
           <swiper-slide>
-            <router-link to="/stake/news_list" class="link hvr-float">
+            <router-link to="/news" class="link hvr-float">
               <img src="" alt="" />
               <div class="pic" style="background-image: url()"></div>
               <div class="tag">
@@ -146,7 +146,7 @@ const modules = [Navigation];
             </router-link>
           </swiper-slide>
           <swiper-slide>
-            <router-link to="/stake/news_list" class="link hvr-float">
+            <router-link to="/news" class="link hvr-float">
               <img src="" alt="" />
               <div class="pic" style="background-image: url()"></div>
               <div class="tag">
@@ -158,7 +158,7 @@ const modules = [Navigation];
             </router-link>
           </swiper-slide>
           <swiper-slide>
-            <router-link to="/stake/news_list" class="link hvr-float">
+            <router-link to="/news" class="link hvr-float">
               <img src="" alt="" />
               <div class="pic" style="background-image: url()"></div>
               <div class="tag">
