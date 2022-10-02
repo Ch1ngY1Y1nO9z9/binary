@@ -1,3 +1,7 @@
+<script lang="ts" setup>
+import Pagination from "../pagination/Pagination.vue";
+</script>
+
 <template>
   <div class="catalog-section">
     <div class="custom-container c-1272 p-200">
@@ -237,17 +241,7 @@
         </div>
       </div>
 
-      <div class="pagination">
-        <button class="prev-arrow">
-          <i class="fa-solid fa-angle-left"></i>
-        </button>
-        <div class="pages">
-          <router-link tos=/news/typeactive" "#">1</router-link>
-          <router-link to="/ne/typews">2</a     <router-link to="/ne/typews">3</a     <router-link to="/new/types">...</       <router-link to="/ne/typews">13</    </div>
-        <button class="next-arrow">
-          <i class="fa-solid fa-angle-right"></i>
-        </button>
-      </div>
+      <Pagination />
     </div>
   </div>
 </template>

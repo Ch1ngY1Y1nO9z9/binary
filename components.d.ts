@@ -38,7 +38,6 @@ declare module '@vue/runtime-core' {
     NModal: typeof import('naive-ui')['NModal']
     NPopover: typeof import('naive-ui')['NPopover']
     NSpin: typeof import('naive-ui')['NSpin']
-    Order: typeof import('./src/components/Stake/Order.vue')['default']
     PointTrading: typeof import('./src/components/Trading/PointTrading.vue')['default']
     Records: typeof import('./src/components/Purse/Records.vue')['default']
     Register: typeof import('./src/components/Forms/Register.vue')['default']

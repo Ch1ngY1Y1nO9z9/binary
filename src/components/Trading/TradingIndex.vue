@@ -1,4 +1,4 @@
-<script setup>
+<script lang="ts" setup>
 import { onMounted, ref } from "vue";
 import routeName from "../../utilities/getRoute/getRoute";
 import Pagination from "../../utilities/pagination/Pagination.vue";
@@ -97,7 +97,7 @@ const fakeData = ref([
   },
 ]);
 
-const changeStatus = (index) => {
+const changeStatus = (index: number) => {
   if (fakeData.value[index].status == "") {
     fakeData.value[index].status = "cancel";
   } else {
